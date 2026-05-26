@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DÍGNITAS ABOGACÍA | Defensa Legal Estratégica</title>
+    <meta name="description" content="DÍGNITAS ABOGACÍA — Litigio estratégico con enfoque en Derechos Humanos. Derecho Laboral, Salud Integral, Familiar y Defensa Fiscal.">
+    
+    <!-- 1. Importación de Google Fonts: Cinzel y Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Paleta de fondo oscuro (Navy)
+                        navy: { 
+                            50:'#1a2d4a', 100:'#162542', 200:'#122040', 300:'#0F1C38', 
+                            400:'#0B1A2E', 500:'#091525', 600:'#07101D', 700:'#050C15' 
+                        },
+                        // Paleta Azul (Reemplazo del Dorado)
+                        blue: {
+                            400: '#60A5FA', // Azul claro para hover
+                            500: '#3B82F6', // Azul principal (Brillante)
+                            600: '#2563EB', // Azul oscuro para estado activo
+                            accent: '#3B82F6' 
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Montserrat"', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+                        display: ['"Montserrat"', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+                        // Nuevas fuentes solicitadas
+                        cinzel: ['"Montserrat"', 'serif'],
+                        montserrat: ['"Montserrat"', 'sans-serif'],
+                        cormorant: ['"Cormorant Garamond"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* ── Reset & Base ── */
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{font-size:16px; scroll-behavior: smooth;}
+        body{
+            font-family: "Montserrat", "Segoe UI", sans-serif; /* Cambiado base a Montserrat */
+            background-color: #050C15; 
+            color:#f8fafc; 
+            overflow-x:hidden;
+            -webkit-font-smoothing:antialiased
+        }
+        
+        /* Scrollbar personalizada en Azul */
+        ::-webkit-scrollbar{width:8px}
+        ::-webkit-scrollbar-track{background:#050C15}
+        ::-webkit-scrollbar-thumb{background:#1a2d4a;border-radius:4px}
+        ::-webkit-scrollbar-thumb:hover{background:#3B82F6}
+
+        /* ── Animations ── */
+        @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        @keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+        @keyframes heroBg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+        @keyframes lineGrow{from{width:0}to{width:100%}}
+        @keyframes scaleIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+
+        /* Utilidades de revelado */
+        .reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.22,1,.36,1)}
+        .reveal.visible{opacity:1;transform:translateY(0)}
+        .reveal-d1{transition-delay:.12s}
+        .reveal-d2{transition-delay:.24s}
+        .reveal-d3{transition-delay:.36s}
+        .reveal-d4{transition-delay:.48s}
+
+        /* Estilos específicos reemplazando Dorado por Azul */
+        .hero-bg{
+            background:linear-gradient(160deg,#050C15 0%,#0B1A2E 35%,#1a2d4a 65%,#050C15 100%);
+            background-size:300% 300%;
+            animation:heroBg 25s ease infinite
+        }
+        
+        /* Línea decorativa Azul */
+        .accent-line{height:2px;background:linear-gradient(90deg,transparent,#3B82F6,transparent); width: 100px; margin: 1.5rem auto;}
+
+        /* Tarjetas de Servicio */
+        .service-card{
+            background: rgba(26,45,74, 0.3); 
+            border:1px solid rgba(59, 130, 246, 0.2);
+            backdrop-filter: blur(5px);
+            transition:all .4s cubic-bezier(.22,1,.36,1)
+        }
+        .service-card:hover{
+            transform:translateY(-8px);
+            border-color:#3B82F6;
+            box-shadow:0 20px 50px -12px rgba(59, 130, 246, 0.2)
+        }
+
+        /* Tarjetas de Valores */
+        .value-card{
+            border-left:3px solid #1a2d4a;
+            background: rgba(255,255,255,0.02);
+            transition:all .3s ease
+        }
+        .value-card:hover{
+            border-left-color:#3B82F6;
+            background: rgba(59, 130, 246, 0.05)
+        }
+
+        /* Botón CTA Azul (Brillante con Shimmer) */
+        .cta-blue{
+            background:linear-gradient(110deg,#2563EB 0%,#60A5FA 45%,#3B82F6 55%,#1d4ed8 100%);
+            background-size:200% 100%;
+            color: white;
+            animation:shimmer 3.5s ease-in-out infinite;
+            transition:all .3s ease;
+            border: none;
+        }
+        .cta-blue:hover{
+            transform:translateY(-2px);
+            box-shadow:0 8px 30px rgba(37, 99, 235, 0.4);
+            color: white;
+        }
+        
+        /* Botón Outline */
+        .cta-outline{
+            border:2px solid rgba(59, 130, 246, 0.5);
+            color: #60A5FA;
+            transition:all .3s ease
+        }
+        .cta-outline:hover{
+            border-color:#3B82F6;
+            background:rgba(59, 130, 246, 0.1);
+            color: white;
+        }
+
+        /* WhatsApp flotante */
+        .wa-float{animation:waPulse 2s infinite}
+        
+        /* Navegación */
+        .nav-scrolled{background:rgba(5,12,21,.95)!important;backdrop-filter:blur(12px); border-bottom: 1px solid rgba(59, 130, 246, 0.1)}
+        .mobile-menu{transform:translateX(100%);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+        .mobile-menu.open{transform:translateX(0)}
+        
+        /* Formulario */
+        .form-input{
+            background:rgba(26,45,74,.2);
+            border:1px solid rgba(59, 130, 246, 0.3);
+            color: white;
+            transition:all .3s ease
+        }
+        .form-input:focus{
+            border-color:#3B82F6;
+            box-shadow:0 0 0 3px rgba(59, 130, 246, 0.15);
+            outline:none
+        }
+        .form-input::placeholder { color: #94a3b8; }
+
+        /* Modal */
+        .modal-overlay{opacity:0;pointer-events:none;transition:opacity .3s ease}
+        .modal-overlay.active{opacity:1;pointer-events:auto}
+        .modal-content{transform:translateY(20px) scale(.97);transition:all .35s cubic-bezier(.22,1,.36,1)}
+        .modal-overlay.active .modal-content{transform:translateY(0) scale(1)}
+        
+        /* Decoración */
+        .deco-ring{border:1px solid rgba(59, 130, 246, 0.1);border-radius:50%;position:absolute;pointer-events:none}
+        *:focus-visible{outline:2px solid #3B82F6;outline-offset:3px;border-radius:4px}
+        
+        @media print{.no-print{display:none!important}body{background:#fff;color:#000}}
+    </style>
+</head>
+<body>
+
+<!-- SKIP LINK -->
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-500 text-white px-4 py-2 rounded font-bold z-[999]">Ir al contenido principal</a>
+
+<!-- ═══════════════ NAVBAR ═══════════════ -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-20 lg:h-24">
+            <!-- Logo -->
+            <a href="#inicio" class="flex items-center gap-3 group" aria-label="Dígnitas Abogacía - Inicio">
+                <!-- Imagen del logo -->
+                <img src="Logo.png" alt="Logo Dignitas Abogacía" class="h-12 w-auto transition-transform duration-300 group-hover:scale-105 object-contain">
+
+                <div class="flex flex-col leading-none">
+                    <span class="font-montserrat text-lg sm:text-xl font-bold tracking-wider text-white">DÍGNITAS</span>
+                    <span class="font-montserrat text-[10px] sm:text-xs tracking-[.35em] text-blue-400 font-medium">ABOGACÍA</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden lg:flex items-center gap-8">
+                <a href="#servicios" class="text-sm font-medium text-white/70 hover:text-blue-400 transition-colors">Servicios</a>
+                <a href="#nosotros" class="text-sm font-medium text-white/70 hover:text-blue-400 transition-colors">Nosotros</a>
+                <a href="#equipo" class="text-sm font-medium text-white/70 hover:text-blue-400 transition-colors">Equipo</a>
+                <a href="#contacto" class="text-sm font-medium text-white/70 hover:text-blue-400 transition-colors">Contacto</a>
+                <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-blue text-white font-bold text-sm px-6 py-3 rounded-lg">Agenda tu asesoría</a>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button id="menuToggle" class="lg:hidden p-3 -mr-3 text-white" aria-label="Abrir menú" aria-expanded="false">
+                <svg id="menuIconOpen" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                <svg id="menuIconClose" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-80 max-w-[85vw] bg-black/98 backdrop-blur-lg z-50 lg:hidden">
+        <div class="flex flex-col h-full pt-24 px-8 pb-8">
+            <a href="#inicio" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Inicio</a>
+            <a href="#servicios" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Servicios</a>
+            <a href="#nosotros" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Nosotros</a>
+            <a href="#equipo" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Equipo</a>
+            <a href="#contacto" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Contacto</a>
+            <div class="mt-8">
+                <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-blue block text-center text-white font-bold text-lg px-6 py-4 rounded-lg">Agenda tu asesoría</a>
+            </div>
+            <div class="mt-auto flex gap-5 pt-8 border-t border-white/10">
+                <a href="https://wa.me/528130754795" target="_blank" rel="noopener" aria-label="WhatsApp" class="text-white/50 hover:text-white transition-colors"><svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+                <a href="https://instagram.com/DignitasAbogacia" target="_blank" rel="noopener" aria-label="Instagram" class="text-white/50 hover:text-white transition-colors"><svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                <a href="https://linkedin.com/in/emmanuel-quiroz-parrilla" target="_blank" rel="noopener" aria-label="LinkedIn" class="text-white/50 hover:text-white transition-colors"><svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="inicio" class="hero-bg relative min-h-screen flex items-center overflow-hidden">
+    <div class="deco-ring w-[500px] h-[500px] -top-32 -right-32"></div>
+    <div class="deco-ring w-[350px] h-[350px] bottom-16 -left-16 opacity-50"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40 relative z-10 w-full">
+        <div class="max-w-5xl">
+            <div class="inline-flex items-center gap-2 bg-white/5 border border-blue-500/30 rounded-full px-5 py-2.5 mb-8" style="animation:fadeUp .8s ease forwards">
+                <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+                <span class="text-sm text-white/70 font-medium tracking-wide">San Cristóbal de las Casas · Puebla</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.1] mb-6" style="animation:fadeUp .8s ease .12s forwards;opacity:0">
+                <span class="font-montserrat font-normal">DÍGNITAS</span> <span class="font-montserrat font-normal">ABOGACÍA</span>
+            </h1>
+
+            <p class="font-cormorant text-lg sm:text-xl md:text-4xl text-blue-400 font-medium mb-6" style="animation:fadeUp .8s ease .24s forwards;opacity:0">
+                Desde la legalidad, trabajamos por la defensa de tus derechos.
+            </p>
+
+            <p class="text-lg sm:text-xl text-white/80 mb-10 max-w-2xl leading-relaxed" style="animation:fadeUp .8s ease .36s forwards;opacity:0">
+                Si tu trabajo, salud, familia o patrimonio están en riesgo, necesitas defensa real.
+            </p>
+
+            <p class="text-base text-white/50 mb-10" style="animation:fadeUp .8s ease .44s forwards;opacity:0">
+                Litigio estratégico con enfoque en Derechos Humanos en:<br>
+                <span class="text-white font-semibold">Derecho Laboral</span> · <span class="text-white font-semibold">Salud Integral</span> · <span class="text-white font-semibold">Derecho Familiar</span> · <span class="text-white font-semibold">Defensa Fiscal</span>
+            </p>
+
+            <div class="flex flex-col sm:flex-row gap-4" style="animation:fadeUp .8s ease .52s forwards;opacity:0">
+                <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-blue text-white font-bold text-lg px-8 py-4 rounded-lg text-center inline-flex items-center justify-center gap-3">
+                    <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    ¡Agenda tu asesoría!
+                </a>
+                <a href="#servicios" class="cta-outline text-white font-semibold text-lg px-8 py-4 rounded-lg text-center">
+                    Conoce más
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50" style="animation:float 3s ease-in-out infinite">
+        <span class="text-xs tracking-[.2em] text-white/40 uppercase">Descubre más</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+    </div>
+</section>
+
+<!-- ═══════════════ MAIN ═══════════════ -->
+<main id="main">
+
+<!-- ──── SERVICIOS ──── -->
+<section id="servicios" class="relative py-24 md:py-32 bg-navy-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="text-blue-400 text-sm font-semibold tracking-[.3em] uppercase">Nuestros servicios</span>
+            <h2 class="font-montserrat text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">Te ayudamos en</h2>
+            <div class="accent-line w-24 mx-auto"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+            <!-- LABORAL -->
+            <div class="service-card bg-navy-600/60 rounded-2xl p-8 lg:p-10 reveal reveal-d1">
+                <div class="flex items-start gap-5 mb-5">
+                    <div class="flex-shrink-0 w-14 h-14 bg-navy-50/15 rounded-xl flex items-center justify-center">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="14"/><line x1="4" y1="7" x2="20" y2="7"/><path d="M4 7L7 14H17L20 7"/><circle cx="12" cy="2" r="1.5" fill="#3B82F6"/></svg>
+                    </div>
+                    <h3 class="font-montserrat text-2xl font-bold text-white pt-2">Derecho Laboral</h3>
+                </div>
+                <p class="text-white/65 leading-relaxed mb-6">Diagnósticos laborales, asesoría preventiva, conciliación especializada, despidos, cálculo de prestaciones y protección contra acoso laboral. Por el cumplimiento de la legalidad y la dignidad en cada relación de trabajo.</p>
+                <a href="https://wa.me/528130754795?text=Hola%2C%20necesito%20asesor%C3%ADa%20en%20Derecho%20Laboral." target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:gap-3 transition-all">
+                    Consulta laboral
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <!-- SALUD -->
+            <div class="service-card bg-navy-600/60 rounded-2xl p-8 lg:p-10 reveal reveal-d2">
+                <div class="flex items-start gap-5 mb-5">
+                    <div class="flex-shrink-0 w-14 h-14 bg-navy-50/15 rounded-xl flex items-center justify-center">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                    </div>
+                    <h3 class="font-montserrat text-2xl font-bold text-white pt-2">Salud Integral y DDHH</h3>
+                </div>
+                <p class="text-white/65 leading-relaxed mb-6">Si te niegan acceso, diagnósticos, tratamientos, medicamentos, cirugías o atención médica vital, exigimos inmediato cumplimiento. Tutelar la salud y la vida digna es la prioridad.</p>
+                <a href="https://wa.me/528130754795?text=Hola%2C%20necesito%20asesor%C3%ADa%20en%20derecho%20a%20la%20salud." target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:gap-3 transition-all">
+                    Defiende tu salud
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <!-- FAMILIAR -->
+            <div class="service-card bg-navy-600/60 rounded-2xl p-8 lg:p-10 reveal reveal-d3">
+                <div class="flex items-start gap-5 mb-5">
+                    <div class="flex-shrink-0 w-14 h-14 bg-navy-50/15 rounded-xl flex items-center justify-center">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <h3 class="font-montserrat text-2xl font-bold text-white pt-2">Derecho Familiar</h3>
+                </div>
+                <p class="text-white/65 leading-relaxed mb-6">Pensión alimenticia, custodia, divorcio. Litigamos con estricta perspectiva de género, priorizando siempre la estabilidad y los derechos de las personas más vulnerables del proceso.</p>
+                <a href="https://wa.me/528130754795?text=Hola%2C%20necesito%20asesor%C3%ADa%20en%20Derecho%20Familiar." target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:gap-3 transition-all">
+                    Asesoría familiar
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+
+            <!-- FISCAL -->
+            <div class="service-card bg-navy-600/60 rounded-2xl p-8 lg:p-10 reveal reveal-d4">
+                <div class="flex items-start gap-5 mb-5">
+                    <div class="flex-shrink-0 w-14 h-14 bg-navy-50/15 rounded-xl flex items-center justify-center">
+                        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h3 class="font-montserrat text-2xl font-bold text-white pt-2">Defensa Fiscal</h3>
+                </div>
+                <p class="text-white/65 leading-relaxed mb-6">Defensa coordinada y estratégica ante actos de autoridades (SAT, IMSS, INFONAVIT) que afecten patrimonio. Litigio fiscal con una visión integral de protección.</p>
+                <a href="https://wa.me/528130754795?text=Hola%2C%20necesito%20asesor%C3%ADa%20en%20Defensa%20Fiscal." target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:gap-3 transition-all">
+                    Protege tu patrimonio
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- CTA mid-page -->
+        <div class="mt-16 text-center reveal">
+            <div class="accent-line w-24 mx-auto mb-8"></div>
+            <p class="text-xl text-white/70 mb-6">¿No sabes qué servicio necesitas?</p>
+            <a href="https://wa.me/528130754795?text=Hola%2C%20necesito%20orientaci%C3%B3n%20jur%C3%ADdica.%20%C2%BFPueden%20ayudarme%3F" target="_blank" rel="noopener" class="cta-blue text-white font-bold text-lg px-8 py-4 rounded-lg inline-flex items-center gap-3">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Escríbenos y te orientamos
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ──── NOSOTROS / MISIÓN / VISIÓN ──── -->
+<section id="nosotros" class="relative py-24 md:py-32 bg-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Quiénes somos -->
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
+            <div class="reveal">
+                <div class="relative rounded-2xl overflow-hidden aspect-[4/5] max-w-md mx-auto lg:max-w-none">
+                    <img src="Foto.jpg" alt="Estatua de la Justicia" class="w-full h-full object-cover" loading="lazy">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 right-6">
+                        <span class="text-blue-400 text-sm font-semibold tracking-[.2em] uppercase">Estamos de tu lado</span>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal reveal-d1">
+                <span class="text-blue-400 text-sm font-semibold tracking-[.3em] uppercase">¿Quiénes somos?</span>
+                <h2 class="font-montserrat text-3xl sm:text-4xl font-bold mt-4 mb-6">Creemos en una justicia con rostro humano.</h2>
+                <div class="accent-line w-20 mb-6" style="background:linear-gradient(90deg,#3B82F6,transparent)"></div>
+                <p class="text-white/70 leading-relaxed mb-6">Somos una firma que no solo te representa, te acompaña. Cofundada por Emmanuel Quiroz y Elvira Vázquez, unimos más de 15 años de trayectoria jurídica con capacidad de litigio nacional y una nueva sede en San Cristóbal de las Casas, Chiapas, adicional a la de Puebla capital.</p>
+                <p class="text-white/70 leading-relaxed mb-8">No vemos expedientes; atendemos personas. Explicamos cada estrategia y etapa en lenguaje claro, porque tomar decisiones con información real es tu principal derecho.</p>
+                <a href="#contacto" class="cta-blue text-white font-bold px-8 py-4 rounded-lg inline-flex items-center gap-2">
+                    Conversemos
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+
+        <!-- Misión y Visión -->
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="value-card bg-navy-400/30 rounded-xl p-8 lg:p-10 reveal">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+                    </div>
+                    <h3 class="font-montserrat text-2xl font-bold">MISIÓN</h3>
+                </div>
+                <p class="text-white/65 leading-relaxed">En DÍGNITAS ABOGACÍA brindamos representación y asesoría jurídica colocando los derechos humanos al centro de cada estrategia. Miramos más allá del expediente en cada asunto laboral, de salud integral, familiar o fiscal. Unimos el rigor de la ley con la defensa activa de la dignidad para materializar la justicia de quien lo necesite.</p>
+            </div>
+
+            <div class="value-card bg-navy-400/30 rounded-xl p-8 lg:p-10 reveal reveal-d1">
+                <div class="flex items-center gap-3 mb-5">
+                    <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <h3 class="font-montserrat text-2xl font-bold">VISIÓN</h3>
+                </div>
+                <p class="text-white/65 leading-relaxed">Consolidarnos como la firma de referencia en el sursureste de México que convierte los derechos humanos en certeza jurídica real. Trabajamos para que el rigor de la ley y el respeto a tu dignidad no solo se pelee: se garantice.</p>
+            </div>
+        </div>
+
+        <!-- Valores -->
+        <div class="mt-16 reveal">
+            <div class="text-center mb-10">
+                <span class="text-blue-400 text-sm font-semibold tracking-[.3em] uppercase">Nuestros valores</span>
+                <h3 class="font-montserrat text-2xl sm:text-3xl font-bold mt-3">Lo que nos guía</h3>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div class="text-center p-6 bg-navy-400/20 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all">
+                    <div class="w-12 h-12 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-3">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <h4 class="font-semibold text-white mb-1 text-sm">Dignidad Humana</h4>
+                    <p class="text-white/50 text-xs">No tramitamos casos, defendemos tus derechos.</p>
+                </div>
+                <div class="text-center p-6 bg-navy-400/20 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all">
+                    <div class="w-12 h-12 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-3">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h4 class="font-semibold text-white mb-1 text-sm">Igualdad Sustantiva</h4>
+                    <p class="text-white/50 text-xs">Sin discriminación por género, origen o condición.</p>
+                </div>
+                <div class="text-center p-6 bg-navy-400/20 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all">
+                    <div class="w-12 h-12 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-3">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                    </div>
+                    <h4 class="font-semibold text-white mb-1 text-sm">Rigor en DDHH</h4>
+                    <p class="text-white/50 text-xs">Constitución, tratados, SCJN y Corte IDH.</p>
+                </div>
+                <div class="text-center p-6 bg-navy-400/20 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all">
+                    <div class="w-12 h-12 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-3">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    </div>
+                    <h4 class="font-semibold text-white mb-1 text-sm">Empatía Jurídica</h4>
+                    <p class="text-white/50 text-xs">Defensas técnicas y humanamente justas.</p>
+                </div>
+                <div class="text-center p-6 bg-navy-400/20 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all">
+                    <div class="w-12 h-12 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-3">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
+                    <h4 class="font-semibold text-white mb-1 text-sm">Responsabilidad Pública</h4>
+                    <p class="text-white/50 text-xs">Cada asunto favorable amplía el acceso a la justicia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ──── EQUIPO ──── -->
+<section id="equipo" class="relative py-24 md:py-32 bg-navy-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="text-blue-400 text-sm font-semibold tracking-[.3em] uppercase">Nuestro equipo</span>
+            <h2 class="font-montserrat text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">Titulares de la Firma</h2>
+            <div class="accent-line w-24 mx-auto"></div>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+            
+            <!-- Elvira -->
+            <div class="bg-navy-600/50 rounded-2xl p-8 lg:p-10 border border-navy-50/20 reveal reveal-d1">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-5 mb-6 text-center md:text-left">
+                    <!-- IMAGEN CIRCULAR ELVIRA (GRANDE) -->
+                    <img src="Elvira.jpeg" alt="Abogada Elvira Vázquez" class="flex-shrink-0 w-24 h-24 md:w-40 md:h-40 rounded-full object-cover border-2 border-blue-500/30 shadow-lg shadow-blue-900/20">
+                    <div>
+                        <h3 class="font-montserrat text-2xl md:text-xl font-bold text-white">Abogada Elvira Vázquez</h3>
+                        <p class="text-blue-400 text-sm font-medium mt-1">Socia Cofundadora</p>
+                    </div>
+                </div>
+                <p class="text-white/65 leading-relaxed">Maestra en Derecho por la UNAM (Mención Honorífica). Cuenta con una sólida trayectoria en el litigio estratégico, la defensa del derecho a la salud y la protección de grupos vulnerables. Ha sido Directora de la Casa de la Cultura Jurídica de la SCJN e impulsora de iniciativas de alto impacto social como Justicia Covid, el Derecho al Agua y derechos comunitarios. Su práctica profesional y vocación académica garantizan que cada asunto se defienda con estricta perspectiva de género y sensibilidad humana.</p>
+            </div>
+
+            <!-- Emmanuel -->
+            <div class="bg-navy-600/50 rounded-2xl p-8 lg:p-10 border border-navy-50/20 reveal">
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-5 mb-6 text-center md:text-left">
+                    <!-- IMAGEN CIRCULAR EMMANUEL (GRANDE) -->
+                    <img src="Emmanuel.jpeg" alt="Abogado Emmanuel Quiroz" class="flex-shrink-0 w-24 h-24 md:w-40 md:h-40 rounded-full object-cover border-2 border-blue-500/30 shadow-lg shadow-blue-900/20">
+                    <div>
+                        <h3 class="font-montserrat text-2xl md:text-xl font-bold text-white">Abogado Emmanuel Quiroz</h3>
+                        <p class="text-blue-400 text-sm font-medium mt-1">Socio Cofundador</p>
+                    </div>
+                </div>
+                <p class="text-white/65 leading-relaxed">Especialista en Derecho de la Empresa y Candidato a Maestro en Derecho Público (IBERO), con más de 15 años de experiencia en negociación compleja y litigio de alto impacto. Con experiencia como Subdelegado Federal en PRODECON y operado directamente en el Nuevo Sistema de Justicia Laboral desde el Poder Judicial. Su dominio regulatorio y su capacidad para enfrentar autoridades (SAT, IMSS, PEMEX) aseguran una sólida defensa técnica respaldada por estándares internacionales.</p>
+
+                <div class="mt-6 pt-6 border-t border-white/10">
+                    <a href="https://linkedin.com/in/emmanuel-quiroz-parrilla" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors group">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="transform group-hover:scale-110 transition-transform">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                        <span class="text-sm font-semibold">Ver perfil de LinkedIn</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ──── CONTACTO ──── -->
+<section id="contacto" class="relative py-24 md:py-32 bg-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16 reveal">
+            <span class="text-blue-400 text-sm font-semibold tracking-[.3em] uppercase">Contáctanos</span>
+            <h2 class="font-montserrat text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">Estamos para ti</h2>
+            <div class="accent-line w-24 mx-auto"></div>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+            <!-- Formulario -->
+            <div class="reveal">
+                <form id="contactForm" class="space-y-5" novalidate>
+                    <div>
+                        <label for="nombre" class="block text-sm font-medium text-white/80 mb-2">Nombre completo</label>
+                        <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre" class="form-input w-full px-5 py-4 rounded-lg text-white placeholder-white/30 text-lg">
+                    </div>
+                    <div>
+                        <label for="telefono" class="block text-sm font-medium text-white/80 mb-2">Teléfono</label>
+                        <input type="tel" id="telefono" name="telefono" required placeholder="(XXX) XXX-XXXX" class="form-input w-full px-5 py-4 rounded-lg text-white placeholder-white/30 text-lg">
+                    </div>
+                    <div>
+                        <label for="correo" class="block text-sm font-medium text-white/80 mb-2">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" required placeholder="tu@correo.com" class="form-input w-full px-5 py-4 rounded-lg text-white placeholder-white/30 text-lg">
+                    </div>
+                    <div>
+                        <label for="asunto" class="block text-sm font-medium text-white/80 mb-2">¿En qué podemos ayudarte?</label>
+                        <textarea id="asunto" name="asunto" rows="4" required placeholder="Describe brevemente tu situación..." class="form-input w-full px-5 py-4 rounded-lg text-white placeholder-white/30 text-lg resize-none"></textarea>
+                    </div>
+                    <button type="submit" class="cta-blue w-full text-white font-bold text-lg px-8 py-4 rounded-lg flex items-center justify-center gap-2">
+                        Enviar mensaje
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                    </button>
+                </form>
+                <div id="formSuccess" class="hidden text-center py-12">
+                    <div class="w-16 h-16 mx-auto bg-blue-500/15 rounded-full flex items-center justify-center mb-4">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+                    </div>
+                    <h3 class="font-montserrat text-2xl font-bold text-white mb-2">Mensaje enviado</h3>
+                    <p class="text-white/60">Nos pondremos en contacto contigo lo antes posible.</p>
+                </div>
+            </div>
+
+            <!-- Info de contacto -->
+            <div class="reveal reveal-d1">
+                <div class="space-y-8">
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="flex items-start gap-5 p-5 bg-navy-400/30 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all group">
+                        <div class="flex-shrink-0 w-12 h-12 bg-green-500/15 rounded-xl flex items-center justify-center">
+                            <svg width="24" height="24" fill="#25D366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white text-lg">WhatsApp</h4>
+                            <p class="text-white/60">(+52) 81 3075 4795</p>
+                            <p class="text-blue-400 text-sm mt-1 group-hover:gap-2 inline-flex items-center gap-1 transition-all">Escríbenos ahora →</p>
+                        </div>
+                    </a>
+
+                    <!-- Email -->
+                    <a href="mailto:dignitas.abogacia@gmail.com" class="flex items-start gap-5 p-5 bg-navy-400/30 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all group">
+                        <div class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white text-lg">Correo electrónico</h4>
+                            <p class="text-white/60">dignitas.abogacia@gmail.com</p>
+                        </div>
+                    </a>
+
+                    <!-- Sedes -->
+                    <div class="flex items-start gap-5 p-5 bg-navy-400/30 rounded-xl border border-navy-50/20">
+                        <div class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-white text-lg mb-2">Nuestras sedes</h4>
+                            <p class="text-white/60 text-sm mb-1"><span class="text-white/80 font-medium">Chiapas:</span> Calle Tauro #30, Col. San Juan de los Lagos, C.P. 29296, San Cristóbal de las Casas.</p>
+                            <p class="text-white/60 text-sm"><span class="text-white/80 font-medium">Puebla:</span> M. Ávila Camacho #3729, Col. Santa Cruz Buenavista, C.P. 72197, Puebla.</p>
+                        </div>
+                    </div>
+
+                    <!-- Redes -->
+                    <div class="flex items-start gap-5 p-5 bg-navy-400/30 rounded-xl border border-navy-50/20">
+                        
+                        <div>
+                            <h4 class="font-semibold text-white text-lg mb-3">Síguenos</h4>
+                            <div class="flex gap-4">
+                                <a href="https://instagram.com/DignitasAbogacia" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 bg-navy-50/15 rounded-lg flex items-center justify-center hover:bg-blue-500/15 transition-colors">
+                                    <svg width="18" height="18" fill="#3B82F6" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                                </a>
+                                <!-- Facebook Added (Task 3) -->
+                                <a href="https://facebook.com/DignitasAbogacia" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 bg-navy-50/15 rounded-lg flex items-center justify-center hover:bg-blue-500/15 transition-colors">
+                                    <svg width="18" height="18" fill="#3B82F6" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CTA grande -->
+                <div class="mt-8 p-6 bg-navy-400/40 rounded-xl border border-blue-500/20 text-center reveal">
+                    <p class="text-white/80 mb-4">¿Prefieres hablar directamente?</p>
+                    <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-blue text-white font-bold text-lg px-8 py-4 rounded-lg inline-flex items-center gap-3">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                        Agenda tu asesoría por WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer class="bg-navy-700 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-10 mb-12">
+            <!-- Logo y descripción -->
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="Logo.png" alt="Logo Dignitas Abogacía Footer" class="h-10 w-auto object-contain">
+                    <div class="flex flex-col leading-none">
+                        <span class="font-montserrat text-base font-bold tracking-wider">DÍGNITAS</span>
+                        <span class="font-montserrat text-[9px] tracking-[.35em] text-blue-400 font-medium">ABOGACÍA</span>
+                    </div>
+                </div>
+                <p class="text-white/40 text-sm leading-relaxed">Desde la legalidad, trabajamos por la defensa de tus derechos.</p>
+            </div>
+
+            <!-- Navegación -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Navegación</h4>
+                <div class="space-y-2">
+                    <a href="#inicio" class="block text-white/40 hover:text-white text-sm transition-colors">Inicio</a>
+                    <a href="#servicios" class="block text-white/40 hover:text-white text-sm transition-colors">Servicios</a>
+                    <a href="#nosotros" class="block text-white/40 hover:text-white text-sm transition-colors">Nosotros</a>
+                    <a href="#equipo" class="block text-white/40 hover:text-white text-sm transition-colors">Equipo</a>
+                    <a href="#contacto" class="block text-white/40 hover:text-white text-sm transition-colors">Contacto</a>
+                </div>
+            </div>
+
+            <!-- Legal -->
+            <div>
+                <h4 class="font-semibold text-white mb-4">Legal</h4>
+                <div class="space-y-2">
+                    <button onclick="openModal('avisoLegal')" class="block text-white/40 hover:text-white text-sm transition-colors">Aviso Legal</button>
+                    <button onclick="openModal('avisoPrivacidad')" class="block text-white/40 hover:text-white text-sm transition-colors">Aviso de Privacidad</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="accent-line mb-8"></div>
+
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p class="text-white/30 text-sm">&copy; 2026 DÍGNITAS ABOGACÍA. Todos los derechos reservados.</p>
+            <div class="flex gap-4">
+                <a href="https://wa.me/528130754795" target="_blank" rel="noopener" aria-label="WhatsApp" class="text-white/30 hover:text-white transition-colors"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+                <a href="https://instagram.com/DignitasAbogacia" target="_blank" rel="noopener" aria-label="Instagram" class="text-white/30 hover:text-white transition-colors"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                <!-- Facebook Added Footer (Task 3) -->
+                <a href="https://facebook.com/DignitasAbogacia" target="_blank" rel="noopener" aria-label="Facebook" class="text-white/30 hover:text-white transition-colors"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- ═══════════════ WHATSAPP FLOTANTE ═══════════════ -->
+<a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="no-print fixed bottom-6 right-6 z-40 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg wa-float hover:scale-110 transition-transform" aria-label="Contactar por WhatsApp">
+    <svg width="30" height="30" fill="#fff" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.P157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- ═══════════════ MODAL: AVISO LEGAL ═══════════════ -->
+<div id="avisoLegal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div class="modal-content bg-navy-500 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8 lg:p-10 relative">
+        <button onclick="closeModal('avisoLegal')" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 text-white transition-colors" aria-label="Cerrar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <h2 class="font-montserrat text-2xl font-bold mb-6">1. Aviso Legal y Términos de Uso</h2>
+
+        <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">1.1. Naturaleza Jurídica y Nombre Comercial</h3>
+        <p class="text-white/65 leading-relaxed">Para los efectos legales a que haya lugar, se hace de conocimiento público que "DÍGNITAS ABOGACÍA" es un nombre comercial utilizado de forma lícita para identificar y promover los servicios jurídicos, de representación y consultoría prestados de manera profesional por sus socios fundadores e integrantes. La contratación de servicios se realiza de manera directa con los profesionales del derecho titulares o asociados a la firma, quienes asumen la responsabilidad profesional correspondiente en términos de la legislación aplicable.</p>
+
+        <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">1.2. Ausencia de Relación Abogado-Cliente por Uso del Sitio</h3>
+        <p class="text-white/65 leading-relaxed">La información contenida en esta página web tiene fines exclusivamente informativos y de divulgación. La lectura, visualización, descarga de material o el envío de correos electrónicos a través de los formularios de este sitio no constituye ni crea una relación entre los profesionales del derecho y las personas usuarias de esta página web. Dicha relación únicamente se perfeccionará mediante la firma de un contrato de prestación de servicios profesionales y/o el acuerdo explícito por escrito entre la persona usuaria y la abogacía titular de la firma.</p>
+
+        <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">1.3. Propiedad Intelectual</h3>
+        <p class="text-white/65 leading-relaxed">Todos los contenidos, textos, logotipos, diseños, y arquitectura visual de este sitio están protegidos por las vigentes Ley Federal de Protección a la Propiedad Industrial y la Ley Federal del Derecho de Autor. Queda estrictamente prohibida su reproducción, distribución o modificación sin autorización previa y por escrito.</p>
+        <p class="text-white/40 text-sm mt-4">Fecha de última actualización: Abril de 2026.</p>
+    </div>
+</div>
+
+<!-- ═══════════════ MODAL: AVISO DE PRIVACIDAD ═══════════════ -->
+<div id="avisoPrivacidad" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div class="modal-content bg-navy-500 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8 lg:p-10 relative">
+        <button onclick="closeModal('avisoPrivacidad')" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 text-white transition-colors" aria-label="Cerrar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <h2 class="font-montserrat text-2xl font-bold mb-6">2. Aviso de Privacidad Integral</h2>
+        <p class="text-white/50 text-sm mb-6">Con fundamento en los artículos 8, 15, 16, 33 y 36 de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares.</p>
+
+        <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.1. Identidad y Domicilio del Responsable</h3>
+        <p class="text-white/65 leading-relaxed">Las personas físicas titulares de la firma DÍGNITAS ABOGACÍA (en adelante "El Responsable"), con domicilio para recibir notificaciones en Calle Tauro #30, Col. "San Juan de los Lagos", San Cristóbal de las Casas, Chiapas. C.P. 29296, son responsables del uso, tratamiento y protección de sus datos personales.</p>
+
+        <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.2. Datos Personales Recabados</h3>
+        <p class="text-white/65 leading-relaxed mb-3">Para llevar a cabo las finalidades descritas en el presente aviso, recabaremos los siguientes datos personales a través de nuestros formularios web, correos electrónicos o líneas de contacto:</p>
+        <ul class="list-disc list-inside text-white/65 space-y-1 ml-2">
+            <li>Nombre completo.</li>
+            <li>Teléfono de contacto.</li>
+            <li>Correo electrónico.</li>
+            <li>Información general sobre el asunto o consulta jurídica requerida.</li>
+        </ul>
+        <p class="text-white/50 text-sm mt-3">No recabamos datos personales sensibles a través del sitio web. Cualquier información estrictamente confidencial o sensible relacionada con su proceso legal será solicitada únicamente tras formalizar la relación profesional bajo secreto profesional.</p>
+
+        <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.3. Finalidades del Tratamiento de Datos</h3>
+        <p class="text-white/80 font-medium mb-2">Finalidades primarias:</p>
+        <ul class="list-disc list-inside text-white/65 space-y-1 ml-2">
+            <li>Proveer asesoría y servicios legales.</li>
+            <li>Contactar a la persona usuaria para dar seguimiento a sus consultas.</li>
+            <li>Elaboración de propuestas económicas y cotizaciones.</li>
+        </ul>
+        <p class="text-white/80 font-medium mt-4 mb-2">Finalidades secundarias (Uso Comercial y Mercadotécnico):</p>
+        <ul class="list-disc list-inside text-white/65 space-y-1 ml-2">
+            <li>Envío de boletines informativos, actualizaciones legales y alertas jurisprudenciales.</li>
+            <li>Divulgación de servicios y campañas de mercadotecnia digital de la firma.</li>
+        </ul>
+        <p class="text-white/50 text-sm mt-3">En caso de que no desee que sus datos personales sean tratados para estos fines secundarios, puede comunicarlo inmediatamente a través de los canales de contacto.</p>
+
+        <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.4. Derechos ARCO</h3>
+        <p class="text-white/65 leading-relaxed">Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición).</p>
+        <p class="text-white/65 leading-relaxed mt-2">Para el ejercicio de cualquiera de los derechos ARCO, usted deberá presentar la solicitud respectiva enviando un correo electrónico a: <span class="text-blue-400">dignitas.abogacia@gmail.com</span></p>
+
+        <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.5. Transferencia de Datos</h3>
+        <p class="text-white/65 leading-relaxed">Sus datos personales no serán transferidos ni tratados por personas físicas o morales distintas a "El Responsable", salvo las excepciones previstas en el artículo 37 de la LFPDPPP, así como aquellas requeridas por autoridades competentes de manera fundada y motivada.</p>
+
+        <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.6. Modificaciones al Aviso de Privacidad</h3>
+        <p class="text-white/65 leading-relaxed">El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales; de nuestras propias necesidades por los servicios que ofrecemos; de nuestras prácticas de privacidad; o por cambios en nuestro modelo de negocio. Nos comprometemos a mantenerlo informado sobre los cambios a través de la actualización de este documento en nuestra página web.</p>
+        <p class="text-white/40 text-sm mt-4">Fecha de última actualización: Abril de 2026.</p>
+    </div>
+</div>
+
+<!-- ═══════════════ JAVASCRIPT ═══════════════ -->
+<script>
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+    navbar.classList.toggle('nav-scrolled', window.scrollY > 60);
+}, { passive: true });
+
+// Mobile menu
+const menuToggle = document.getElementById('menuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuIconOpen = document.getElementById('menuIconOpen');
+const menuIconClose = document.getElementById('menuIconClose');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+function openMenu() {
+    mobileMenu.classList.add('open');
+    menuIconOpen.classList.add('hidden');
+    menuIconClose.classList.remove('hidden');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+}
+function closeMenu() {
+    mobileMenu.classList.remove('open');
+    menuIconOpen.classList.remove('hidden');
+    menuIconClose.classList.add('hidden');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+}
+
+menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+});
+mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Modals
+function openModal(id) {
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.querySelectorAll('.modal-overlay').forEach(modal => {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal(modal.id);
+    });
+});
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
+        closeMenu();
+    }
+});
+
+// Contact form
+const contactForm = document.getElementById('contactForm');
+const formSuccess = document.getElementById('formSuccess');
+
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(contactForm);
+    const nombre = formData.get('nombre');
+    const telefono = formData.get('telefono');
+    const correo = formData.get('correo');
+    const asunto = formData.get('asunto');
+
+    // Build WhatsApp message
+    const msg = `Hola, mi nombre es ${nombre}. Mi teléfono es ${telefono} y mi correo ${correo}. Necesito asesoría sobre: ${asunto}`;
+    const waUrl = `https://wa.me/528130754795?text=${encodeURIComponent(msg)}`;
+
+    // Show success
+    contactForm.classList.add('hidden');
+    formSuccess.classList.remove('hidden');
+
+    // Open WhatsApp
+    setTimeout(() => { window.open(waUrl, '_blank'); }, 600);
+});
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            const offset = navbar.offsetHeight + 10;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+            window.scrollTo({ top, behavior: 'smooth' });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
