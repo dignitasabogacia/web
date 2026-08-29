@@ -1,0 +1,1833 @@
+<!DOCTYPE html>
+<!--
+================================================================================
+  DIGNITAS ABOGACIA — VERSIÓN CORREGIDA · 28 de agosto de 2026
+================================================================================
+
+  QUÉ SE CORRIGIÓ EN ESTA VERSIÓN
+
+  1. Errata del botón principal:  "¡Agenda tu asesoría!"  →  "¡Agenda tu asesoría!"
+  2. Se eliminó el respaldo a picsum.photos de las tres fotografías. Las imagenes
+     NO se tocaron: conservan su nombre y su ruta original.
+  3. Menú móvil: ahora se desplaza. Antes, en pantallas de menos de 800 px, el
+     botón "Agenda tu asesoría" y las redes sociales quedaban fuera de alcance.
+  4. Formulario: la pantalla "Mensaje recibido" solo aparece cuando el envio se
+     confirma. Si falla, aparece una pantalla con WhatsApp, teléfono y correo,
+     con el mensaje del visitante ya escrito. Ya no se pierde ningun prospecto.
+  5. Casilla de consentimiento y enlace al Aviso de Privacidad en el formulario.
+  6. Campo trampa oculto contra correo automatizado.
+  7. Medición de conversiones: cada clic a WhatsApp, correo o teléfono se
+     registra en Google Analytics y en Meta (solo si la persona aceptó cookies).
+  8. Enlace "Preferencias de cookies" en el pie, para revocar el consentimiento.
+  9. Aviso de cookies más compacto en celular.
+ 10. Aviso de Privacidad: se retiraron las citas a la ley de 2010 (abrogada),
+     se agrego el procedimiento y los plazos de los derechos ARCO, la autoridad
+     vigente, y se declaro el proveedor del formulario.
+ 11. HERO: en celular el botón "Agenda tu asesoría" ya se ve sin desplazarse.
+     El bloque de materias paso debajo de los botónes (solo en celular) y se
+     ajustaron tamanos en pantallas cortas. En escritorio NO cambia nada.
+ 12. El aviso de cookies pasa a la esquina inferior derecha en escritorio y es
+     más compacto en celular, para no tapar el botón principal en la primera
+     visita. Su texto se acortó y el enlace al Aviso de Privacidad se ve siempre.
+
+     Comprobado sin traslapes en: 360x640, 375x667, 390x844, 768x1024,
+     1280x800, 1366x700 y 1920x1080.
+
+--------------------------------------------------------------------------------
+  LO QUE TIENE QUE HACER EL PROGRAMADOR  (4 valores, todos en el PANEL DE
+  CONFIGURACION que esta mas abajo, busca "PANEL DE CONFIGURACION")
+--------------------------------------------------------------------------------
+
+  [ ] ID_GA4             — Google Analytics 4      (G-XXXXXXXXXX)
+  [ ] ID_META            — Pixel de Facebook       (solo numeros)
+  [ ] CLAVE_FORMULARIO   — clave de web3forms.com  (o usar el formulario nativo
+                           de Squarespace, que es la opcion recomendada)
+  [ ] TELEFONO_WHATSAPP  — ya viene puesto, verificar que sea el correcto
+
+  Ademas, en el <head> de este archivo:
+
+  [ ] Crear y subir  og-dignitas.jpg  de 1200 x 630 px  → LO MÁS URGENTE.
+      Sin esta imagen, cada reenvio del sitio por WhatsApp se ve como una
+      tarjeta vacía, y el reenvio por WhatsApp es la principal vía de difusión.
+  [ ] Crear y subir  apple-touch-icon.png  de 180 x 180 px
+  [ ] Pegar el codigo de verificación de dominio de Meta
+  [ ] Verificar el sitio en Search Console (con Google Workspace conviene
+      hacerlo por DNS a nivel dominio, no con la etiqueta HTML)
+  [ ] Dar de alta el sitio en Bing Webmaster Tools (para ChatGPT y Copilot)
+  [ ] Confirmar que las rutas de las 4 imagenes apunten al gestor de archivos
+      de Squarespace y que carguen correctamente en el sitio publicado
+
+--------------------------------------------------------------------------------
+  PENDIENTE PARA LA FIRMA (no es trabajo de programacion)
+--------------------------------------------------------------------------------
+
+  [ ] Perfil de Empresa de Google para las dos sedes (San Cristóbal y Puebla).
+      Es lo que mas pesa en las búsquedas locales. La verificación por correo
+      postal tarda de 1 a 2 semanas: conviene iniciarla cuanto antes.
+  [ ] Revisión del Aviso de Privacidad completo contra la LFPDPPP vigente
+      (publicada en el DOF el 20 de marzo de 2025). Aqui se corrigieron las
+      citas incorrectas, pero la redacción definitiva corresponde a la firma.
+
+================================================================================
+-->
+<html lang="es" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DÍGNITAS ABOGACÍA | Abogacía especializada en materia laboral, salud, familiar y derechos humanos</title>
+<meta name="description" content="Abogacía especializada en materia laboral, salud, familiar y derechos humanos. Despido injustificado y liquidación, negativa de medicamentos y tratamientos, pensión alimenticia y divorcio, defensa fiscal. Primera asesoría sin costo.">
+<link rel="canonical" href="https://dignitasabogacia.com/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<!-- GOOGLE SEARCH CONSOLE: entra a search.google.com/search-console con la
+     cuenta de Google Workspace da@dignitasabogacia.com, agrega la propiedad,
+     elige "Etiqueta HTML", y descomenta la linea de abajo pegando tu codigo:
+<meta name="google-site-verification" content="AQUI_EL_CODIGO_QUE_DA_GOOGLE">
+-->
+<meta name="theme-color" content="#0B1A2E">
+
+<!-- ══════════════════════════════════════════════════════════════════
+     VERIFICACION DE DOMINIO EN META (Facebook e Instagram)
+     Sin esto, Meta limita la atribucion de los anuncios.
+     Se obtiene en business.facebook.com → Configuracion del negocio →
+     Seguridad de la marca → Dominios. Descomenta y pega el codigo:
+<meta name="facebook-domain-verification" content="AQUI_EL_CODIGO_DE_META">
+     ══════════════════════════════════════════════════════════════════ -->
+
+<!-- ══════════════════════════════════════════════════════════════════
+     IMAGEN PARA COMPARTIR  —  PENDIENTE, ES LA MAS URGENTE
+     og-dignitas.jpg NO EXISTE todavia. Mientras no exista, cada vez que
+     alguien reenvie el sitio por WhatsApp aparecera una tarjeta vacía,
+     y el reenvio por WhatsApp es la principal vía de difusión del sitio.
+
+     Que hacer: crear un JPG de 1200 x 630 px con el logotipo, el nombre
+     y el lema sobre fondo azul marino, subirlo a Squarespace y sustituir
+     abajo la direccion por la que devuelva la plataforma.
+     Lo mismo con apple-touch-icon.png de 180 x 180 px.
+     ══════════════════════════════════════════════════════════════════ -->
+
+<!-- Vista previa al compartir por WhatsApp, Facebook y LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="DÍGNITAS ABOGACÍA">
+<meta property="og:title" content="DÍGNITAS ABOGACÍA — Desde la legalidad, trabajamos por la defensa de tus derechos">
+<meta property="og:description" content="Abogacía especializada en materia laboral, salud, familiar y derechos humanos. Primera asesoría sin costo.">
+<meta property="og:url" content="https://dignitasabogacia.com/">
+<meta property="og:image" content="https://dignitasabogacia.com/og-dignitas.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DÍGNITAS ABOGACÍA">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="DÍGNITAS ABOGACÍA">
+<meta name="twitter:description" content="Abogacía especializada en materia laboral, salud, familiar y derechos humanos. Primera asesoría sin costo.">
+<meta name="twitter:image" content="https://dignitasabogacia.com/og-dignitas.jpg">
+
+<!-- PROGRAMADOR: sube og-dignitas.jpg (1200x630 px) y apple-touch-icon.png (180x180 px) a la raiz del sitio -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230B1A2E'/%3E%3Ctext x='32' y='46' font-family='Georgia,serif' font-size='40' font-weight='bold' fill='%233B82F6' text-anchor='middle'%3ED%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- Se elimino la fuente Cinzel: el tailwind.config la reasignaba a Montserrat, se descargaba sin usarse -->
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- ============================================================
+     PROGRAMADOR: este CDN NO debe usarse en produccion.
+     Compila Tailwind y sustituye estas lineas por:
+         <link rel="stylesheet" href="/css/estilos.css">
+     Pasos: npm init -y  /  npm install -D tailwindcss@3
+            npx tailwindcss -i ./src/input.css -o ./css/estilos.css --minify
+     El tailwind.config.js va con la MISMA paleta de abajo.
+     Al compilar, borra tambien el bloque <script>tailwind.config...</script>
+     ============================================================ -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      colors: {
+        navy: {
+          50:'#1a2d4a', 100:'#162542', 200:'#122040', 300:'#0F1C38',
+          400:'#0B1A2E', 500:'#091525', 600:'#07101D', 700:'#050C15'
+        },
+        blue: {
+          400: '#60A5FA',
+          500: '#3B82F6',
+          600: '#2563EB',
+          accent: '#3B82F6'
+        }
+      },
+      fontFamily: {
+        sans: ['"Montserrat"', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+        display: ['"Montserrat"', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+        cinzel: ['"Montserrat"', 'serif'],
+        montserrat: ['"Montserrat"', 'sans-serif'],
+        cormorant: ['"Cormorant Garamond"', 'serif'],
+      }
+    }
+  }
+}
+</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{font-size:16px; scroll-behavior: smooth;}
+body{
+  font-family: "Montserrat", "Segoe UI", sans-serif;
+  background-color: #050C15;
+  color:#f8fafc;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased
+}
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:#050C15}
+::-webkit-scrollbar-thumb{background:#1a2d4a;border-radius:4px}
+::-webkit-scrollbar-thumb:hover{background:#3B82F6}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes shimmer{0%{background-position:-200% center}100%{background-position:200% center}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes waPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+@keyframes heroBg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes lineGrow{from{width:0}to{width:100%}}
+@keyframes scaleIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.22,1,.36,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:.12s}
+.reveal-d2{transition-delay:.24s}
+.reveal-d3{transition-delay:.36s}
+.reveal-d4{transition-delay:.48s}
+
+.hero-bg{
+  background:linear-gradient(160deg,#050C15 0%,#0B1A2E 35%,#1a2d4a 65%,#050C15 100%);
+  background-size:300% 300%;
+  animation:heroBg 25s ease infinite
+}
+.accent-line{height:2px;background:linear-gradient(90deg,transparent,#3B82F6,transparent); width: 100px; margin: 1.5rem auto;}
+
+.service-card{
+  background: rgba(26,45,74, 0.3);
+  border:1px solid rgba(59, 130, 246, 0.2);
+  backdrop-filter: blur(5px);
+  transition:all .4s cubic-bezier(.22,1,.36,1)
+}
+.service-card:hover{
+  transform:translateY(-8px);
+  border-color:#3B82F6;
+  box-shadow:0 20px 50px -12px rgba(59, 130, 246, 0.2)
+}
+
+.value-card{
+  border-left:3px solid #1a2d4a;
+  background: rgba(255,255,255,0.02);
+  transition:all .3s ease
+}
+.value-card:hover{
+  border-left-color:#3B82F6;
+  background: rgba(59, 130, 246, 0.05)
+}
+
+.cta-blue{
+  background:linear-gradient(110deg,#2563EB 0%,#60A5FA 45%,#3B82F6 55%,#1d4ed8 100%);
+  background-size:200% 100%;
+  color: white;
+  animation:shimmer 3.5s ease-in-out infinite;
+  transition:all .3s ease;
+  border: none;
+}
+.cta-blue:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 30px rgba(37, 99, 235, 0.4);
+  color: white;
+}
+
+.cta-outline{
+  border:2px solid rgba(59, 130, 246, 0.5);
+  color: #60A5FA;
+  transition:all .3s ease
+}
+.cta-outline:hover{
+  border-color:#3B82F6;
+  background:rgba(59, 130, 246, 0.1);
+  color: white;
+}
+
+.wa-float{animation:waPulse 2s infinite}
+
+.nav-scrolled{background:rgba(5,12,21,.95)!important;backdrop-filter:blur(12px);border-bottom: 1px solid rgba(59, 130, 246, 0.1)}
+.mobile-menu{transform:translateX(100%);transition:transform .35s cubic-bezier(.22,1,.36,1)}
+.mobile-menu.open{transform:translateX(0)}
+
+.form-input{
+  background:rgba(26,45,74,.2);
+  border:1px solid rgba(59, 130, 246, 0.3);
+  color: white;
+  transition:all .3s ease
+}
+.form-input:focus{
+  border-color:#3B82F6;
+  box-shadow:0 0 0 3px rgba(59, 130, 246, 0.15);
+  outline:none
+}
+.form-input::placeholder { color: #94a3b8; }
+
+.modal-overlay{opacity:0;pointer-events:none;transition:opacity .3s ease}
+.modal-overlay.active{opacity:1;pointer-events:auto}
+.modal-content{transform:translateY(20px) scale(.97);transition:all .35s cubic-bezier(.22,1,.36,1)}
+.modal-overlay.active .modal-content{transform:translateY(0) scale(1)}
+
+.deco-ring{border:1px solid rgba(59, 130, 246, 0.1);border-radius:50%;position:absolute;pointer-events:none}
+*:focus-visible{outline:2px solid #3B82F6;outline-offset:3px;border-radius:4px}
+@media print{.no-print{display:none!important}body{background:#fff;color:#000}}
+
+/* ══════════════════════════════════════════════════════════════
+   AÑADIDOS — correcciones y secciones nuevas
+   ══════════════════════════════════════════════════════════════ */
+
+/* Respaldo: si el visitante desactivó las animaciones del sistema,
+   el contenido se muestra de inmediato en vez de quedar invisible */
+@media (prefers-reduced-motion: reduce){
+  .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+  html{scroll-behavior:auto}
+  .wa-float{animation:none !important}
+}
+
+/* El botón flotante de WhatsApp deja de tapar el contenido en celular */
+@media (max-width:767px){
+  body{padding-bottom:5.5rem}
+  .wa-float{bottom:1rem;right:1rem;width:3.5rem;height:3.5rem}
+  .wa-float svg{width:26px;height:26px}
+}
+
+/* Legibilidad en pantallas chicas */
+@media (max-width:480px){
+  h1,h2{letter-spacing:-.01em}
+  .font-cormorant{font-size:1.15em;line-height:1.35}
+}
+
+/* Preguntas frecuentes */
+/* ---- Accesibilidad tactil y legibilidad en celular ---- */
+@media (max-width:767px){
+  /* Area de toque comoda (minimo recomendado: 44 px) en los enlaces de accion */
+  a.inline-flex{min-height:44px}
+  .faq-item summary{min-height:44px}
+  footer a.block{padding-top:6px;padding-bottom:6px}
+
+  /* Los rotulos en versalitas eran de 12 px: se suben para poder leerlos */
+  .text-xs.tracking-\[\.18em\],
+  .text-xs.tracking-\[\.16em\],
+  .text-xs.tracking-\[\.2em\]{font-size:13px;letter-spacing:.14em}
+
+  /* Evita que una palabra larga rompa la caja */
+  h1,h2,h3,h4,p,li{overflow-wrap:break-word}
+}
+
+.faq-item{border-bottom:1px solid rgba(26,45,74,.55)}
+.faq-item summary{list-style:none;cursor:pointer;padding:22px 46px 22px 0;position:relative;color:#fff;font-weight:600;font-size:1.05rem;line-height:1.4}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:hover{color:#60A5FA}
+.faq-item summary::after{content:"";position:absolute;right:10px;top:29px;width:10px;height:10px;border-right:2px solid #3B82F6;border-bottom:2px solid #3B82F6;transform:rotate(45deg);transition:transform .25s}
+.faq-item[open] summary::after{transform:rotate(-135deg);top:33px}
+.faq-item .faq-a{padding:0 8% 24px 0;color:rgba(255,255,255,.62);line-height:1.75}
+@media (max-width:640px){
+  .faq-item summary{font-size:1rem;padding:18px 40px 18px 0}
+  .faq-item .faq-a{padding-right:0}
+}
+
+/* ── Aviso de cookies compacto en celular ──
+   Antes ocupaba unos 220 px y tapaba el botón principal del hero
+   justo en la primera visita, que es la que mas importa. */
+@media (max-width:767px){
+  /* Sin recorte de lineas: el enlace al Aviso de Privacidad debe verse siempre. */
+  #cookieAviso .cookie-texto{font-size:12.5px;line-height:1.45}
+  #cookieAviso h4{font-size:.95rem;margin-bottom:.3rem}
+  #cookieAviso > div{padding:14px 16px;margin-left:.5rem;margin-right:.5rem;margin-bottom:.5rem}
+  #cookieRechazar,#cookieAceptar{flex:1 1 0;padding-top:.65rem;padding-bottom:.65rem;font-size:13px}
+}
+
+/* ── Pantallas cortas (Android de 640 px, iPhone SE) ──
+   En estos equipos el hero y el aviso de cookies se disputaban el espacio y
+   el botón principal quedaba debajo del aviso en la primera visita.
+   Se ancla el contenido arriba y se aprieta la tipografia solo aqui. */
+@media (max-width:767px) and (max-height:720px){
+  #inicio{align-items:flex-start}
+  #inicio > div{padding-top:5rem;padding-bottom:4rem}
+  #inicio h1{font-size:1.6rem}
+  #inicio .font-cormorant{font-size:1.25rem !important;line-height:1.3}
+  #inicio p.text-lg{font-size:1rem;line-height:1.45}
+}
+
+/* ── Aviso de cookies en escritorio ──
+   Estaba centrado en la parte inferior y tapaba el botón principal, que va
+   alineado a la izquierda. Se lleva a la esquina inferior derecha, por encima
+   del botón flotante de WhatsApp, para que no se crucen a ninguna altura. */
+/* Solo en escritorio real: en tablet estorbaria al botón del hero. */
+@media (min-width:1024px){
+  #cookieAviso > div{
+    margin-left:auto;
+    margin-right:1.5rem;
+    margin-bottom:6.5rem;
+    max-width:30rem;
+  }
+  /* Tarjeta de esquina: el texto ocupa todo el ancho y los botónes van debajo. */
+  #cookieAviso > div > div{display:block}
+  #cookieAviso > div > div > div:last-child{margin-top:1rem}
+}
+
+/* ── Ventanas de escritorio poco altas (portatiles de 1366x768) ──
+   El hero se ancla arriba para que el botón principal no caiga fuera. */
+@media (min-width:768px) and (max-height:820px){
+  #inicio{align-items:flex-start}
+  #inicio > div{padding-top:8rem;padding-bottom:5rem}
+}
+
+/* ── Casilla de consentimiento del formulario ── */
+#consentimiento{min-width:20px;min-height:20px}
+#consentimiento:focus-visible{outline:2px solid #3B82F6;outline-offset:2px}
+</style>
+
+<noscript>
+  <style>.reveal{opacity:1 !important;transform:none !important}</style>
+</noscript>
+
+<script type="application/ld+json">
+{
+ "@context":"https://schema.org",
+ "@graph":[
+  {
+   "@type":"LegalService",
+   "@id":"https://dignitasabogacia.com/#firma",
+   "name":"DÍGNITAS ABOGACÍA",
+   "url":"https://dignitasabogacia.com/",
+   "email":"da@dignitasabogacia.com",
+   "telephone":"+528130754795",
+   "slogan":"Desde la legalidad, trabajamos por la defensa de tus derechos.",
+   "description":"Abogacía especializada en materia laboral, salud, familiar y derechos humanos, con litigio estratégico y defensa fiscal.",
+   "priceRange":"Primera asesoría sin costo",
+   "knowsLanguage":["es-MX"],
+   "sameAs":[
+    "https://www.facebook.com/DignitasAbogacia",
+    "https://www.instagram.com/DignitasAbogacia"
+   ],
+   "areaServed":[
+    {"@type":"City","name":"San Cristóbal de las Casas"},
+    {"@type":"City","name":"Tuxtla Gutiérrez"},
+    {"@type":"City","name":"Comitán de Domínguez"},
+    {"@type":"AdministrativeArea","name":"Chiapas"},
+    {"@type":"AdministrativeArea","name":"Puebla"},
+    {"@type":"Country","name":"México"}
+   ],
+   "knowsAbout":[
+    "Despido injustificado","Liquidación y finiquito","Riesgos de trabajo",
+    "Juicio de amparo","Derecho a la salud","Negativa de medicamentos",
+    "Pensión alimenticia","Guarda y custodia","Divorcio",
+    "Defensa fiscal","Créditos fiscales","Derechos humanos",
+    "Capacitación por competencias","Certificación CONOCER","Solución de conflictos",
+    "NOM-035","REPSE","Cumplimiento laboral"
+   ],
+   "founder":[
+    {"@id":"https://dignitasabogacia.com/#elvira"},
+    {"@id":"https://dignitasabogacia.com/#emmanuel"}
+   ],
+   "location":[
+    {"@id":"https://dignitasabogacia.com/#sede-chiapas"},
+    {"@id":"https://dignitasabogacia.com/#sede-puebla"}
+   ]
+  },
+  {
+   "@type":"Attorney",
+   "@id":"https://dignitasabogacia.com/#sede-chiapas",
+   "name":"DÍGNITAS ABOGACÍA — San Cristóbal de las Casas",
+   "parentOrganization":{"@id":"https://dignitasabogacia.com/#firma"},
+   "url":"https://dignitasabogacia.com/",
+   "email":"da@dignitasabogacia.com",
+   "telephone":"+528130754795",
+   "priceRange":"Primera asesoría sin costo",
+   "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Calle Tauro 30, Col. San Juan de los Lagos",
+    "addressLocality":"San Cristóbal de las Casas",
+    "addressRegion":"Chiapas",
+    "postalCode":"29296",
+    "addressCountry":"MX"
+   },
+   "geo":{"@type":"GeoCoordinates","latitude":16.7370,"longitude":-92.6376},
+   "hasMap":"https://www.google.com/maps/search/?api=1&query=Calle+Tauro+30+San+Cristobal+de+las+Casas+Chiapas+29296",
+   "areaServed":[
+    {"@type":"City","name":"San Cristóbal de las Casas"},
+    {"@type":"City","name":"Tuxtla Gutiérrez"},
+    {"@type":"City","name":"Comitán de Domínguez"},
+    {"@type":"AdministrativeArea","name":"Chiapas"}
+   ],
+   "openingHoursSpecification":[{
+    "@type":"OpeningHoursSpecification",
+    "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens":"09:00","closes":"18:00"
+   }]
+  },
+  {
+   "@type":"Attorney",
+   "@id":"https://dignitasabogacia.com/#sede-puebla",
+   "name":"DÍGNITAS ABOGACÍA — Puebla",
+   "parentOrganization":{"@id":"https://dignitasabogacia.com/#firma"},
+   "url":"https://dignitasabogacia.com/",
+   "email":"da@dignitasabogacia.com",
+   "telephone":"+528130754795",
+   "priceRange":"Primera asesoría sin costo",
+   "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"M. Ávila Camacho 3729, Col. Santa Cruz Buenavista",
+    "addressLocality":"Puebla",
+    "addressRegion":"Puebla",
+    "postalCode":"72197",
+    "addressCountry":"MX"
+   },
+   "geo":{"@type":"GeoCoordinates","latitude":19.0414,"longitude":-98.2063},
+   "hasMap":"https://www.google.com/maps/search/?api=1&query=Manuel+Avila+Camacho+3729+Santa+Cruz+Buenavista+Puebla+72197",
+   "areaServed":[{"@type":"AdministrativeArea","name":"Puebla"}]
+  },
+  {
+   "@type":"Person",
+   "@id":"https://dignitasabogacia.com/#elvira",
+   "name":"Elvira Vázquez",
+   "jobTitle":"Socia Cofundadora",
+   "worksFor":{"@id":"https://dignitasabogacia.com/#firma"},
+   "hasCredential":{
+    "@type":"EducationalOccupationalCredential",
+    "credentialCategory":"Maestría en Derecho",
+    "recognizedBy":{"@type":"CollegeOrUniversity","name":"Universidad Nacional Autónoma de México"}
+   },
+   "award":"Reconocimiento al Mérito Pro Bono 2020 — Fundación AppleSeed México y Red Pro Bono México",
+   "alumniOf":{"@type":"CollegeOrUniversity","name":"Universidad Nacional Autónoma de México"},
+   "knowsAbout":["Derecho a la salud","Litigio estratégico","Perspectiva de género","Grupos en situación de vulnerabilidad","Derecho laboral con perspectiva de género","Amicus curiae","Derecho constitucional y amparo","Incidencia legislativa"]
+  },
+  {
+   "@type":"Person",
+   "@id":"https://dignitasabogacia.com/#emmanuel",
+   "name":"Emmanuel Quiroz",
+   "jobTitle":"Socio Cofundador",
+   "worksFor":{"@id":"https://dignitasabogacia.com/#firma"},
+   "sameAs":["https://www.linkedin.com/in/emmanuel-quiroz-parrilla"],
+   "hasCredential":[
+    {
+     "@type":"EducationalOccupationalCredential",
+     "name":"EC1038 — Intervención para la solución de conflictos",
+     "credentialCategory":"Certificación de competencia laboral",
+     "identifier":"23630522",
+     "recognizedBy":{"@type":"Organization","name":"CONOCER — Consejo Nacional de Normalización y Certificación de Competencias Laborales"}
+    },
+    {
+     "@type":"EducationalOccupationalCredential",
+     "name":"EC0076 — Evaluación de la competencia de candidatos con base en estándares de competencia",
+     "credentialCategory":"Certificación de competencia laboral",
+     "identifier":"23630322",
+     "recognizedBy":{"@type":"Organization","name":"CONOCER — Consejo Nacional de Normalización y Certificación de Competencias Laborales"}
+    },
+    {
+     "@type":"EducationalOccupationalCredential",
+     "name":"EC0658 — Atención de notificación y ejecución de resoluciones judiciales",
+     "credentialCategory":"Certificación de competencia laboral",
+     "identifier":"23630422",
+     "recognizedBy":{"@type":"Organization","name":"CONOCER — Consejo Nacional de Normalización y Certificación de Competencias Laborales"}
+    }
+   ],
+   "knowsAbout":["Derecho de la empresa","Defensa fiscal","Justicia laboral","Negociación compleja"]
+  },
+  {
+   "@type":"WebSite",
+   "@id":"https://dignitasabogacia.com/#sitio",
+   "url":"https://dignitasabogacia.com/",
+   "name":"DÍGNITAS ABOGACÍA",
+   "inLanguage":"es-MX",
+   "publisher":{"@id":"https://dignitasabogacia.com/#firma"}
+  },
+  {
+   "@type":"FAQPage",
+   "@id":"https://dignitasabogacia.com/#preguntas",
+   "isPartOf":{"@id":"https://dignitasabogacia.com/#sitio"},
+   "mainEntity":[
+    {
+     "@type":"Question",
+     "name":"¿Cuánto cuesta la primera asesoría?",
+     "acceptedAnswer":{"@type":"Answer","text":"Primera asesoría sin costo. Si tu asunto requiere un estudio más profundo, la consulta especializada tiene un costo que se acredita íntegramente a tus honorarios si decides contratarnos."}
+    },
+    {
+     "@type":"Question",
+     "name":"¿Cómo se determinan los honorarios?",
+     "acceptedAnswer":{"@type":"Answer","text":"Dependen de la materia, la complejidad y la instancia ante la que se litigue. Sea cual sea el esquema, queda definido por escrito antes de que firmes el contrato de prestación de servicios profesionales. No hay cargos que no hayas conocido y aceptado previamente."}
+    },
+    {
+     "@type":"Question",
+     "name":"Firmé mi renuncia. ¿Todavía puedo reclamar?",
+     "acceptedAnswer":{"@type":"Answer","text":"Con frecuencia sí. Una renuncia firmada bajo presión, en blanco, con fecha distinta a la real o a cambio de un pago inferior al que legalmente correspondía puede impugnarse. Buena parte de la carga de acreditar que hubo voluntad libre recae en la parte patronal. Conserva el documento y cualquier mensaje relacionado para mostrárnoslo."}
+    },
+    {
+     "@type":"Question",
+     "name":"Me niegan un medicamento, tratamiento o cirugía. ¿Qué procede?",
+     "acceptedAnswer":{"@type":"Answer","text":"Se documenta la negativa (receta, nota médica, oficio o la constancia de que no se entrega) y se promueve juicio de amparo contra la omisión de garantizar el derecho a la salud. Cuando la salud o la vida están en riesgo puede solicitarse la suspensión, que obliga a otorgar la atención mientras se resuelve el fondo. Los plazos aquí son breves: entre antes se revise, mejor."}
+    },
+    {
+     "@type":"Question",
+     "name":"¿Cuánto tiempo tarda un asunto?",
+     "acceptedAnswer":{"@type":"Answer","text":"Depende de la materia y de la vía. Un asunto laboral resuelto en conciliación puede cerrarse en semanas; llevado a juicio ante Tribunal Laboral suele extenderse de uno a dos años. Un amparo en salud con suspensión concedida puede lograr la atención en días, aunque la sentencia definitiva tarde meses. Te damos un estimado realista de tu caso concreto; nunca una promesa de resultado."}
+    },
+    {
+     "@type":"Question",
+     "name":"¿Atienden asuntos fuera de sus sedes?",
+     "acceptedAnswer":{"@type":"Answer","text":"Sí. Contamos con sedes en San Cristóbal de las Casas y en Puebla, además de capacidad de litigio nacional. La asesoría y el seguimiento se realizan por videollamada y mensajería; buena parte de las promociones se presentan por vía electrónica. Para diligencias que exigen presencia física comparecemos directamente o coordinamos con abogacía corresponsal, siempre bajo nuestra dirección."}
+    },
+    {
+     "@type":"Question",
+     "name":"¿Qué documentos necesito para la primera asesoría?",
+     "acceptedAnswer":{"@type":"Answer","text":"Los que tengas, aunque estén incompletos. En materia laboral: identificación, contrato, últimos recibos de nómina y comunicaciones relacionadas con la separación. En salud: identificación, número de seguridad social, recetas y notas médicas. En familiar: actas de nacimiento y matrimonio. En fiscal: la notificación o el requerimiento de la autoridad. Si te falta algo, escríbenos de todas formas."}
+    },
+    {
+     "@type":"Question",
+     "name":"El SAT, el IMSS o el INFONAVIT me notificaron un crédito o requerimiento. ¿Qué hago?",
+     "acceptedAnswer":{"@type":"Answer","text":"Actuar de inmediato: estas notificaciones abren plazos breves y fatales; dejarlos correr suele convertir un asunto defendible en uno firme. No firmes ni pagues nada sin que se revise la legalidad del acto. Envíanos la notificación completa, con sus anexos y la constancia de cuándo te fue entregada."}
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-500 text-white px-4 py-2 rounded font-bold z-[999]">Ir al contenido principal</a>
+
+<!-- NAVBAR -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-20 lg:h-24">
+      <a href="#inicio" class="flex items-center gap-3 group" aria-label="Dígnitas Abogacía - Inicio">
+        <!-- CAMBIO 2: Logo más grande en móvil (h-16) y normal en desktop (sm:h-12) -->
+        <img src="Logo.png" alt="Logo Dignitas Abogacía" class="h-16 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-105 object-contain" onerror="this.style.display='none'">
+        <div class="flex flex-col leading-none">
+          <span class="font-montserrat text-lg sm:text-xl font-bold tracking-wider text-white">DÍGNITAS</span>
+          <span class="font-montserrat text-[10px] sm:text-xs tracking-[.35em] text-blue-400 font-medium">ABOGACÍA</span>
+        </div>
+      </a>
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="#servicios" class="text-sm font-medium text-white/70 hover:text-blue-400 transition-colors">Servicios</a>
+        <a href="#empresas" class="text-sm font-medium text-white/70 hover:text-blue-400 transition-colors">Empresas</a>
+        <a href="#capacitacion" class="text-sm font-medium text-white/70 hover:text-blue-400 transition-colors">Capacitación</a>
+        <a href="#equipo" class="text-sm font-medium text-white/70 hover:text-blue-400 transition-colors">Equipo</a>
+        <a href="#preguntas" class="text-sm font-medium text-white/70 hover:text-blue-400 transition-colors">Preguntas</a>
+        <a href="#contacto" class="text-sm font-medium text-white/70 hover:text-blue-400 transition-colors">Contacto</a>
+        <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-blue text-white font-bold text-sm px-6 py-3 rounded-lg">Agenda tu asesoría</a>
+      </div>
+      <button id="menuToggle" class="lg:hidden p-3 -mr-3 text-white" aria-label="Abrir menú" aria-expanded="false">
+        <svg id="menuIconOpen" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="menuIconClose" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" class="hidden"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu MOVIDO FUERA DE NAV -->
+<div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-80 flex flex-col max-w-[85vw] bg-[#050C15] border-l border-white/10 shadow-2xl z-[60] lg:hidden">
+  <div class="flex items-center justify-between px-8 pt-8 pb-4 border-b border-white/10">
+    <a href="#inicio" class="flex items-center gap-2" onclick="closeMenu()">
+      <img src="Logo.png" alt="Logo Dignitas Abogacía" class="h-10 w-auto object-contain" onerror="this.style.display='none'">
+      <div class="flex flex-col leading-none">
+        <span class="font-montserrat text-base font-bold tracking-wider text-white">DÍGNITAS</span>
+        <span class="font-montserrat text-[8px] tracking-[.35em] text-blue-400 font-medium">ABOGACÍA</span>
+      </div>
+    </a>
+    <button onclick="closeMenu()" class="text-white/60 hover:text-white p-2">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="flex flex-col flex-1 min-h-0 px-8 pt-6 pb-8 overflow-y-auto">
+    <a href="#inicio" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Inicio</a>
+    <a href="#servicios" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Servicios</a>
+    <a href="#empresas" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Empresas</a>
+    <a href="#capacitacion" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Capacitación</a>
+    <a href="#equipo" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Equipo</a>
+    <a href="#preguntas" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Preguntas</a>
+    <a href="#nosotros" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Nosotros</a>
+    <a href="#contacto" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-blue-400 transition-colors">Contacto</a>
+    <div class="mt-8">
+      <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-blue block text-center text-white font-bold text-lg px-6 py-4 rounded-lg">Agenda tu asesoría</a>
+    </div>
+    <div class="mt-auto flex gap-5 pt-8 border-t border-white/10">
+      <a href="https://wa.me/528130754795" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 hover:bg-green-500 hover:text-white transition-all"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+      <a href="https://www.instagram.com/DignitasAbogacia" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 hover:bg-pink-500 hover:text-white transition-all"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+      <a href="https://www.facebook.com/DignitasAbogacia" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-400 hover:bg-blue-600 hover:text-white transition-all"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section id="inicio" class="hero-bg relative min-h-screen flex items-center overflow-hidden">
+  <div class="deco-ring w-[500px] h-[500px] -top-32 -right-32"></div>
+  <div class="deco-ring w-[350px] h-[350px] bottom-16 -left-16 opacity-50"></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 md:py-40 relative z-10 w-full">
+    <div class="max-w-5xl flex flex-col">
+      <div class="self-start inline-flex items-center gap-2 bg-white/5 border border-blue-500/30 rounded-full px-4 sm:px-5 py-2 sm:py-2.5 mb-6 sm:mb-8" style="animation:fadeUp .8s ease forwards">
+        <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
+        <span class="text-sm text-white/70 font-medium tracking-wide">San Cristóbal de las Casas · Puebla</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-[1.1] mb-4 sm:mb-6" style="animation:fadeUp .8s ease .12s forwards;opacity:0">
+        <span class="font-montserrat font-normal">DÍGNITAS</span> <span class="font-montserrat font-normal">ABOGACÍA</span>
+      </h1>
+      <!-- CAMBIO 1: Tipografía más grande en móvil (text-2xl sm:text-3xl) -->
+      <p class="font-cormorant text-2xl sm:text-4xl md:text-4xl text-blue-400 font-medium mb-4 sm:mb-6" style="animation:fadeUp .8s ease .24s forwards;opacity:0">
+        <em>Desde la legalidad, trabajamos por la defensa de tus derechos.
+        </em>  
+      </p>
+      <p class="text-lg sm:text-xl text-white/80 mb-6 sm:mb-10 max-w-2xl leading-relaxed" style="animation:fadeUp .8s ease .36s forwards;opacity:0">
+        Si tu trabajo, salud, familia o patrimonio están en riesgo, necesitas defensa real.
+      </p>
+      <p class="order-1 sm:order-none text-sm sm:text-base text-white mt-8 mb-0 sm:mt-0 sm:mb-10" style="animation:fadeUp .8s ease .44s forwards;opacity:0">
+        Litigio estratégico con enfoque en Derechos Humanos en:<br>
+        <span class="text-white font-semibold">Derecho Laboral</span> · <span class="text-white font-semibold">Salud Integral</span> · <span class="text-white font-semibold">Derecho Familiar</span> · <span class="text-white font-semibold">Defensa Fiscal</span>
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4" style="animation:fadeUp .8s ease .52s forwards;opacity:0">
+        <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-blue text-white font-bold text-lg px-8 py-4 rounded-lg text-center inline-flex items-center justify-center gap-3">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          ¡Agenda tu asesoría!
+        </a>
+        <a href="#equipo" class="cta-outline text-white font-semibold text-lg px-8 py-4 rounded-lg text-center">
+          Conoce al equipo
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 w-full text-center" style="animation:float 3s ease-in-out infinite">
+    <span class="text-xs tracking-[.2em] text-white/40 uppercase">Descubre más</span>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<main id="main">
+
+  <!-- RUTAS: tres puertas de entrada -->
+  <section id="rutas" class="relative py-14 md:py-16 bg-navy-500 border-b border-navy-50/20">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <p class="text-center text-white/50 text-sm tracking-wide mb-8">¿Qué necesitas hoy?</p>
+
+      <div class="grid md:grid-cols-3 gap-5">
+
+        <a href="#servicios" class="group block bg-navy-400/40 rounded-xl p-6 border border-navy-50/25 hover:border-blue-400/50 hover:bg-navy-400/60 transition-all">
+          <p class="text-blue-400 text-xs font-bold tracking-[.16em] uppercase mb-3">Para personas</p>
+          <h3 class="text-white font-semibold text-lg mb-2">Mi trabajo, mi salud o mi familia</h3>
+          <p class="text-white/55 text-sm leading-relaxed mb-4">Despido, liquidación, negativa de medicamentos, pensión alimenticia, divorcio o un acto de autoridad.</p>
+          <span class="text-blue-400 text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all">Ver cómo te ayudamos →</span>
+        </a>
+
+        <a href="#empresas" class="group block bg-navy-400/40 rounded-xl p-6 border border-navy-50/25 hover:border-blue-400/50 hover:bg-navy-400/60 transition-all">
+          <p class="text-blue-400 text-xs font-bold tracking-[.16em] uppercase mb-3">Para organizaciones</p>
+          <h3 class="text-white font-semibold text-lg mb-2">Cumplimiento y defensa</h3>
+          <p class="text-white/55 text-sm leading-relaxed mb-4">NOM-035, jornada de 40 horas, REPSE, inspecciones de la STPS y defensa ante el SAT, el IMSS y el INFONAVIT.</p>
+          <span class="text-blue-400 text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all">Ver servicios empresariales →</span>
+        </a>
+
+        <a href="#capacitacion" class="group block bg-navy-400/40 rounded-xl p-6 border border-navy-50/25 hover:border-blue-400/50 hover:bg-navy-400/60 transition-all">
+          <p class="text-blue-400 text-xs font-bold tracking-[.16em] uppercase mb-3">Capacitación</p>
+          <h3 class="text-white font-semibold text-lg mb-2">Certificación de competencias</h3>
+          <p class="text-white/55 text-sm leading-relaxed mb-4">Formación con estándares del CONOCER en solución de conflictos, evaluación por competencias y notificaciones judiciales.</p>
+          <span class="text-blue-400 text-sm font-semibold inline-flex items-center gap-1 group-hover:gap-2 transition-all">Ver programas →</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+  <!-- SERVICIOS -->
+  <section id="servicios" class="relative py-24 md:py-32 bg-navy-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <span class="text-blue-400 text-sm font-semibold tracking-[.3em] uppercase">Nuestros servicios</span>
+        <h2 class="font-montserrat text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">Te ayudamos en</h2>
+        <div class="accent-line w-24 mx-auto"></div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6 lg:gap-8">
+        <div class="service-card bg-navy-600/60 rounded-2xl p-8 lg:p-10 reveal reveal-d1">
+          <div class="flex items-start gap-5 mb-5">
+            <div class="flex-shrink-0 w-14 h-14 bg-navy-50/15 rounded-xl flex items-center justify-center">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="14"/><line x1="4" y1="7" x2="20" y2="7"/><path d="M4 7L7 14H17L20 7"/><circle cx="12" cy="2" r="1.5" fill="#3B82F6"/></svg>
+            </div>
+            <h3 class="font-montserrat text-2xl font-bold text-white pt-2">Derecho Laboral</h3>
+          </div>
+          <p class="text-white leading-relaxed mb-6">¿Te despidieron sin liquidación o te pagaron menos de lo que corresponde? Atendemos despido injustificado, cálculo de prestaciones, riesgos de trabajo, conciliación especializada y protección contra acoso laboral. Por el cumplimiento de la legalidad y la dignidad en cada relación de trabajo.</p>
+          <a href="https://wa.me/528130754795?text=Hola%2C%20necesito%20asesor%C3%ADa%20en%20Derecho%20Laboral." target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:gap-3 transition-all">
+            Consulta laboral
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="service-card bg-navy-600/60 rounded-2xl p-8 lg:p-10 reveal reveal-d2">
+          <div class="flex items-start gap-5 mb-5">
+            <div class="flex-shrink-0 w-14 h-14 bg-navy-50/15 rounded-xl flex items-center justify-center">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            </div>
+            <h3 class="font-montserrat text-2xl font-bold text-white pt-2">Salud Integral y DDHH</h3>
+          </div>
+          <p class="text-white leading-relaxed mb-6">¿El IMSS o el ISSSTE te niega un medicamento, una cirugía o un tratamiento? Promovemos amparo con suspensión para que la atención se otorgue mientras se resuelve el fondo y atendemos negligencia médica, pensiones por invalidez y reembolso de gastos médicos. Tutelar la salud y la vida digna es la prioridad.</p>
+          <a href="https://wa.me/528130754795?text=Hola%2C%20necesito%20asesor%C3%ADa%20en%20derecho%20a%20la%20salud." target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:gap-3 transition-all">
+            Defiende tu salud
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="service-card bg-navy-600/60 rounded-2xl p-8 lg:p-10 reveal reveal-d3">
+          <div class="flex items-start gap-5 mb-5">
+            <div class="flex-shrink-0 w-14 h-14 bg-navy-50/15 rounded-xl flex items-center justify-center">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <h3 class="font-montserrat text-2xl font-bold text-white pt-2">Derecho Familiar</h3>
+          </div>
+          <p class="text-white leading-relaxed mb-6">¿Llevas meses esperando una pensión alimenticia que no llega? Atendemos pensión, guarda y custodia, divorcio y órdenes de protección. Litigamos con estricta perspectiva de género, priorizando siempre la estabilidad y los derechos de las personas más vulnerables del proceso.</p>
+          <a href="https://wa.me/528130754795?text=Hola%2C%20necesito%20asesor%C3%ADa%20en%20Derecho%20Familiar." target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:gap-3 transition-all">
+            Asesoría familiar
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+        <div class="service-card bg-navy-600/60 rounded-2xl p-8 lg:p-10 reveal reveal-d4">
+          <div class="flex items-start gap-5 mb-5">
+            <div class="flex-shrink-0 w-14 h-14 bg-navy-50/15 rounded-xl flex items-center justify-center">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="font-montserrat text-2xl font-bold text-white pt-2">Defensa Fiscal</h3>
+          </div>
+          <p class="text-white leading-relaxed mb-6">¿El SAT, el IMSS o el INFONAVIT te notificó un crédito o un embargo? Estas notificaciones abren plazos breves y fatales. Defensa coordinada y estratégica ante actos de autoridad que afecten tu patrimonio. Litigio fiscal con una visión integral de protección.</p>
+          <a href="https://wa.me/528130754795?text=Hola%2C%20necesito%20asesor%C3%ADa%20en%20Defensa%20Fiscal." target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 font-semibold hover:gap-3 transition-all">
+            Protege tu patrimonio
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="mt-16 text-center reveal">
+        <div class="accent-line w-24 mx-auto mb-8"></div>
+        <p class="text-xl text-white mb-6">¿No sabes qué servicio necesitas?</p>
+        <a href="https://wa.me/528130754795?text=Hola%2C%20necesito%20orientaci%C3%B3n%20jur%C3%ADdica.%20%C2%BFPueden%20ayudarme%3F" target="_blank" rel="noopener" class="cta-blue text-white font-bold text-lg px-8 py-4 rounded-lg inline-flex items-center gap-3">
+          <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Escríbenos y te orientamos
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EMPRESAS Y ORGANIZACIONES -->
+  <section id="empresas" class="relative py-24 md:py-32 bg-navy-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-16 reveal">
+        <p class="text-blue-400 text-sm font-semibold tracking-[.2em] uppercase mb-3">Para organizaciones</p>
+        <h2 class="font-montserrat text-4xl md:text-5xl font-bold text-white">Cumplir cuesta menos que litigar</h2>
+        <p class="text-white/60 mt-5 max-w-3xl mx-auto">
+          Acompañamos a organizaciones de cualquier tamaño —desde negocios familiares y despachos
+          profesionales hasta empresas con plantilla consolidada— en el cumplimiento de sus obligaciones
+          laborales, de seguridad social y fiscales. Conocemos el sistema desde dentro: por eso podemos
+          anticipar cómo va a resolverse.
+        </p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+
+        <div class="reveal bg-navy-400/30 rounded-xl p-8 border border-navy-50/20 hover:border-blue-400/30 transition-all">
+          <h3 class="text-white font-semibold text-xl mb-3">Cumplimiento y normas oficiales</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Implementación y evidencia documental de la NOM-035 en factores de riesgo psicosocial,
+            de la NOM-037 en teletrabajo y de los criterios de igualdad laboral y no discriminación.
+            Preparación y acompañamiento en inspecciones de la Secretaría del Trabajo.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1 bg-navy-400/30 rounded-xl p-8 border border-navy-50/20 hover:border-blue-400/30 transition-all">
+          <h3 class="text-white font-semibold text-xl mb-3">Jornada, prestaciones y contratos</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Acompañamiento en la transición hacia la jornada de cuarenta horas, esquemas de vacaciones
+            y reparto de utilidades, redacción de contratos individuales, reglamento interior de
+            trabajo y políticas internas.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d2 bg-navy-400/30 rounded-xl p-8 border border-navy-50/20 hover:border-blue-400/30 transition-all">
+          <h3 class="text-white font-semibold text-xl mb-3">Conciliación y litigio laboral</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Representación en la etapa de conciliación prejudicial ante el Centro Federal de Conciliación y Registro Laboral, así como defensa ante los Tribunales Laborales. Diseño de la estrategia desde el primer requerimiento, no cuando ya hay emplazamiento.
+          </p>
+        </div>
+
+        <div class="reveal bg-navy-400/30 rounded-xl p-8 border border-navy-50/20 hover:border-blue-400/30 transition-all">
+          <h3 class="text-white font-semibold text-xl mb-3">Protocolos y datos personales</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Protocolo de prevención y atención de la violencia laboral y el hostigamiento, obligatorio para todo centro de trabajo. Aviso de privacidad, procedimiento de derechos ARCO y tratamiento de datos del personal conforme a la LFPDPPP.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1 bg-navy-400/30 rounded-xl p-8 border border-navy-50/20 hover:border-blue-400/30 transition-all">
+          <h3 class="text-white font-semibold text-xl mb-3">Subcontratación y REPSE</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Registro y renovación ante el padrón de servicios especializados, revisión de contratos con
+            proveedores y análisis de riesgo por subcontratación indebida, incluida su repercusión en
+            materia fiscal y de seguridad social.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d2 bg-navy-400/30 rounded-xl p-8 border border-navy-50/20 hover:border-blue-400/30 transition-all">
+          <h3 class="text-white font-semibold text-xl mb-3">Defensa fiscal y seguridad social</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Atención a requerimientos, visitas domiciliarias y créditos fiscales del SAT, el IMSS y el INFONAVIT. Revisión de la prima de riesgo de trabajo, de la clasificación patronal y de la opinión de cumplimiento.          </p>
+        </div>
+
+      </div>
+
+      <!-- Sesión diagnóstica -->
+      <div class="reveal max-w-3xl mx-auto bg-navy-400/40 rounded-2xl p-8 md:p-10 border border-blue-400/30">
+        <p class="text-blue-400 text-xs font-semibold tracking-[.18em] uppercase mb-4">Por dónde empezar</p>
+        <h3 class="font-montserrat text-2xl md:text-3xl font-bold text-white mb-5">La sesión diagnóstica</h3>
+        <p class="text-white/75 leading-relaxed mb-4">
+          Antes de proponer cualquier servicio necesitamos ver cómo está su organización. La primera
+          conversación, para entender su operación y definir el alcance.
+        </p>
+        <p class="text-white/75 leading-relaxed mb-6">
+          La sesión diagnóstica revisa el estado de cumplimiento en materia laboral, de seguridad social
+          y fiscal, para concluir con un <strong class="text-white">informe por escrito</strong>: qué se
+          encontró, qué nivel de riesgo representa cada hallazgo y en qué orden conviene atenderlo.
+          Con ese documento pueden decidir con información real, incluso si deciden no continuar
+          con nosotros.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a href="mailto:da@dignitasabogacia.com?subject=Solicitud%20de%20sesi%C3%B3n%20diagn%C3%B3stica%20para%20organizaci%C3%B3n&amp;body=Nombre%20de%20la%20organizaci%C3%B3n%3A%0AGiro%3A%0AN%C3%BAmero%20aproximado%20de%20personas%20trabajadoras%3A%0APersona%20de%20contacto%20y%20tel%C3%A9fono%3A%0A%0ABreve%20descripci%C3%B3n%20de%20lo%20que%20necesitan%3A" class="cta-blue inline-block text-center text-white font-bold px-8 py-4 rounded-lg">
+            Solicitar un diagnóstico
+          </a>
+          <a href="https://wa.me/528130754795?text=Hola%2C%20represento%20a%20una%20organizaci%C3%B3n%20y%20me%20interesa%20una%20sesi%C3%B3n%20diagn%C3%B3stica." target="_blank" rel="noopener" class="cta-outline inline-block text-center text-white font-semibold px-8 py-4 rounded-lg">
+            Escribir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CAPACITACIÓN Y CERTIFICACIÓN CONOCER -->
+  <section id="capacitacion" class="relative py-24 md:py-32 bg-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-16 reveal">
+        <p class="text-blue-400 text-sm font-semibold tracking-[.2em] uppercase mb-3">Capacitación y certificación</p>
+        <h2 class="font-montserrat text-4xl md:text-5xl font-bold text-white">Formación con estándares del CONOCER</h2>
+        <p class="text-white/60 mt-5 max-w-3xl mx-auto">
+          Impartimos capacitación con base en estándares de competencia del Consejo Nacional de
+          Normalización y Certificación de Competencias Laborales, coordinado por la Secretaría de
+          Educación Pública. El abogado Emmanuel Quiroz cuenta con certificación vigente en tres
+          estándares, emitida por el CONALEP como organismo certificador.
+        </p>
+      </div>
+
+      <!-- Certificaciones acreditadas -->
+      <div class="reveal max-w-4xl mx-auto mb-16 bg-navy-400/30 rounded-2xl border border-blue-400/25 overflow-hidden">
+        <div class="px-6 py-5 border-b border-navy-50/20">
+          <h3 class="font-montserrat text-lg font-bold text-white">Certificaciones acreditadas</h3>
+          <p class="text-white/50 text-sm mt-1">A nombre de Emmanuel Quiroz · Emitidas por CONOCER a través del CONALEP · Vigencia indefinida</p>
+        </div>
+        <div class="divide-y divide-navy-50/15">
+
+          <div class="px-6 py-5 sm:flex sm:items-start sm:gap-6">
+            <div class="sm:w-32 flex-shrink-0 mb-2 sm:mb-0">
+              <span class="text-blue-400 font-mono text-sm font-semibold">EC1038</span>
+              <p class="text-white/40 text-xs mt-1">Cert. 23630522</p>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Intervención para la solución de conflictos</h4>
+              <p class="text-white/55 text-sm mt-1 leading-relaxed">Mediación y manejo de conflictos en centros de trabajo, instituciones y comunidades.</p>
+            </div>
+          </div>
+
+          <div class="px-6 py-5 sm:flex sm:items-start sm:gap-6">
+            <div class="sm:w-32 flex-shrink-0 mb-2 sm:mb-0">
+              <span class="text-blue-400 font-mono text-sm font-semibold">EC0076</span>
+              <p class="text-white/40 text-xs mt-1">Cert. 23630322</p>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Evaluación de la competencia de candidatos con base en estándares de competencia</h4>
+              <p class="text-white/55 text-sm mt-1 leading-relaxed">Diseño y aplicación de procesos de evaluación por competencias.</p>
+            </div>
+          </div>
+
+          <div class="px-6 py-5 sm:flex sm:items-start sm:gap-6">
+            <div class="sm:w-32 flex-shrink-0 mb-2 sm:mb-0">
+              <span class="text-blue-400 font-mono text-sm font-semibold">EC0658</span>
+              <p class="text-white/40 text-xs mt-1">Cert. 23630422</p>
+            </div>
+            <div>
+              <h4 class="text-white font-semibold">Atención de notificación y ejecución de resoluciones judiciales</h4>
+              <p class="text-white/55 text-sm mt-1 leading-relaxed">Práctica de notificaciones y diligencias de ejecución conforme a la normativa aplicable.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Programas -->
+      <div class="grid md:grid-cols-2 gap-6 mb-14">
+
+        <div class="reveal bg-navy-400/30 rounded-xl p-8 border border-navy-50/20 hover:border-blue-400/30 transition-all">
+          <h3 class="text-white font-semibold text-xl mb-3">Solución de conflictos en el centro de trabajo</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Formación para personal directivo, de recursos humanos y comisiones mixtas en manejo de
+            conflictos, negociación y prevención del escalamiento a juicio. Base del estándar EC1038.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1 bg-navy-400/30 rounded-xl p-8 border border-navy-50/20 hover:border-blue-400/30 transition-all">
+          <h3 class="text-white font-semibold text-xl mb-3">Preparación para certificarse en estándares de competencia</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Acompañamiento a personas y equipos que buscan obtener una certificación del CONOCER:
+            preparación, integración del portafolio de evidencias y ruta hacia la evaluación.
+          </p>
+        </div>
+
+        <div class="reveal bg-navy-400/30 rounded-xl p-8 border border-navy-50/20 hover:border-blue-400/30 transition-all">
+          <h3 class="text-white font-semibold text-xl mb-3">Notificación y ejecución de resoluciones judiciales</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Capacitación técnica para áreas jurídicas, despachos y personal actuario en la práctica de
+            notificaciones y diligencias de ejecución. Base del estándar EC0658.
+          </p>
+        </div>
+
+        <div class="reveal reveal-d1 bg-navy-400/30 rounded-xl p-8 border border-navy-50/20 hover:border-blue-400/30 transition-all">
+          <h3 class="text-white font-semibold text-xl mb-3">Talleres a la medida</h3>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Programas diseñados sobre la operación real de cada organización: NOM-035, prevención de la
+            violencia laboral y el hostigamiento, derechos y obligaciones laborales, así como trato digno en la
+            atención al público.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Llamada a la acción -->
+      <div class="reveal max-w-3xl mx-auto bg-navy-400/40 rounded-2xl p-8 md:p-10 border border-blue-400/30 text-center">
+        <h3 class="font-montserrat text-2xl font-bold text-white mb-4">¿Necesitas capacitar a tu equipo?</h3>
+        <p class="text-white/70 leading-relaxed mb-7">
+          Dinos cuántas personas son, qué necesitan resolver y de cuánto tiempo disponen. Te entregamos
+          una propuesta con temario, duración y modalidad, presencial o en línea.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="mailto:da@dignitasabogacia.com?subject=Solicitud%20de%20propuesta%20de%20capacitaci%C3%B3n&amp;body=Organizaci%C3%B3n%3A%0AN%C3%BAmero%20de%20participantes%3A%0ATema%20de%20inter%C3%A9s%3A%0AModalidad%20preferida%20(presencial%20o%20en%20l%C3%ADnea)%3A%0AFechas%20tentativas%3A" class="cta-blue inline-block text-center text-white font-bold px-8 py-4 rounded-lg">
+            Solicitar una propuesta
+          </a>
+          <a href="https://wa.me/528130754795?text=Hola%2C%20me%20interesa%20una%20propuesta%20de%20capacitaci%C3%B3n%20CONOCER." target="_blank" rel="noopener" class="cta-outline inline-block text-center text-white font-semibold px-8 py-4 rounded-lg">
+            Escribir por WhatsApp
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EQUIPO -->
+  <section id="equipo" class="relative py-24 md:py-32 bg-navy-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <span class="text-blue-400 text-sm font-semibold tracking-[.3em] uppercase">Nuestro equipo</span>
+        <h2 class="font-montserrat text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">Titulares de la Firma</h2>
+        <div class="accent-line w-24 mx-auto"></div>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+        <div class="bg-navy-600/50 rounded-2xl p-8 lg:p-10 border border-navy-50/20 reveal reveal-d1">
+          <div class="flex flex-col md:flex-row items-center md:items-start gap-5 mb-6 text-center md:text-left">
+            <img src="Elvira.jpeg" alt="Abogada Elvira Vázquez" class="flex-shrink-0 w-24 h-24 md:w-40 md:h-40 rounded-full object-cover border-2 border-blue-500/30 shadow-lg shadow-blue-900/20">
+            <div>
+              <h3 class="font-montserrat text-2xl md:text-xl font-bold text-white">Abogada Elvira Vázquez</h3>
+              <p class="text-blue-400 text-sm font-medium mt-1">Socia Cofundadora</p>
+            </div>
+          </div>
+          <p class="text-white leading-relaxed">Maestra en Derecho con Mención Honorífica por la División de Estudios de Posgrado de la Facultad de Derecho de la UNAM y Licenciada en Derecho, también con Mención Honorífica, por la UNACH. Fue Directora de la Casa de la Cultura Jurídica de la SCJN e investigadora en el Instituto de la Judicatura del Poder Judicial de Baja California. Recibió el Reconocimiento al Mérito Pro Bono 2020 de Fundación AppleSeed México y la Red Pro Bono México por su trabajo legal durante la pandemia de COVID-19, en la que presentó ante la SCJN un Amicus Curiae para garantizar el acceso de la población adolescente a la vacunación. Es catedrática de Derecho a nivel licenciatura y posgrado, además de haber sido editorialista a cargo de la Revista Digital Magisterio Legal.</p>
+        </div>
+        <div class="bg-navy-600/50 rounded-2xl p-8 lg:p-10 border border-navy-50/20 reveal">
+          <div class="flex flex-col md:flex-row items-center md:items-start gap-5 mb-6 text-center md:text-left">
+            <img src="Emmanuel.jpeg" alt="Abogado Emmanuel Quiroz" class="flex-shrink-0 w-24 h-24 md:w-40 md:h-40 rounded-full object-cover border-2 border-blue-500/30 shadow-lg shadow-blue-900/20">
+            <div>
+              <h3 class="font-montserrat text-2xl md:text-xl font-bold text-white">Abogado Emmanuel Quiroz</h3>
+              <p class="text-blue-400 text-sm font-medium mt-1">Socio Cofundador</p>
+            </div>
+          </div>
+          <p class="text-white leading-relaxed">Especialista en Derecho de la Empresa y Candidato a Maestro en Derecho Público (IBERO), con más de 15 años de experiencia en negociación compleja y litigio de alto impacto. Con experiencia como Subdelegado Federal en PRODECON y coordinador de capacitación en el Nuevo Sistema de Justicia Laboral, así como experiencia desde el Poder Judicial estatal. Su dominio regulatorio y su capacidad para enfrentar autoridades (SAT, IMSS, PEMEX) despliegan una sólida defensa técnica respaldada por estándares internacionales. Está certificado por el CONOCER en los estándares EC1038 en intervención para la solución de conflictos, EC0076 en evaluación de competencias y EC0658 en atención de notificación y ejecución de resoluciones judiciales.</p>
+          <div class="mt-6 pt-6 border-t border-white/10">
+            <a href="https://www.linkedin.com/in/emmanuel-quiroz-parrilla" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-blue-400 hover:text-white transition-colors group">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="transform group-hover:scale-110 transition-transform"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              <span class="text-sm font-semibold">Ver perfil de LinkedIn</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+
+  <!-- PREGUNTAS FRECUENTES -->
+  <section id="preguntas" class="relative py-24 md:py-32 bg-black">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="text-center mb-14 reveal">
+        <p class="text-blue-400 text-sm font-semibold tracking-[.2em] uppercase mb-3">Preguntas frecuentes</p>
+        <h2 class="font-montserrat text-4xl md:text-5xl font-bold text-white">Lo que todos preguntan antes de decidirse</h2>
+      </div>
+
+      <div class="reveal">
+
+        <details class="faq-item" open>
+          <summary>¿Cuánto cuesta la primera asesoría?</summary>
+          <p class="faq-a">Primera asesoría sin costo. Si tu asunto requiere un estudio más profundo, la consulta especializada tiene un costo que se acredita íntegramente a tus honorarios si decides contratarnos.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Cómo se determinan los honorarios?</summary>
+          <p class="faq-a">Dependen de la materia, la complejidad y la instancia ante la que se litigue. Sea cual sea el esquema, queda definido por escrito antes de que firmes el contrato de prestación de servicios profesionales. No hay cargos que no hayas conocido y aceptado previamente.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Firmé mi renuncia. ¿Todavía puedo reclamar?</summary>
+          <p class="faq-a">Con frecuencia sí. Una renuncia firmada bajo presión, en blanco, con fecha distinta a la real o a cambio de un pago inferior al que legalmente correspondía puede impugnarse. Buena parte de la carga de acreditar que hubo voluntad libre recae en la parte patronal. Conserva el documento y cualquier mensaje relacionado para mostrárnoslo.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>Me niegan un medicamento, tratamiento o cirugía. ¿Qué procede?</summary>
+          <p class="faq-a">Se documenta la negativa (receta, nota médica, oficio o la constancia de que no se entrega) y se promueve juicio de amparo contra la omisión de garantizar el derecho a la salud. Cuando la salud o la vida están en riesgo puede solicitarse la suspensión, que obliga a otorgar la atención mientras se resuelve el fondo. Los plazos aquí son breves: entre antes se revise, mejor.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Cuánto tiempo tarda un asunto?</summary>
+          <p class="faq-a">Depende de la materia y de la vía. Un asunto laboral resuelto en conciliación puede cerrarse en semanas; llevado a juicio ante Tribunal Laboral suele extenderse de uno a dos años. Un amparo en salud con suspensión concedida puede lograr la atención en días, aunque la sentencia definitiva tarde meses. Te damos un estimado realista de tu caso concreto; nunca una promesa de resultado.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Atienden asuntos fuera de sus sedes?</summary>
+          <p class="faq-a">Sí. Contamos con sedes en San Cristóbal de las Casas y en Puebla, además de capacidad de litigio nacional. La asesoría y el seguimiento se realizan por videollamada y mensajería; buena parte de las promociones se presentan por vía electrónica. Para diligencias que exigen presencia física comparecemos directamente o coordinamos con abogacía corresponsal, siempre bajo nuestra dirección.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>¿Qué documentos necesito para la primera asesoría?</summary>
+          <p class="faq-a">Los que tengas, aunque estén incompletos. En materia laboral: identificación, contrato, últimos recibos de nómina y comunicaciones relacionadas con la separación. En salud: identificación, número de seguridad social, recetas y notas médicas. En familiar: actas de nacimiento y matrimonio. En fiscal: la notificación o el requerimiento de la autoridad. Si te falta algo, escríbenos de todas formas.</p>
+        </details>
+
+        <details class="faq-item">
+          <summary>El SAT, el IMSS o el INFONAVIT me notificaron un crédito o requerimiento. ¿Qué hago?</summary>
+          <p class="faq-a">Actuar de inmediato: estas notificaciones abren plazos breves y fatales; dejarlos correr suele convertir un asunto defendible en uno firme. No firmes ni pagues nada sin que se revise la legalidad del acto. Envíanos la notificación completa, con sus anexos y la constancia de cuándo te fue entregada.</p>
+        </details>
+
+      </div>
+
+      <div class="reveal reveal-d1 text-center mt-12">
+        <p class="text-white/60 mb-5">¿Tu duda no está aquí?</p>
+        <a href="https://wa.me/528130754795?text=Hola%2C%20tengo%20una%20duda%20que%20no%20viene%20en%20las%20preguntas%20frecuentes." target="_blank" rel="noopener" class="cta-blue inline-block text-white font-bold px-8 py-4 rounded-lg">
+          Pregúntanos por WhatsApp
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPROMISO DE INDEPENDENCIA -->
+  <section id="independencia" class="relative py-16 md:py-20 bg-navy-500">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal border-l-4 border-blue-400 bg-navy-400/25 rounded-r-xl p-7 md:p-9">
+        <p class="text-blue-400 text-xs font-semibold tracking-[.18em] uppercase mb-4">Compromiso de independencia</p>
+        <p class="text-white/85 leading-relaxed text-lg">
+          No representamos a una organización y a sus personas trabajadoras en un mismo asunto, ni en
+          asuntos relacionados entre sí. Cuando existe conflicto de interés lo declaramos de inmediato y
+          declinamos la representación. Esta regla no admite excepciones ni acuerdos en contrario.
+        </p>
+        <p class="text-white/50 text-sm leading-relaxed mt-5">
+          Atendemos tanto a personas trabajadoras y derechohabientes como a organizaciones, siempre en
+          asuntos separados. Lo hacemos así porque nuestra práctica se sostiene en el cumplimiento de la
+          ley, no en la posición de quien nos contrata.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="relative py-24 md:py-32 bg-navy-400">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-16 reveal">
+        <span class="text-blue-400 text-sm font-semibold tracking-[.3em] uppercase">Contáctanos</span>
+        <h2 class="font-montserrat text-3xl sm:text-4xl md:text-5xl font-bold mt-4 mb-6">Estamos para ti</h2>
+        <div class="accent-line w-24 mx-auto"></div>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+        <div class="reveal">
+          <form id="contactForm" class="space-y-5" novalidate>
+            <div>
+              <label for="nombre" class="block text-sm font-medium text-white/80 mb-2">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" required autocomplete="name" placeholder="Escribe tu nombre" class="form-input w-full px-5 py-4 rounded-lg text-white placeholder-white/30 text-lg">
+            </div>
+            <div>
+              <label for="teléfono" class="block text-sm font-medium text-white/80 mb-2">Teléfono o WhatsApp</label>
+              <input type="tel" id="teléfono" name="teléfono" required autocomplete="tel" inputmode="tel" placeholder="10 dígitos" class="form-input w-full px-5 py-4 rounded-lg text-white placeholder-white/30 text-lg">
+            </div>
+            <div>
+              <label for="correo" class="block text-sm font-medium text-white/80 mb-2">Correo electrónico</label>
+              <input type="email" id="correo" name="correo" required autocomplete="email" placeholder="tu@correo.com" class="form-input w-full px-5 py-4 rounded-lg text-white placeholder-white/30 text-lg">
+            </div>
+            <div>
+              <label for="asunto" class="block text-sm font-medium text-white/80 mb-2">¿En qué podemos ayudarte?</label>
+              <textarea id="asunto" name="asunto" rows="4" required placeholder="Describe brevemente tu situación..." class="form-input w-full px-5 py-4 rounded-lg text-white placeholder-white/30 text-lg resize-none"></textarea>
+            </div>
+
+            <!-- Campo trampa contra correo automatizado. No lo quites: es invisible
+                 para las personas y solo lo llenan los robots de spam. -->
+            <div class="hidden" aria-hidden="true">
+              <label for="sitioWeb">No llenar este campo</label>
+              <input type="text" id="sitioWeb" name="sitioWeb" tabindex="-1" autocomplete="off">
+            </div>
+
+            <!-- Consentimiento en el punto de recoleccion (obligacion de la LFPDPPP) -->
+            <div class="flex items-start gap-3 pt-1">
+              <input type="checkbox" id="consentimiento" name="consentimiento" required
+                     class="mt-1 w-5 h-5 flex-shrink-0 rounded border border-blue-400/50 bg-navy-400/30 accent-blue-500 cursor-pointer">
+              <label for="consentimiento" class="text-sm text-white/70 leading-relaxed cursor-pointer">
+                Acepto que mis datos se traten conforme al
+                <button type="button" onclick="openModal('avisoPrivacidad')" class="text-blue-400 underline hover:text-blue-300 font-medium">Aviso de Privacidad</button>
+                para dar respuesta a mi consulta.
+              </label>
+            </div>
+
+            <button type="submit" id="btnEnviar" class="cta-blue w-full text-white font-bold text-lg px-8 py-4 rounded-lg flex items-center justify-center gap-2">
+              <span id="btnEnviarTexto">Enviar mensaje</span>
+              <svg id="btnEnviarIcono" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+            </button>
+
+            <p class="text-center text-white/60 text-sm">Respondemos en menos de 24 horas hábiles.</p>
+          </form>
+
+          <!-- Pantalla de confirmacion: solo se muestra cuando el envio se confirma -->
+          <div id="formSuccess" class="hidden text-center py-12" role="status" aria-live="polite" tabindex="-1">
+            <div class="w-16 h-16 mx-auto bg-blue-500/15 rounded-full flex items-center justify-center mb-4">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <h3 class="font-montserrat text-2xl font-bold text-white mb-2">Mensaje recibido</h3>
+            <p class="text-white/70 max-w-sm mx-auto">Tu consulta llegó a <span class="text-white">da@dignitasabogacia.com</span>. Te respondemos en menos de 24 horas hábiles.</p>
+            <p class="text-white/70 mt-6 mb-4">¿Es urgente? Escríbenos ahora:</p>
+            <a href="https://wa.me/528130754795?text=Hola%2C%20acabo%20de%20enviar%20el%20formulario%20del%20sitio%20y%20mi%20asunto%20es%20urgente." target="_blank" rel="noopener" data-contacto="whatsapp_tras_formulario" class="cta-blue inline-flex items-center gap-3 text-white font-bold px-8 py-4 rounded-lg">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Continuar por WhatsApp
+            </a>
+          </div>
+
+          <!-- Pantalla de error: nunca se pierde un prospecto -->
+          <div id="formError" class="hidden py-10" role="alert" aria-live="assertive" tabindex="-1">
+            <div class="bg-navy-400/40 border border-blue-400/30 rounded-xl p-7 text-center">
+              <h3 class="font-montserrat text-xl font-bold text-white mb-3">No pudimos enviar el formulario</h3>
+              <p class="text-white/70 mb-6 max-w-sm mx-auto">Hubo un problema de conexión. Tu mensaje no se perdió: escríbenos ahora por cualquiera de estas vías y lo atendemos igual.</p>
+              <div class="flex flex-col gap-3">
+                <a href="https://wa.me/528130754795" id="errorWhatsApp" target="_blank" rel="noopener" data-contacto="whatsapp_error_formulario" class="cta-blue text-white font-bold px-6 py-4 rounded-lg">Enviar por WhatsApp</a>
+                <a href="tel:+528130754795" data-contacto="teléfono_error_formulario" class="cta-outline text-white font-semibold px-6 py-4 rounded-lg">Llamar al (+52) 81 3075 4795</a>
+                <a href="mailto:da@dignitasabogacia.com?subject=Consulta%20jur%C3%ADdica%20desde%20el%20sitio%20web" data-contacto="correo_error_formulario" class="cta-outline text-white font-semibold px-6 py-4 rounded-lg">Escribir a da@dignitasabogacia.com</a>
+              </div>
+              <button type="button" id="btnReintentar" class="mt-6 text-blue-400 underline hover:text-blue-300 text-sm font-semibold">Volver a intentar el formulario</button>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-d1">
+          <div class="space-y-8">
+            <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="flex items-start gap-5 p-5 bg-navy-400/30 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all group">
+              <div class="flex-shrink-0 w-12 h-12 bg-green-500/15 rounded-xl flex items-center justify-center">
+                <svg width="24" height="24" fill="#25D366" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white text-lg">WhatsApp</h4>
+                <p class="text-white/60">(+52) 81 3075 4795</p>
+                <p class="text-blue-400 text-sm mt-1 group-hover:gap-2 inline-flex items-center gap-1 transition-all">Escríbenos ahora →</p>
+              </div>
+            </a>
+            <a href="mailto:da@dignitasabogacia.com?subject=Consulta%20jur%C3%ADdica%20desde%20el%20sitio%20web" class="flex items-start gap-5 p-5 bg-navy-400/30 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all group">
+              <div class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white text-lg">Correo electrónico</h4>
+                <p class="text-white/60">da@dignitasabogacia.com</p>
+              </div>
+            </a>
+            <a href="tel:+528130754795" class="flex items-start gap-5 p-5 bg-navy-400/30 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all group">
+              <div class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white text-lg">Teléfono</h4>
+                <p class="text-white/60">(+52) 81 3075 4795</p>
+                <p class="text-blue-400 text-sm mt-1">Toca para llamar →</p>
+              </div>
+            </a>
+            <div class="flex items-start gap-5 p-5 bg-navy-400/30 rounded-xl border border-navy-50/20">
+              <div class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                <h4 class="font-semibold text-white text-lg mb-2">Nuestras sedes</h4>
+                <p class="text-white/60 text-sm mb-1"><span class="text-white/80 font-medium">Chiapas:</span> Calle Tauro #30, Col. San Juan de los Lagos, C.P. 29296, San Cristóbal de las Casas.</p>
+                <p class="text-white/60 text-sm"><span class="text-white/80 font-medium">Puebla:</span> M. Ávila Camacho #3729, Col. Santa Cruz Buenavista, C.P. 72197, Puebla.</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-5 p-5 bg-navy-400/30 rounded-xl border border-navy-50/20">
+              <div>
+                <h4 class="font-semibold text-white text-lg mb-3">Síguenos</h4>
+                <div class="flex gap-4">
+                  <a href="https://wa.me/528130754795" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-400 hover:bg-green-500 hover:text-white transition-all"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+                  <a href="https://www.instagram.com/DignitasAbogacia" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 hover:bg-pink-500 hover:text-white transition-all"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                  <a href="https://www.facebook.com/DignitasAbogacia" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center text-blue-400 hover:bg-blue-600 hover:text-white transition-all"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-8 p-6 bg-navy-400/40 rounded-xl border border-blue-500/20 text-center reveal">
+            <p class="text-white mb-4">¿Prefieres hablar directamente?</p>
+            <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-blue text-white font-bold text-lg px-8 py-4 rounded-lg inline-flex items-center gap-3">
+              <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+              Agenda tu asesoría por WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros" class="relative py-24 md:py-32 bg-black">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
+        <div class="reveal">
+          <div class="relative rounded-2xl overflow-hidden aspect-[4/5] max-w-md mx-auto lg:max-w-none">
+            <img src="Foto.jpeg" alt="Estatura de la Justicia" class="w-full h-full object-cover" loading="lazy">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <span class="text-blue-400 text-sm font-semibold tracking-[.2em] uppercase">Estamos de tu lado</span>
+            </div>
+          </div>
+        </div>
+        <div class="reveal reveal-d1">
+          <span class="text-blue-400 text-sm font-semibold tracking-[.3em] uppercase">¿Quiénes somos?</span>
+          <h2 class="font-montserrat text-3xl sm:text-4xl font-bold mt-4 mb-6">Creemos en una justicia con rostro humano.</h2>
+          <div class="accent-line w-20 mb-6" style="background:linear-gradient(90deg,#3B82F6,transparent)"></div>
+          <p class="text-white leading-relaxed mb-6">Somos una firma que no solo te representa, te acompaña. Cofundada por Emmanuel Quiroz y Elvira Vázquez, unimos más de 15 años de trayectoria jurídica con capacidad de litigio nacional y una nueva sede en San Cristóbal de las Casas, Chiapas, adicional a la de Puebla capital.</p>
+          <p class="text-white leading-relaxed mb-8">No vemos expedientes; atendemos personas. Explicamos cada estrategia y etapa en lenguaje claro, porque tomar decisiones con información real es tu principal derecho.</p>
+          <a href="#contacto" class="cta-blue text-white font-bold px-8 py-4 rounded-lg inline-flex items-center gap-2">
+            Conversemos
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISIÓN, VISIÓN Y VALORES -->
+  <section id="valores" class="relative py-24 md:py-32 bg-navy-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-8 mb-16">
+        <div class="value-card bg-navy-400/30 rounded-xl p-8 lg:p-10 reveal">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>
+            </div>
+            <h3 class="font-montserrat text-2xl font-bold">MISIÓN</h3>
+          </div>
+          <p class="text-white leading-relaxed">En DÍGNITAS ABOGACÍA brindamos representación y asesoría jurídica colocando los derechos humanos al centro de cada estrategia. Miramos más allá del expediente en cada asunto laboral, de salud integral, familiar o fiscal. Unimos el rigor de la ley con la defensa activa de la dignidad para materializar la justicia de quien lo necesite.</p>
+        </div>
+        <div class="value-card bg-navy-400/30 rounded-xl p-8 lg:p-10 reveal reveal-d1">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3 class="font-montserrat text-2xl font-bold">VISIÓN</h3>
+          </div>
+          <p class="text-white leading-relaxed">Consolidarnos como la firma de referencia en el sursureste de México que convierte los derechos humanos en certeza jurídica real. Trabajamos para que el rigor de la ley y el respeto a tu dignidad no solo se pelee: se garantice.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="text-center mb-10">
+          <span class="text-blue-400 text-sm font-semibold tracking-[.3em] uppercase">Nuestros valores</span>
+          <h3 class="font-montserrat text-2xl sm:text-3xl font-bold mt-3">Lo que nos guía</h3>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="text-center p-6 bg-navy-400/20 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all">
+            <div class="w-12 h-12 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+            </div>
+            <h4 class="font-semibold text-white mb-1 text-base">Dignidad Humana</h4>
+            <p class="text-white text-sm">No tramitamos casos, defendemos tus derechos.</p>
+          </div>
+          <div class="text-center p-6 bg-navy-400/20 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all">
+            <div class="w-12 h-12 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+            </div>
+            <h4 class="font-semibold text-white mb-1 text-base">Igualdad Sustantiva</h4>
+            <p class="text-white text-sm">Sin discriminación por género, origen o condición.</p>
+          </div>
+          <div class="text-center p-6 bg-navy-400/20 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all">
+            <div class="w-12 h-12 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2zM22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+            </div>
+            <h4 class="font-semibold text-white mb-1 text-base">Rigor en DDHH</h4>
+            <p class="text-white text-sm">Constitución, tratados, SCJN y Corte IDH.</p>
+          </div>
+          <div class="text-center p-6 bg-navy-400/20 rounded-xl border border-navy-50/20 hover:border-blue-400/30 transition-all">
+            <div class="w-12 h-12 mx-auto bg-blue-500/10 rounded-full flex items-center justify-center mb-3">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            </div>
+            <h4 class="font-semibold text-white mb-1 text-base">Empatía Jurídica</h4>
+            <p class="text-white text-sm">Entendemos el contexto para construir defensas técnicas y humanamente justas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  </main>
+
+  <footer class="bg-navy-700 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-10 mb-12">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="Logo.png" alt="Logo Dignitas Abogacía Footer" class="h-10 w-auto object-contain" onerror="this.style.display='none'">
+            <div class="flex flex-col leading-none">
+              <span class="font-montserrat text-base font-bold tracking-wider">DÍGNITAS</span>
+              <span class="font-montserrat text-[9px] tracking-[.35em] text-blue-400 font-medium">ABOGACÍA</span>
+            </div>
+          </div>
+          <p class="text-white/40 text-sm leading-relaxed">Desde la legalidad, trabajamos por la defensa de tus derechos.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-4">Navegación</h4>
+          <div class="space-y-2">
+            <!-- CAMBIO 3: Enlaces blancos en móvil (text-white) y semi-transparentes en desktop (sm:text-white/40) -->
+            <a href="#inicio" class="block text-white hover:text-white sm:text-white/40 sm:hover:text-white text-sm transition-colors">Inicio</a>
+            <a href="#servicios" class="block text-white hover:text-white sm:text-white/40 sm:hover:text-white text-sm transition-colors">Servicios</a>
+            <a href="#nosotros" class="block text-white hover:text-white sm:text-white/40 sm:hover:text-white text-sm transition-colors">Nosotros</a>
+            <a href="#equipo" class="block text-white hover:text-white sm:text-white/40 sm:hover:text-white text-sm transition-colors">Equipo</a>
+            <a href="#preguntas" class="block text-white hover:text-white sm:text-white/40 sm:hover:text-white text-sm transition-colors">Preguntas</a>
+            <a href="#empresas" class="block text-white hover:text-white sm:text-white/40 sm:hover:text-white text-sm transition-colors">Empresas</a>
+            <a href="#capacitacion" class="block text-white hover:text-white sm:text-white/40 sm:hover:text-white text-sm transition-colors">Capacitación</a>
+            <a href="#contacto" class="block text-white hover:text-white sm:text-white/40 sm:hover:text-white text-sm transition-colors">Contacto</a>
+          </div>
+        </div>
+        <div>
+          <h4 class="font-semibold text-white mb-4">Legal</h4>
+          <div class="space-y-2">
+            <!-- CAMBIO 3: Enlaces blancos en móvil (text-white) y semi-transparentes en desktop (sm:text-white/40) -->
+            <button onclick="openModal('avisoLegal')" class="block text-white hover:text-white sm:text-white/40 sm:hover:text-white text-sm transition-colors text-left w-full">Aviso Legal</button>
+            <button onclick="openModal('avisoPrivacidad')" class="block text-white hover:text-white sm:text-white/40 sm:hover:text-white text-sm transition-colors text-left w-full">Aviso de Privacidad</button>
+            <button onclick="abrirPreferenciasCookies()" class="block text-white hover:text-white sm:text-white/40 sm:hover:text-white text-sm transition-colors text-left w-full">Preferencias de cookies</button>
+          </div>
+        </div>
+      </div>
+      <div class="accent-line mb-8"></div>
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-white/30 text-sm">&copy; 2026 DÍGNITAS ABOGACÍA. Todos los derechos reservados.</p>
+        <div class="flex gap-4">
+          <a href="https://wa.me/528130754795" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/30 hover:bg-green-500 hover:text-white transition-all"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a>
+          <a href="https://www.instagram.com/DignitasAbogacia" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/30 hover:bg-pink-500 hover:text-white transition-all"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="https://www.facebook.com/DignitasAbogacia" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/30 hover:bg-blue-600 hover:text-white transition-all"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WHATSAPP FLOTANTE -->
+  <!-- AVISO DE COOKIES -->
+  <div id="cookieAviso" class="no-print fixed bottom-0 left-0 right-0 z-50 hidden">
+    <div class="mx-4 mb-3 md:mx-auto md:max-w-3xl bg-navy-600 border border-blue-400/30 rounded-xl p-5 shadow-2xl">
+      <div class="md:flex md:items-center md:gap-6">
+        <div class="flex-1">
+          <h4 class="text-white font-semibold mb-2">Este sitio utiliza cookies</h4>
+          <p class="cookie-texto text-white/60 text-sm leading-relaxed">Usamos cookies necesarias para el funcionamiento del sitio y, solo si lo autorizas, cookies de analítica de Google y de medición de Meta. <button type="button" onclick="openModal('avisoPrivacidad')" class="text-blue-400 underline hover:text-blue-300 font-medium">Ver Aviso de Privacidad</button></p>
+        </div>
+        <div class="flex gap-3 mt-4 md:mt-0 flex-shrink-0">
+          <button type="button" id="cookieRechazar" class="px-5 py-3 rounded-lg border border-white/20 text-white text-sm font-semibold hover:bg-white/5 transition-colors">Rechazar</button>
+          <button type="button" id="cookieAceptar" class="cta-blue px-5 py-3 rounded-lg text-white text-sm font-bold">Aceptar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  /* ══════════════════════════════════════════════════════════════════════════
+     ───  PANEL DE CONFIGURACION  —  LO UNICO QUE HAY QUE EDITAR  ───
+
+     Sustituye los cuatro valores de abajo. Mientras alguno diga 'PENDIENTE',
+     esa pieza simplemente no se activa (el sitio sigue funcionando).
+     ══════════════════════════════════════════════════════════════════════════ */
+
+  /* 1. GOOGLE ANALYTICS 4 — formato G-XXXXXXXXXX
+        Se obtiene en analytics.google.com con la cuenta de Google Workspace
+        da@dignitasabogacia.com. En Squarespace tambien puede ponerse en
+        Ajustes → Herramientas para desarrolladores → Inyeccion de codigo. */
+  var ID_GA4 = 'PENDIENTE';
+
+  /* 2. PIXEL DE META (Facebook e Instagram) — solo numeros
+        Se obtiene en business.facebook.com → Administrador de eventos. */
+  var ID_META = 'PENDIENTE';
+
+  /* 3. CLAVE DEL FORMULARIO — clave gratuita de web3forms.com
+        Se obtiene en un minuto poniendo el correo da@dignitasabogacia.com.
+        IMPORTANTE: dentro de Web3Forms hay que activar tambien
+        "Allowed Domains" = dignitasabogacia.com y el captcha incluido,
+        porque esta clave queda visible en el codigo de la pagina.
+
+        ALTERNATIVA RECOMENDADA EN SQUARESPACE: usar el bloque de Formulario
+        nativo y dirigir las respuestas al correo de Google Workspace. En ese
+        caso este formulario se sustituye por el de Squarespace y esta clave
+        deja de hacer falta. */
+  var CLAVE_FORMULARIO = 'PENDIENTE';
+
+  /* 4. TELEFONO DE WHATSAPP — sin +, sin espacios, con clave de pais */
+  var TELEFONO_WHATSAPP = '528130754795';
+
+  /* ══════════════════════════════════════════════════════════════════════════
+     A partir de aqui no hace falta editar nada.
+     ══════════════════════════════════════════════════════════════════════════ */
+
+  /* ---- Registro de conversiones ----------------------------------------
+     Sin esto se sabe cuanta gente entro, pero no cuanta contacto, que es
+     el unico dato que dice si la inversion en publicidad funciona.
+     Solo se dispara si la persona acepto la analitica. */
+  function registrarContacto(metodo, seccion) {
+    try {
+      if (window.gtag) window.gtag('event', 'contacto', { metodo: metodo, seccion: seccion || 'general' });
+      if (window.fbq)  window.fbq('track', 'Contact', { content_name: metodo, content_category: seccion || 'general' });
+    } catch (e) {}
+  }
+
+  /* Escucha global: cualquier enlace a WhatsApp, correo o teléfono queda medido,
+     incluidos los que se agreguen en el futuro. No hay que tocar cada botón. */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var metodo = null;
+    if (href.indexOf('wa.me') > -1)          metodo = 'whatsapp';
+    else if (href.indexOf('mailto:') === 0)  metodo = 'correo';
+    else if (href.indexOf('tel:') === 0)     metodo = 'teléfono';
+    if (!metodo) return;
+    var seccion = a.getAttribute('data-contacto') ||
+                  (a.closest('section') ? a.closest('section').id : 'general');
+    registrarContacto(metodo, seccion);
+  }, true);
+
+  /* ---- Analitica con consentimiento previo -----------------------------
+     Google Analytics y el pixel de Meta NO se cargan hasta que la persona
+     pulsa "Aceptar". Si pulsa "Rechazar" no se cargan nunca. */
+  (function(){
+
+    var CLAVE = 'dignitas_consentimiento_cookies';
+    var aviso = document.getElementById('cookieAviso');
+
+    function cargarAnalitica(){
+      if (!ID_GA4 || ID_GA4 === 'PENDIENTE') return;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ID_GA4;
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ window.dataLayer.push(arguments); }
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', ID_GA4, { anonymize_ip: true });
+    }
+
+    function cargarMeta(){
+      if (!ID_META || ID_META === 'PENDIENTE') return;
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+      document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      window.fbq('init', ID_META);
+      window.fbq('track', 'PageView');
+    }
+
+    var decision = null;
+    try { decision = localStorage.getItem(CLAVE); } catch(e) {}
+
+    if (decision === 'aceptadas') {
+      cargarAnalitica();
+      cargarMeta();
+    } else if (decision !== 'rechazadas') {
+      if (aviso) aviso.classList.remove('hidden');
+    }
+
+    function guardar(valor){
+      try { localStorage.setItem(CLAVE, valor); } catch(e) {}
+      if (aviso) aviso.classList.add('hidden');
+    }
+
+    var bAceptar  = document.getElementById('cookieAceptar');
+    var bRechazar = document.getElementById('cookieRechazar');
+    if (bAceptar)  bAceptar.addEventListener('click',  function(){ guardar('aceptadas'); cargarAnalitica(); cargarMeta(); });
+    if (bRechazar) bRechazar.addEventListener('click', function(){ guardar('rechazadas'); });
+
+    /* Permite revocar el consentimiento desde el pie de pagina. */
+    window.abrirPreferenciasCookies = function(){
+      try { localStorage.removeItem(CLAVE); } catch(e) {}
+      if (aviso) aviso.classList.remove('hidden');
+    };
+
+  })();
+  </script>
+
+  <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="no-print fixed bottom-6 right-6 z-40 w-16 h-16 bg-green-500 rounded-full flex items-center justify-center shadow-lg wa-float hover:scale-110 transition-transform" aria-label="Contactar por WhatsApp">
+    <svg width="30" height="30" fill="#fff" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <!-- MODALES -->
+  <div id="avisoLegal" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div class="modal-content bg-navy-500 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8 lg:p-10 relative">
+      <button onclick="closeModal('avisoLegal')" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 text-white transition-colors" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h2 class="font-montserrat text-2xl font-bold mb-6">1. Aviso Legal y Términos de Uso</h2>
+      <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">1.1. Naturaleza Jurídica y Nombre Comercial</h3>
+      <p class="text-white leading-relaxed">Para los efectos legales a que haya lugar, se hace de conocimiento público que "DÍGNITAS ABOGACÍA" es un nombre comercial utilizado de forma lícita para identificar y promover los servicios jurídicos, de representación y consultoría prestados de manera profesional por sus socios fundadores e integrantes. La contratación de servicios se realiza de manera directa con los profesionales del derecho titulares o asociados a la firma, quienes asumen la responsabilidad profesional correspondiente en términos de la legislación aplicable.</p>
+      <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">1.2. Ausencia de Relación Abogado-Cliente por Uso del Sitio</h3>
+      <p class="text-white leading-relaxed">La información contenida en esta página web tiene fines exclusivamente informativos y de divulgación. La lectura, visualización, descarga de material o el envío de correos electrónicos a través de los formularios de este sitio no constituye ni crea una relación entre los profesionales del derecho y las personas usuarias de esta página web. Dicha relación únicamente se perfeccionará mediante la firma de un contrato de prestación de servicios profesionales y/o el acuerdo explícito por escrito entre la persona usuaria y la abogacía titular de la firma.</p>
+      <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">1.3. Propiedad Intelectual</h3>
+      <p class="text-white leading-relaxed">Todos los contenidos, textos, logotipos, diseños y arquitectura visual de este sitio están protegidos por las vigentes Ley Federal de Protección a la Propiedad Industrial y la Ley Federal del Derecho de Autor. Queda estrictamente prohibida su reproducción, distribución o modificación sin autorización previa y por escrito.</p>
+      <p class="text-white/40 text-sm mt-4">Fecha de última actualización: agosto de 2026.</p>
+    </div>
+  </div>
+
+  <div id="avisoPrivacidad" class="modal-overlay fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80">
+    <div class="modal-content bg-navy-500 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto p-8 lg:p-10 relative">
+      <button onclick="closeModal('avisoPrivacidad')" class="absolute top-4 right-4 w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 text-white transition-colors" aria-label="Cerrar">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+      <h2 class="font-montserrat text-2xl font-bold mb-6">2. Aviso de Privacidad Integral</h2>
+      <p class="text-white/50 text-sm mb-6">Emitido conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares vigente, publicada en el Diario Oficial de la Federación el 20 de marzo de 2025, y a su normativa secundaria.</p>
+      <!-- PENDIENTE PARA LA FIRMA: si desean citar articulos concretos, hay que
+           tomarlos de la ley de 2025. La numeracion anterior (8, 15, 16, 33, 36 y 37-V)
+           correspondia a la ley de 2010, hoy abrogada. -->
+      <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.1. Identidad y Domicilio del Responsable</h3>
+      <p class="text-white leading-relaxed">Las personas físicas titulares de la firma DÍGNITAS ABOGACÍA (en adelante "El Responsable"), con domicilio para recibir notificaciones en Calle Tauro #30, Col. "San Juan de los Lagos", San Cristóbal de las Casas, Chiapas. C.P. 29296, son responsables del uso, tratamiento y protección de sus datos personales.</p>
+      <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.2. Datos Personales Recabados</h3>
+      <p class="text-white leading-relaxed mb-3">Para llevar a cabo las finalidades descritas en el presente aviso, recabaremos los siguientes datos personales a través de nuestros formularios web, correos electrónicos o líneas de contacto:</p>
+      <ul class="list-disc list-inside text-white space-y-1 ml-2">
+        <li>Nombre completo.</li>
+        <li>Teléfono de contacto.</li>
+        <li>Correo electrónico.</li>
+        <li>Información general sobre el asunto o consulta jurídica requerida.</li>
+      </ul>
+      <p class="text-white/50 text-sm mt-3">No recabamos datos personales sensibles a través del sitio web. Cualquier información estrictamente confidencial o sensible relacionada con su proceso legal será solicitada únicamente tras formalizar la relación profesional bajo secreto profesional.</p>
+      <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.3. Finalidades del Tratamiento de Datos</h3>
+      <p class="text-white font-medium mb-2">Finalidades primarias:</p>
+      <ul class="list-disc list-inside text-white space-y-1 ml-2">
+        <li>Proveer asesoría y servicios legales.</li>
+        <li>Contactar a la persona usuaria para dar seguimiento a sus consultas.</li>
+        <li>Elaboración de propuestas económicas y cotizaciones.</li>
+      </ul>
+      <p class="text-white font-medium mt-4 mb-2">Finalidades secundarias (Uso Comercial y Mercadotécnico):</p>
+      <ul class="list-disc list-inside text-white space-y-1 ml-2">
+        <li>Envío de boletines informativos, actualizaciones legales y alertas jurisprudenciales.</li>
+        <li>Divulgación de servicios y campañas de mercadotecnia digital de la firma.</li>
+      </ul>
+      <p class="text-white/50 text-sm mt-3">En caso de que no desee que sus datos personales sean tratados para estos fines secundarios, puede comunicarlo inmediatamente a través de los canales de contacto.</p>
+      <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.4. Derechos ARCO</h3>
+      <p class="text-white leading-relaxed">Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición).</p>
+      <p class="text-white leading-relaxed mt-2">Para el ejercicio de cualquiera de estos derechos, envíe su solicitud al correo electrónico <span class="text-blue-400">da@dignitasabogacia.com</span>, acompañada de: su nombre completo y un medio para comunicarle la respuesta; copia de una identificación oficial que acredite su identidad o, en su caso, la representación legal; la descripción clara de los datos respecto de los que busca ejercer el derecho; y cualquier elemento que facilite su localización.</p>
+      <p class="text-white leading-relaxed mt-2">Le comunicaremos la determinación adoptada en un plazo máximo de <strong class="text-white">veinte días hábiles</strong> contados desde la recepción de su solicitud. De resultar procedente, se hará efectiva dentro de los <strong class="text-white">quince días hábiles</strong> siguientes a esa comunicación. La atención de las solicitudes es gratuita.</p>
+      <p class="text-white leading-relaxed mt-2">Si considera que su derecho a la protección de datos personales ha sido vulnerado, o que en la atención a su solicitud existió una respuesta que no le satisface, puede acudir ante la autoridad competente en la materia, que a partir de la reforma de 2025 es la <strong class="text-white">Secretaría Anticorrupción y Buen Gobierno</strong>.</p>
+      <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.5. Transferencia de Datos</h3>
+      <p class="text-white leading-relaxed">Sus datos personales no serán transferidos ni tratados por personas físicas o morales distintas a "El Responsable", salvo en los supuestos de excepción que la propia Ley Federal de Protección de Datos Personales en Posesión de los Particulares prevé, así como aquellas requeridas por autoridades competentes de manera fundada y motivada.</p>
+      <p class="text-white leading-relaxed mt-2">No obstante lo anterior, el uso de este sitio web implica una transferencia de datos de carácter técnico a Google LLC y a Meta Platforms, Inc., sociedades domiciliadas en los Estados Unidos de América, derivada de los servicios de tipografías web (Google Fonts) y, cuando usted lo consienta expresamente, de analítica web (Google Analytics) y de medición de campañas en redes sociales (pixel de Meta, para Facebook e Instagram). Dichos datos comprenden su dirección IP, el tipo de navegador y dispositivo empleados y su comportamiento de navegación dentro del sitio. Estos datos se tratan con la finalidad exclusiva de permitir la correcta visualización de la página y de medir su desempeño de forma estadística y agregada. Usted puede oponerse a la analítica en cualquier momento en los términos del apartado siguiente.</p>
+      <p class="text-white leading-relaxed mt-2">Asimismo, los datos que usted proporciona voluntariamente a través del formulario de contacto de este sitio —nombre, teléfono, correo electrónico y la descripción de su consulta— son transmitidos mediante un proveedor de servicios de envío de formularios domiciliado en el extranjero, que actúa únicamente como encargado del tratamiento por cuenta de El Responsable, con la finalidad exclusiva de hacer llegar su mensaje a nuestro correo institucional. Dicho proveedor no utiliza esa información para fines propios. Si prefiere no utilizar este medio, puede contactarnos directamente por WhatsApp, por teléfono o escribiendo a da@dignitasabogacia.com.</p>
+      <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.6. Uso de Cookies y Tecnologías de Rastreo</h3>
+      <p class="text-white leading-relaxed">Este sitio web utiliza cookies y tecnologías similares de almacenamiento local, que se clasifican de la siguiente manera:</p>
+      <p class="text-white leading-relaxed mt-2"><span class="text-white/90 font-medium">a) Cookies estrictamente necesarias.</span> Permiten el funcionamiento básico del sitio y conservan el registro de sus propias preferencias de privacidad. Al ser indispensables para la prestación del servicio solicitado, no requieren de su consentimiento y no pueden desactivarse.</p>
+      <p class="text-white leading-relaxed mt-2"><span class="text-white/90 font-medium">b) Cookies de analítica (opcionales).</span> Proporcionadas por Google Analytics y por el pixel de Meta para Facebook e Instagram, recaban información estadística y agregada relativa al número de visitas, las páginas consultadas, el tiempo de permanencia y el tipo de dispositivo empleado, con la finalidad exclusiva de mejorar el contenido y la usabilidad del sitio. Estas cookies únicamente se instalan si usted otorga su consentimiento expreso mediante el aviso que se despliega al ingresar.</p>
+      <p class="text-white leading-relaxed mt-2">Usted puede aceptar o rechazar las cookies opcionales desde dicho aviso; revocar su consentimiento en cualquier momento mediante el enlace <strong class="text-white">Preferencias de cookies</strong> disponible en el pie de esta página; y configurar su navegador para bloquear o suprimir cookies. El rechazo de las cookies opcionales no limita en modo alguno su acceso a los contenidos ni a los servicios de este sitio.</p>
+      <p class="text-white leading-relaxed mt-2">Este sitio no utiliza cookies con fines publicitarios, de mercadotecnia dirigida ni de elaboración de perfiles comerciales ni comparte información con redes de publicidad.</p>
+      <h3 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.7. Modificaciones al Aviso de Privacidad</h3>
+      <p class="text-white leading-relaxed">El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales; de nuestras propias necesidades por los servicios que ofrecemos; de nuestras prácticas de privacidad; o por cambios en nuestro modelo de negocio. Nos comprometemos a mantenerlo informado sobre los cambios a través de la actualización de este documento en nuestra página web.</p>
+      <p class="text-white/40 text-sm mt-4">Fecha de última actualización: agosto de 2026.</p>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
+  <script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('nav-scrolled', window.scrollY > 60);
+  }, { passive: true });
+
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const menuIconOpen = document.getElementById('menuIconOpen');
+  const menuIconClose = document.getElementById('menuIconClose');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+
+  function openMenu() {
+    mobileMenu.classList.add('open');
+    menuIconOpen.classList.add('hidden');
+    menuIconClose.classList.remove('hidden');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMenu() {
+    mobileMenu.classList.remove('open');
+    menuIconOpen.classList.remove('hidden');
+    menuIconClose.classList.add('hidden');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.contains('open') ? closeMenu() : openMenu();
+  });
+
+  mobileLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // Red de seguridad: si a los 3 segundos algo sigue oculto, se muestra.
+  setTimeout(() => { revealEls.forEach(el => el.classList.add('visible')); }, 3000);
+
+  function openModal(id) {
+    document.getElementById(id).classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.modal-overlay').forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal(modal.id);
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
+      closeMenu();
+    }
+  });
+
+  /* ══════════════════════════════════════════════════════════════════
+     FORMULARIO DE CONTACTO
+     Regla de oro: la pantalla de "Mensaje recibido" SOLO aparece cuando
+     el servidor confirma el envio. Si algo falla, se muestra la pantalla
+     de error con WhatsApp, teléfono y correo, para no perder al prospecto.
+     ══════════════════════════════════════════════════════════════════ */
+  const contactForm  = document.getElementById('contactForm');
+  const formSuccess  = document.getElementById('formSuccess');
+  const formError    = document.getElementById('formError');
+  const btnEnviar    = document.getElementById('btnEnviar');
+  const btnTexto     = document.getElementById('btnEnviarTexto');
+  const btnIcono     = document.getElementById('btnEnviarIcono');
+  const btnReintentar= document.getElementById('btnReintentar');
+
+  contactForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!contactForm.reportValidity()) return;
+
+    const d        = new FormData(contactForm);
+    const nombre   = (d.get('nombre')   || '').trim();
+    const teléfono = (d.get('teléfono') || '').trim();
+    const correo   = (d.get('correo')   || '').trim();
+    const asunto   = (d.get('asunto')   || '').trim();
+    const trampa   = (d.get('sitioWeb') || '').trim();
+
+    // Si el campo trampa viene lleno es un robot de spam: se finge exito y no se envia nada.
+    if (trampa) { mostrarPantalla(formSuccess); return; }
+
+    const msg = 'Hola, mi nombre es ' + nombre + '. Mi teléfono es ' + teléfono +
+                ' y mi correo ' + correo + '. Necesito asesoría sobre: ' + asunto;
+
+    // Deja listo el enlace de WhatsApp de la pantalla de error, con el mensaje ya escrito.
+    const enlaceError = document.getElementById('errorWhatsApp');
+    if (enlaceError) enlaceError.href = 'https://wa.me/' + TELEFONO_WHATSAPP + '?text=' + encodeURIComponent(msg);
+
+    bloquearBoton(true, 'Enviando...');
+
+    // Sin clave configurada no se puede enviar: se avisa con honestidad
+    // en lugar de mostrar "Mensaje recibido" sin haber enviado nada.
+    if (!CLAVE_FORMULARIO || CLAVE_FORMULARIO === 'PENDIENTE') {
+      console.warn('DIGNITAS: falta CLAVE_FORMULARIO. El formulario no puede enviar correo.');
+      bloquearBoton(false);
+      mostrarPantalla(formError);
+      return;
+    }
+
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        access_key: CLAVE_FORMULARIO,
+        subject: 'Nueva consulta desde el sitio - ' + nombre,
+        from_name: 'Sitio DIGNITAS ABOGACIA',
+        replyto: correo,
+        nombre: nombre, teléfono: teléfono, correo: correo, asunto: asunto
+      })
+    })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      bloquearBoton(false);
+      if (data && data.success) {
+        mostrarPantalla(formSuccess);
+        registrarContacto('formulario_enviado', 'contacto');
+      } else {
+        mostrarPantalla(formError);
+      }
+    })
+    .catch(function () {
+      bloquearBoton(false);
+      mostrarPantalla(formError);
+    });
+  });
+
+  function bloquearBoton(bloqueado, texto) {
+    btnEnviar.disabled = bloqueado;
+    btnEnviar.style.opacity = bloqueado ? '.6' : '';
+    btnEnviar.style.cursor  = bloqueado ? 'wait' : '';
+    btnTexto.textContent = texto || 'Enviar mensaje';
+    if (btnIcono) btnIcono.style.display = bloqueado ? 'none' : '';
+  }
+
+  function mostrarPantalla(pantalla) {
+    contactForm.classList.add('hidden');
+    formSuccess.classList.add('hidden');
+    formError.classList.add('hidden');
+    pantalla.classList.remove('hidden');
+    pantalla.focus();
+  }
+
+  if (btnReintentar) {
+    btnReintentar.addEventListener('click', function () {
+      formError.classList.add('hidden');
+      formSuccess.classList.add('hidden');
+      contactForm.classList.remove('hidden');
+      bloquearBoton(false);
+      document.getElementById('nombre').focus();
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        const offset = navbar.offsetHeight + 10;
+        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+  </script>
+</body>
+</html>
