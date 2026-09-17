@@ -27,11 +27,11 @@
 <meta name="twitter:description" content="Aviso de privacidad de Dígnitas Abogacía: datos que recabamos, finalidades, derechos ARCO y cookies, conforme a la ley federal aplicable.">
 <meta name="twitter:image" content="https://www.dignitasabogacia.com/og-banner.jpg">
 
+<link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" href="/Logo.png">
 <link rel="apple-touch-icon" href="/Logo.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/cormorant-garamond-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/estilos.css">
 <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 
@@ -43,7 +43,7 @@
    "@type":"BreadcrumbList",
    "itemListElement":[
     {"@type":"ListItem","position":1,"name":"Inicio","item":"https://www.dignitasabogacia.com/"},
-    {"@type":"ListItem","position":2,"name":"Aviso de Privacidad","item":"https://www.dignitasabogacia.com/aviso-de-privacidad"}
+    {"@type":"ListItem","position":2,"name":"Aviso de Privacidad","item":"https://www.dignitasabogacia.com/aviso-de-privacidad/"}
    ]
   }
  ]
@@ -57,20 +57,20 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20 lg:h-24">
       <a href="/" class="flex items-center gap-3 group" aria-label="Dígnitas Abogacía - Inicio">
-        <img src="/Logo.png" alt="Logo Dignitas Abogacía" width="512" height="512" class="h-16 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-105 object-contain" onerror="this.style.display='none'">
+        <img src="/Logo-128.png" alt="Logo Dignitas Abogacía" width="128" height="128" class="h-16 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-105 object-contain" onerror="this.style.display='none'">
         <div class="flex flex-col leading-none">
           <span class="font-montserrat text-lg sm:text-xl font-bold tracking-wider text-white">DÍGNITAS</span>
           <span class="font-montserrat text-[10px] sm:text-xs tracking-[.35em] text-blue-400 font-medium">ABOGACÍA</span>
         </div>
       </a>
       <div class="hidden xl:flex items-center gap-8">
-        <a href="/servicios" class="nav-enlace text-sm font-medium">Servicios</a>
-        <a href="/empresas" class="nav-enlace text-sm font-medium">Empresas</a>
-        <a href="/capacitacion" class="nav-enlace text-sm font-medium">Capacitación</a>
-        <a href="/equipo" class="nav-enlace text-sm font-medium">Equipo</a>
-        <a href="/nosotros" class="nav-enlace text-sm font-medium">Nosotros</a>
-        <a href="/preguntas-frecuentes" class="nav-enlace text-sm font-medium">Preguntas</a>
-        <a href="/contacto" class="nav-enlace text-sm font-medium">Contacto</a>
+        <a href="/servicios/" class="nav-enlace text-sm font-medium">Servicios</a>
+        <a href="/empresas/" class="nav-enlace text-sm font-medium">Empresas</a>
+        <a href="/capacitacion/" class="nav-enlace text-sm font-medium">Capacitación</a>
+        <a href="/equipo/" class="nav-enlace text-sm font-medium">Equipo</a>
+        <a href="/nosotros/" class="nav-enlace text-sm font-medium">Nosotros</a>
+        <a href="/preguntas-frecuentes/" class="nav-enlace text-sm font-medium">Preguntas</a>
+        <a href="/contacto/" class="nav-enlace text-sm font-medium">Contacto</a>
         <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-action font-bold text-sm px-6 py-3 rounded-lg">Agenda tu asesoría</a>
       </div>
       <button id="menuToggle" class="xl:hidden p-3 -mr-3 text-white" aria-label="Abrir menú" aria-expanded="false">
@@ -84,7 +84,7 @@
 <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-80 flex flex-col max-w-[85vw] bg-[#050C15] border-l border-white/10 shadow-2xl z-[60] xl:hidden">
   <div class="flex items-center justify-between px-8 pt-8 pb-4 border-b border-white/10">
     <a href="/" class="flex items-center gap-2">
-      <img src="/Logo.png" alt="Logo Dignitas Abogacía" width="512" height="512" class="h-10 w-auto object-contain" onerror="this.style.display='none'">
+      <img src="/Logo-128.png" alt="Logo Dignitas Abogacía" width="128" height="128" class="h-10 w-auto object-contain" onerror="this.style.display='none'">
       <div class="flex flex-col leading-none">
         <span class="font-montserrat text-base font-bold tracking-wider text-white">DÍGNITAS</span>
         <span class="font-montserrat text-[8px] tracking-[.35em] text-blue-400 font-medium">ABOGACÍA</span>
@@ -96,15 +96,15 @@
   </div>
   <div class="flex flex-col flex-1 min-h-0 px-8 pt-6 pb-8 overflow-y-auto">
     <a href="/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Inicio</a>
-    <a href="/servicios" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Servicios</a>
-    <a href="/empresas" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Empresas</a>
-    <a href="/capacitacion" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Capacitación</a>
-    <a href="/equipo" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Equipo</a>
-    <a href="/nosotros" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Nosotros</a>
-    <a href="/preguntas-frecuentes" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Preguntas</a>
-    <a href="/contacto" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Contacto</a>
-    <a href="/sedes/san-cristobal-de-las-casas" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Sede San Cristóbal</a>
-    <a href="/sedes/puebla" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Puebla</a>
+    <a href="/servicios/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Servicios</a>
+    <a href="/empresas/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Empresas</a>
+    <a href="/capacitacion/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Capacitación</a>
+    <a href="/equipo/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Equipo</a>
+    <a href="/nosotros/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Nosotros</a>
+    <a href="/preguntas-frecuentes/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Preguntas</a>
+    <a href="/contacto/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Contacto</a>
+    <a href="/sedes/san-cristobal-de-las-casas/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Sede San Cristóbal</a>
+    <a href="/sedes/puebla/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Puebla</a>
     <div class="mt-8">
       <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-action block text-center font-bold text-lg px-6 py-4 rounded-lg">Agenda tu asesoría</a>
     </div>
@@ -119,7 +119,7 @@
 <main id="main">
   <section class="relative pt-40 pb-24 md:pt-48 md:pb-32 bg-navy-500">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h1 class="font-montserrat text-2xl sm:text-3xl font-bold mb-6 text-white">2. Aviso de Privacidad Integral</h1>
+      <h1 class="font-montserrat text-2xl sm:text-3xl font-bold mb-6 text-white">Aviso de Privacidad Integral</h1>
       <p class="text-white/70 text-sm mb-6">Emitido conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares vigente, publicada en el Diario Oficial de la Federación el 20 de marzo de 2025 y a su normativa secundaria.</p>
       <h2 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.1. Identidad y Domicilio del Responsable</h2>
       <p class="text-white leading-relaxed">Las personas físicas titulares de la firma DÍGNITAS ABOGACÍA (en adelante "El Responsable"), con domicilio para recibir notificaciones en Calle Tauro #30, Col. "San Juan de los Lagos", San Cristóbal de las Casas, Chiapas. C.P. 29296, son responsables del uso, tratamiento y protección de sus datos personales.</p>
@@ -131,7 +131,7 @@
         <li>Correo electrónico.</li>
         <li>Información general sobre el asunto o consulta jurídica requerida.</li>
       </ul>
-      <p class="text-white/70 text-sm mt-3">Este sitio web no cuenta con formularios de captura de datos. La totalidad de la información personal que llegue a El Responsable proviene de la comunicación que usted mismo decida iniciar por los medios señalados.</p>
+      <p class="text-white/70 text-sm mt-3">Los datos personales llegan a El Responsable por la comunicación que usted decida iniciar a través de los medios señalados y, en su caso, por los formularios de contacto que este sitio ponga a su disposición. Cualquier formulario disponible en este sitio recaba únicamente los datos enumerados en este apartado y se rige por el presente aviso.</p>
       <p class="text-white/70 text-sm mt-3">No recabamos datos personales sensibles a través del sitio web. Cualquier información estrictamente confidencial o sensible relacionada con su proceso legal será solicitada únicamente tras formalizar la relación profesional bajo secreto profesional.</p>
       <p class="text-white leading-relaxed mt-2">Con independencia de lo anterior, las cookies opcionales descritas en el apartado 2.6 registran de manera automatizada las secciones de este sitio que usted consulta. Esa información se trata únicamente con fines estadísticos y publicitarios en los términos de los apartados 2.5 y 2.6, y no se utiliza para inferir, generar ni tratar datos personales sensibles.</p>
       <h2 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.3. Finalidades del Tratamiento de Datos</h2>
@@ -160,7 +160,7 @@
       <p class="text-white leading-relaxed mt-2"><span class="text-white/90 font-medium">b) Únicamente si usted lo consiente expresamente</span>: los servicios de analítica web Google Analytics 4, los servicios publicitarios de Google Ads asociados a dicha analítica y el pixel de Meta para Facebook e Instagram. Estas herramientas reciben su dirección IP, el tipo de navegador y de dispositivo empleados, el origen de su visita y su comportamiento de navegación dentro del sitio, incluidas las secciones que consulta.</p>
       <p class="text-white leading-relaxed mt-2">Los datos referidos en el inciso b) se tratan con dos finalidades: medir el desempeño del sitio de forma estadística y agregada, y conformar audiencias que permitan a El Responsable dirigir y medir su publicidad digital dentro de los servicios de Google y de Meta. Al tratarse de proveedores extranjeros, estas transferencias implican el tratamiento de sus datos fuera del territorio nacional y conforme a la legislación del país de destino. Usted puede negarse a ellas en cualquier momento, sin consecuencia alguna en el acceso al sitio, rechazando las cookies opcionales en los términos del apartado siguiente.</p>
       <p class="text-white leading-relaxed mt-2">El Responsable no transfiere a dichas plataformas su nombre, su teléfono, su correo electrónico ni el contenido de su consulta jurídica, ni configura segmentaciones publicitarias basadas en datos personales sensibles, en su estado de salud, en su situación económica ni en la materia jurídica concreta que usted haya consultado en este sitio.</p>
-      <p class="text-white leading-relaxed mt-2">Este sitio web no cuenta con formularios de captura ni con proveedores de envío de formularios. En consecuencia, los datos personales señalados en el apartado 2.2 no son objeto de transferencia alguna derivada del uso de este sitio: llegan a El Responsable únicamente por el medio de comunicación que usted elija. Cuando ese medio sea WhatsApp, la comunicación se cursa a través de un servicio operado por <strong class="text-white">Meta Platforms, Inc.</strong>, sujeto a las condiciones de uso y a la política de privacidad que usted acepta directamente con dicho proveedor y que son ajenas a este sitio. Si prefiere no utilizar ese medio, puede comunicarse por vía telefónica o escribir a da@dignitasabogacia.com.</p>
+      <p class="text-white leading-relaxed mt-2">Los datos personales señalados en el apartado 2.2 no son objeto de transferencia alguna derivada del uso de este sitio: llegan a El Responsable por el medio de comunicación que usted elija. Si este sitio incorpora un formulario de contacto operado por un proveedor externo, el nombre de dicho proveedor, su domicilio y la finalidad de la transferencia se harán constar en este mismo apartado antes de habilitarlo. Cuando ese medio sea WhatsApp, la comunicación se cursa a través de un servicio operado por <strong class="text-white">Meta Platforms, Inc.</strong>, sujeto a las condiciones de uso y a la política de privacidad que usted acepta directamente con dicho proveedor y que son ajenas a este sitio. Si prefiere no utilizar ese medio, puede comunicarse por vía telefónica o escribir a da@dignitasabogacia.com.</p>
       <h2 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.6. Uso de Cookies y Tecnologías de Rastreo</h2>
       <p class="text-white leading-relaxed">Este sitio web utiliza cookies y tecnologías similares de almacenamiento local, que se clasifican de la siguiente manera:</p>
       <p class="text-white leading-relaxed mt-2"><span class="text-white/90 font-medium">a) Cookies estrictamente necesarias.</span> Permiten el funcionamiento básico del sitio y conservan el registro de sus propias preferencias de privacidad. Al ser indispensables para la prestación del servicio solicitado, no requieren de su consentimiento y no pueden desactivarse.</p>
@@ -168,11 +168,11 @@
       <p class="text-white leading-relaxed mt-2">Usted puede aceptar o rechazar las cookies opcionales desde dicho aviso; revocar su consentimiento en cualquier momento mediante el enlace <strong class="text-white">Preferencias de cookies</strong> disponible en el pie de esta página; y configurar su navegador para bloquear o suprimir cookies. El rechazo de las cookies opcionales no limita en modo alguno su acceso a los contenidos ni a los servicios de este sitio.</p>
       <p class="text-white leading-relaxed mt-2">El Responsable no comercializa ni cede sus datos personales a terceros con fines de lucro, no adopta decisiones automatizadas que produzcan efectos jurídicos sobre usted o que le afecten de modo significativo, ni utiliza las cookies opcionales para segmentar publicidad con base en datos personales sensibles, en su estado de salud, en su situación económica ni en la materia jurídica concreta que usted haya consultado en este sitio.</p>
       <h2 class="font-semibold text-lg mt-6 mb-3 text-blue-400">2.7. Modificaciones al Aviso de Privacidad</h2>
-      <p class="text-white leading-relaxed">El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales; de nuestras propias necesidades por los servicios que ofrecemos; de nuestras prácticas de privacidad; o por cambios en nuestro modelo de negocio. Nos comprometemos a mantenerlo informado sobre los cambios a través de la actualización de este documento en nuestra página web.</p>
-      <p class="text-white/70 text-sm mt-4">Fecha de última actualización: septiembre de 2026.</p>
+      <p class="text-white leading-relaxed">El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales; de nuestras propias necesidades por los servicios que ofrecemos; de nuestras prácticas de privacidad; o por cambios en nuestro modelo de negocio. Cualquier modificación se comunicará mediante la publicación de la versión actualizada en esta misma página (https://www.dignitasabogacia.com/aviso-de-privacidad/), con indicación de la fecha de última actualización al final del documento. Los cambios surten efectos a partir de esa fecha; le recomendamos consultar este aviso periódicamente. Cuando una modificación afecte las finalidades del tratamiento o implique nuevas transferencias, se le informará además por el medio de contacto que usted haya proporcionado, para que pueda ejercer su derecho de oposición.</p>
+      <p class="text-white/70 text-sm mt-4">Fecha de última actualización: 17 de septiembre de 2026.</p>
 
       <div class="mt-10 pt-8 border-t border-white/10">
-        <a href="/aviso-legal" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">
+        <a href="/aviso-legal/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">
           Ver Aviso Legal
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
@@ -186,7 +186,7 @@
     <div class="grid md:grid-cols-3 gap-10 mb-12">
       <div>
         <div class="flex items-center gap-3 mb-4">
-          <img src="/Logo.png" alt="Logo Dignitas Abogacía Footer" width="512" height="512" class="h-10 w-auto object-contain" onerror="this.style.display='none'">
+          <img src="/Logo-128.png" alt="Logo Dignitas Abogacía Footer" width="128" height="128" class="h-10 w-auto object-contain" onerror="this.style.display='none'">
           <div class="flex flex-col leading-none">
             <span class="font-montserrat text-base font-bold tracking-wider">DÍGNITAS</span>
             <span class="font-montserrat text-[9px] tracking-[.35em] text-blue-400 font-medium">ABOGACÍA</span>
@@ -210,23 +210,23 @@
         <h3 class="font-semibold text-white mb-4">Navegación</h3>
         <div class="space-y-2">
           <a href="/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Inicio</a>
-          <a href="/servicios" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Servicios</a>
-          <a href="/nosotros" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Nosotros</a>
-          <a href="/equipo" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Equipo</a>
-          <a href="/preguntas-frecuentes" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Preguntas</a>
-          <a href="/empresas" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Empresas</a>
-          <a href="/capacitacion" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Capacitación</a>
-          <a href="/contacto" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Contacto</a>
+          <a href="/servicios/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Servicios</a>
+          <a href="/nosotros/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Nosotros</a>
+          <a href="/equipo/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Equipo</a>
+          <a href="/preguntas-frecuentes/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Preguntas</a>
+          <a href="/empresas/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Empresas</a>
+          <a href="/capacitacion/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Capacitación</a>
+          <a href="/contacto/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Contacto</a>
           <div class="pt-3 mt-3 border-t border-white/10"></div>
-          <a href="/sedes/san-cristobal-de-las-casas" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Sede San Cristóbal de las Casas</a>
-          <a href="/sedes/puebla" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Puebla</a>
+          <a href="/sedes/san-cristobal-de-las-casas/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Sede San Cristóbal de las Casas</a>
+          <a href="/sedes/puebla/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Puebla</a>
         </div>
       </div>
       <div>
         <h3 class="font-semibold text-white mb-4">Legal</h3>
         <div class="space-y-2">
-          <a href="/aviso-legal" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors text-left w-full">Aviso Legal</a>
-          <a href="/aviso-de-privacidad" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors text-left w-full">Aviso de Privacidad</a>
+          <a href="/aviso-legal/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors text-left w-full">Aviso Legal</a>
+          <a href="/aviso-de-privacidad/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors text-left w-full">Aviso de Privacidad</a>
           <button onclick="abrirPreferenciasCookies()" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors text-left w-full">Preferencias de cookies</button>
         </div>
       </div>
@@ -248,7 +248,7 @@
     <div class="md:flex md:items-center md:gap-6">
       <div class="flex-1">
         <h4 class="text-white font-semibold mb-2">Este sitio utiliza cookies</h4>
-        <p class="cookie-texto text-white/75 text-sm leading-relaxed">Usamos cookies necesarias para el funcionamiento del sitio y, solo si lo autorizas, cookies de analítica y de publicidad de Google y de Meta. <a href="/aviso-de-privacidad" class="text-blue-400 underline hover:text-blue-300 font-medium">Ver Aviso de Privacidad</a></p>
+        <p class="cookie-texto text-white/75 text-sm leading-relaxed">Usamos cookies necesarias para el funcionamiento del sitio y, solo si lo autorizas, cookies de analítica y de publicidad de Google y de Meta. <a href="/aviso-de-privacidad/" class="text-blue-400 underline hover:text-blue-300 font-medium">Ver Aviso de Privacidad</a></p>
       </div>
       <div class="flex gap-3 mt-4 md:mt-0 flex-shrink-0">
         <button type="button" id="cookieRechazar" class="px-5 py-3 rounded-lg border border-white/20 text-white text-sm font-semibold hover:bg-white/5 transition-colors">Rechazar</button>

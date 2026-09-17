@@ -82,12 +82,12 @@
 <meta name="twitter:description" content="Abogados en San Cristóbal de las Casas: defensa laboral, familiar, de salud y fiscal con enfoque de Derechos Humanos.">
 <meta name="twitter:image" content="https://www.dignitasabogacia.com/og-banner.jpg">
 
+<link rel="icon" href="/favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" href="/Logo.png">
 <link rel="apple-touch-icon" href="/Logo.png">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" href="/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/cormorant-garamond-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/estilos.css">
 
 <noscript>
@@ -164,7 +164,7 @@
    "@id":"https://www.dignitasabogacia.com/#sede-chiapas",
    "name":"DÍGNITAS ABOGACÍA — San Cristóbal de las Casas",
    "parentOrganization":{"@id":"https://www.dignitasabogacia.com/#firma"},
-   "url":"https://www.dignitasabogacia.com/sedes/san-cristobal-de-las-casas",
+   "url":"https://www.dignitasabogacia.com/sedes/san-cristobal-de-las-casas/",
    "image":"https://www.dignitasabogacia.com/banner.png",
    "email":"da@dignitasabogacia.com",
    "telephone":"+528130754795",
@@ -196,7 +196,7 @@
    "@id":"https://www.dignitasabogacia.com/#sede-puebla",
    "name":"DÍGNITAS ABOGACÍA — Puebla",
    "parentOrganization":{"@id":"https://www.dignitasabogacia.com/#firma"},
-   "url":"https://www.dignitasabogacia.com/sedes/puebla",
+   "url":"https://www.dignitasabogacia.com/sedes/puebla/",
    "image":"https://www.dignitasabogacia.com/banner.png",
    "email":"da@dignitasabogacia.com",
    "telephone":"+528130754795",
@@ -209,7 +209,7 @@
    "name":"Elvira Vázquez",
    "jobTitle":"Socia Cofundadora",
    "worksFor":{"@id":"https://www.dignitasabogacia.com/#firma"},
-   "url":"https://www.dignitasabogacia.com/equipo"
+   "url":"https://www.dignitasabogacia.com/equipo/"
   },
   {
    "@type":"Person",
@@ -217,7 +217,7 @@
    "name":"Emmanuel Quiroz",
    "jobTitle":"Socio Cofundador",
    "worksFor":{"@id":"https://www.dignitasabogacia.com/#firma"},
-   "url":"https://www.dignitasabogacia.com/equipo",
+   "url":"https://www.dignitasabogacia.com/equipo/",
    "sameAs":["https://www.linkedin.com/in/emmanuel-quiroz-parrilla"]
   },
   {
@@ -240,20 +240,20 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-20 lg:h-24">
       <a href="/" class="flex items-center gap-3 group" aria-label="Dígnitas Abogacía - Inicio">
-        <img src="/Logo.png" alt="Logo Dignitas Abogacía" width="512" height="512" class="h-16 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-105 object-contain" onerror="this.style.display='none'">
+        <img src="/Logo-128.png" alt="Logo Dignitas Abogacía" width="128" height="128" class="h-16 sm:h-12 w-auto transition-transform duration-300 group-hover:scale-105 object-contain" onerror="this.style.display='none'">
         <div class="flex flex-col leading-none">
           <span class="font-montserrat text-lg sm:text-xl font-bold tracking-wider text-white">DÍGNITAS</span>
           <span class="font-montserrat text-[10px] sm:text-xs tracking-[.35em] text-blue-400 font-medium">ABOGACÍA</span>
         </div>
       </a>
       <div class="hidden xl:flex items-center gap-8">
-        <a href="/servicios" class="nav-enlace text-sm font-medium">Servicios</a>
-        <a href="/empresas" class="nav-enlace text-sm font-medium">Empresas</a>
-        <a href="/capacitacion" class="nav-enlace text-sm font-medium">Capacitación</a>
-        <a href="/equipo" class="nav-enlace text-sm font-medium">Equipo</a>
-        <a href="/nosotros" class="nav-enlace text-sm font-medium">Nosotros</a>
-        <a href="/preguntas-frecuentes" class="nav-enlace text-sm font-medium">Preguntas</a>
-        <a href="/contacto" class="nav-enlace text-sm font-medium">Contacto</a>
+        <a href="/servicios/" class="nav-enlace text-sm font-medium">Servicios</a>
+        <a href="/empresas/" class="nav-enlace text-sm font-medium">Empresas</a>
+        <a href="/capacitacion/" class="nav-enlace text-sm font-medium">Capacitación</a>
+        <a href="/equipo/" class="nav-enlace text-sm font-medium">Equipo</a>
+        <a href="/nosotros/" class="nav-enlace text-sm font-medium">Nosotros</a>
+        <a href="/preguntas-frecuentes/" class="nav-enlace text-sm font-medium">Preguntas</a>
+        <a href="/contacto/" class="nav-enlace text-sm font-medium">Contacto</a>
         <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-action font-bold text-sm px-6 py-3 rounded-lg">Agenda tu asesoría</a>
       </div>
       <button id="menuToggle" class="xl:hidden p-3 -mr-3 text-white" aria-label="Abrir menú" aria-expanded="false">
@@ -268,7 +268,7 @@
 <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-80 flex flex-col max-w-[85vw] bg-[#050C15] border-l border-white/10 shadow-2xl z-[60] xl:hidden">
   <div class="flex items-center justify-between px-8 pt-8 pb-4 border-b border-white/10">
     <a href="/" class="flex items-center gap-2">
-      <img src="/Logo.png" alt="Logo Dignitas Abogacía" width="512" height="512" class="h-10 w-auto object-contain" onerror="this.style.display='none'">
+      <img src="/Logo-128.png" alt="Logo Dignitas Abogacía" width="128" height="128" class="h-10 w-auto object-contain" onerror="this.style.display='none'">
       <div class="flex flex-col leading-none">
         <span class="font-montserrat text-base font-bold tracking-wider text-white">DÍGNITAS</span>
         <span class="font-montserrat text-[8px] tracking-[.35em] text-blue-400 font-medium">ABOGACÍA</span>
@@ -280,15 +280,15 @@
   </div>
   <div class="flex flex-col flex-1 min-h-0 px-8 pt-6 pb-8 overflow-y-auto">
     <a href="/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Inicio</a>
-    <a href="/servicios" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Servicios</a>
-    <a href="/empresas" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Empresas</a>
-    <a href="/capacitacion" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Capacitación</a>
-    <a href="/equipo" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Equipo</a>
-    <a href="/nosotros" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Nosotros</a>
-    <a href="/preguntas-frecuentes" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Preguntas</a>
-    <a href="/contacto" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Contacto</a>
-    <a href="/sedes/san-cristobal-de-las-casas" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Sede San Cristóbal</a>
-    <a href="/sedes/puebla" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Puebla</a>
+    <a href="/servicios/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Servicios</a>
+    <a href="/empresas/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Empresas</a>
+    <a href="/capacitacion/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Capacitación</a>
+    <a href="/equipo/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Equipo</a>
+    <a href="/nosotros/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Nosotros</a>
+    <a href="/preguntas-frecuentes/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Preguntas</a>
+    <a href="/contacto/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Contacto</a>
+    <a href="/sedes/san-cristobal-de-las-casas/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Sede San Cristóbal</a>
+    <a href="/sedes/puebla/" class="mobile-link text-xl font-medium py-4 border-b border-white/10 text-white hover:text-action-400 transition-colors">Puebla</a>
     <div class="mt-8">
       <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-action block text-center font-bold text-lg px-6 py-4 rounded-lg">Agenda tu asesoría</a>
     </div>
@@ -324,13 +324,13 @@
         Litigio con enfoque de Derechos Humanos en:<br>
         <span class="text-white font-semibold">Derecho Laboral</span> · <span class="text-white font-semibold">Salud Integral</span> · <span class="text-white font-semibold">Derecho Familiar</span> · <span class="text-white font-semibold">Defensa Fiscal</span>
       </p>
-      <p class="text-action-400 font-semibold text-base sm:text-lg mb-5" style="animation:fadeUp .8s ease .48s forwards;opacity:0">Cuéntenos su caso hoy.</p>
+      <p class="text-action-400 font-semibold text-base sm:text-lg mb-5" style="animation:fadeUp .8s ease .48s forwards;opacity:0">Cuéntanos tu caso hoy.</p>
       <div class="flex flex-col sm:flex-row gap-4" style="animation:fadeUp .8s ease .52s forwards;opacity:0">
         <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20asesor%C3%ADa%20jur%C3%ADdica." target="_blank" rel="noopener" class="cta-action font-bold text-lg px-8 py-4 rounded-lg text-center inline-flex items-center justify-center gap-3">
           <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           ¡Agenda tu asesoría!
         </a>
-        <a href="/equipo" class="cta-outline text-white font-semibold text-lg px-8 py-4 rounded-lg text-center">
+        <a href="/equipo/" class="cta-outline text-white font-semibold text-lg px-8 py-4 rounded-lg text-center">
           Conoce al equipo
         </a>
       </div>
@@ -353,15 +353,15 @@
 
       <div class="grid md:grid-cols-3 gap-6">
         <div class="text-center flex flex-col">
-          <a href="/servicios" class="cta-action flex items-center justify-center text-center min-h-[96px] font-bold text-base px-6 py-5 rounded-lg mb-3">Defensa de mi trabajo, salud, familia o contra un acto de autoridad →</a>
+          <a href="/servicios/" class="cta-action flex items-center justify-center text-center min-h-[96px] font-bold text-base px-6 py-5 rounded-lg mb-3">Defensa de mi trabajo, salud, familia o contra un acto de autoridad →</a>
           <p class="text-white/75 text-sm">Acoso, hostigamiento, despido, liquidación, negativa de medicamentos, pensión alimenticia, divorcio.</p>
         </div>
         <div class="text-center flex flex-col">
-          <a href="/capacitacion" class="cta-action flex items-center justify-center text-center min-h-[96px] font-bold text-base px-6 py-5 rounded-lg mb-3">Quiero capacitación →</a>
+          <a href="/capacitacion/" class="cta-action flex items-center justify-center text-center min-h-[96px] font-bold text-base px-6 py-5 rounded-lg mb-3">Quiero capacitación →</a>
           <p class="text-white/75 text-sm">Contamos con capacitación para tu personal y certificación dentro de los estándares del CONOCER.</p>
         </div>
         <div class="text-center flex flex-col">
-          <a href="/empresas" class="cta-action flex items-center justify-center text-center min-h-[96px] font-bold text-base px-6 py-5 rounded-lg mb-3">Blindaje legal para mi empresa →</a>
+          <a href="/empresas/" class="cta-action flex items-center justify-center text-center min-h-[96px] font-bold text-base px-6 py-5 rounded-lg mb-3">Blindaje legal para mi empresa →</a>
           <p class="text-white/75 text-sm">Diagnóstico empresarial, normas oficiales mexicanas, inspecciones de la STPS, contratos y reglamentos.</p>
         </div>
       </div>
@@ -391,7 +391,7 @@
           <div class="accent-line w-20 mb-6" style="background:linear-gradient(90deg,#06B6D4,transparent)"></div>
           <p class="text-white leading-relaxed mb-6">Somos una firma que no solo te representa, te acompaña. Cofundada por Emmanuel Quiroz y Elvira Vázquez, unimos más de 15 años de trayectoria jurídica con capacidad de litigio nacional, con sede en San Cristóbal de las Casas, Chiapas y en Puebla capital.</p>
           <p class="text-white leading-relaxed mb-8">No vemos expedientes; atendemos personas. Explicamos cada estrategia y etapa en lenguaje claro, porque tomar decisiones con información real es tu principal derecho.</p>
-          <a href="/contacto" class="cta-action font-bold px-8 py-4 rounded-lg inline-flex items-center gap-2">
+          <a href="/contacto/" class="cta-action font-bold px-8 py-4 rounded-lg inline-flex items-center gap-2">
             Conversemos
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
@@ -408,7 +408,7 @@
     <div class="grid md:grid-cols-3 gap-10 mb-12">
       <div id="contacto-directo">
         <div class="flex items-center gap-3 mb-4">
-          <img src="/Logo.png" alt="Logo Dignitas Abogacía Footer" width="512" height="512" class="h-10 w-auto object-contain" onerror="this.style.display='none'">
+          <img src="/Logo-128.png" alt="Logo Dignitas Abogacía Footer" width="128" height="128" class="h-10 w-auto object-contain" onerror="this.style.display='none'">
           <div class="flex flex-col leading-none">
             <span class="font-montserrat text-base font-bold tracking-wider">DÍGNITAS</span>
             <span class="font-montserrat text-[9px] tracking-[.35em] text-blue-400 font-medium">ABOGACÍA</span>
@@ -432,23 +432,23 @@
         <h3 class="font-semibold text-white mb-4">Navegación</h3>
         <div class="space-y-2">
           <a href="/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Inicio</a>
-          <a href="/servicios" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Servicios</a>
-          <a href="/nosotros" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Nosotros</a>
-          <a href="/equipo" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Equipo</a>
-          <a href="/preguntas-frecuentes" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Preguntas</a>
-          <a href="/empresas" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Empresas</a>
-          <a href="/capacitacion" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Capacitación</a>
-          <a href="/contacto" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Contacto</a>
+          <a href="/servicios/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Servicios</a>
+          <a href="/nosotros/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Nosotros</a>
+          <a href="/equipo/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Equipo</a>
+          <a href="/preguntas-frecuentes/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Preguntas</a>
+          <a href="/empresas/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Empresas</a>
+          <a href="/capacitacion/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Capacitación</a>
+          <a href="/contacto/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Contacto</a>
           <div class="pt-3 mt-3 border-t border-white/10"></div>
-          <a href="/sedes/san-cristobal-de-las-casas" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Sede San Cristóbal de las Casas</a>
-          <a href="/sedes/puebla" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Puebla</a>
+          <a href="/sedes/san-cristobal-de-las-casas/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Sede San Cristóbal de las Casas</a>
+          <a href="/sedes/puebla/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors">Puebla</a>
         </div>
       </div>
       <div>
         <h3 class="font-semibold text-white mb-4">Legal</h3>
         <div class="space-y-2">
-          <a href="/aviso-legal" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors text-left w-full">Aviso Legal</a>
-          <a href="/aviso-de-privacidad" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors text-left w-full">Aviso de Privacidad</a>
+          <a href="/aviso-legal/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors text-left w-full">Aviso Legal</a>
+          <a href="/aviso-de-privacidad/" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors text-left w-full">Aviso de Privacidad</a>
           <button onclick="abrirPreferenciasCookies()" class="block text-white hover:text-white sm:text-white/70 sm:hover:text-white text-sm transition-colors text-left w-full">Preferencias de cookies</button>
         </div>
       </div>
@@ -471,7 +471,7 @@
     <div class="md:flex md:items-center md:gap-6">
       <div class="flex-1">
         <h4 class="text-white font-semibold mb-2">Este sitio utiliza cookies</h4>
-        <p class="cookie-texto text-white/75 text-sm leading-relaxed">Usamos cookies necesarias para el funcionamiento del sitio y, solo si lo autorizas, cookies de analítica y de publicidad de Google y de Meta. <a href="/aviso-de-privacidad" class="text-blue-400 underline hover:text-blue-300 font-medium">Ver Aviso de Privacidad</a></p>
+        <p class="cookie-texto text-white/75 text-sm leading-relaxed">Usamos cookies necesarias para el funcionamiento del sitio y, solo si lo autorizas, cookies de analítica y de publicidad de Google y de Meta. <a href="/aviso-de-privacidad/" class="text-blue-400 underline hover:text-blue-300 font-medium">Ver Aviso de Privacidad</a></p>
       </div>
       <div class="flex gap-3 mt-4 md:mt-0 flex-shrink-0">
         <button type="button" id="cookieRechazar" class="px-5 py-3 rounded-lg border border-white/20 text-white text-sm font-semibold hover:bg-white/5 transition-colors">Rechazar</button>

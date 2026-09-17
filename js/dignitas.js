@@ -309,11 +309,22 @@ document.addEventListener('click', function (e) {
     var decision = null;
     try { decision = localStorage.getItem(CLAVE); } catch (e) {}
 
+    /* Tarea 1 (2026-09-17): se mide la altura real del aviso para que el botón
+       flotante de WhatsApp quede siempre por encima de él (ver estilos.css). */
+    function ajustarAltoCookies() {
+      if (!aviso || aviso.classList.contains('hidden')) return;
+      var caja = aviso.firstElementChild;
+      if (caja) document.documentElement.style.setProperty('--alto-cookies', caja.offsetHeight + 'px');
+    }
+    window.addEventListener('resize', ajustarAltoCookies);
+
     if (decision === 'aceptadas') {
       cargarAnalitica();
       cargarMeta();
     } else if (decision !== 'rechazadas') {
       if (aviso) aviso.classList.remove('hidden');
+      ajustarAltoCookies();
+      window.setTimeout(ajustarAltoCookies, 300);
     }
 
     function guardar(valor) {
@@ -338,6 +349,7 @@ document.addEventListener('click', function (e) {
     window.abrirPreferenciasCookies = function () {
       try { localStorage.removeItem(CLAVE); } catch (e) {}
       if (aviso) aviso.classList.remove('hidden');
+      ajustarAltoCookies();
     };
   }
 
