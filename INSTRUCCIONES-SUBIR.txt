@@ -1,0 +1,38 @@
+CÓMO SUBIR EL SITIO COMPLETO A GITHUB (una sola vez, todo de golpe)
+=====================================================================
+
+Esta carpeta ES el sitio entero: los 35 archivos que debe tener el repositorio
+(los 30 que ya existían, con los cambios aplicados, más 5 nuevos).
+No hace falta borrar nada en GitHub: al subir, los archivos con el mismo
+nombre se reemplazan y los nuevos se agregan. No queda ningún sobrante.
+
+1. Abre en el navegador: https://github.com/dignitasabogacia/web
+2. Clic en el botón verde/gris "Add file" (arriba a la derecha de la lista
+   de archivos) y luego en "Upload files".
+3. Abre esta carpeta (SITIO-COMPLETO-2026-09-17) en el Explorador de Windows.
+   Pulsa Ctrl+A para seleccionar TODO lo que hay dentro (carpetas y archivos),
+   excepto este archivo INSTRUCCIONES-SUBIR.txt (Ctrl+clic sobre él para
+   quitarlo de la selección).
+4. Arrastra la selección al recuadro de GitHub que dice
+   "Drag files here to add them to your repository".
+   Espera a que la lista termine de cargarse: debe mostrar 35 archivos, con
+   rutas como  servicios/laboral/index.html  y  fonts/montserrat.woff2.
+5. Abajo, en "Commit changes", escribe en el primer renglón:
+   Sitio completo 2026-09-17
+6. Deja marcada la opción "Commit directly to the main branch" y pulsa el
+   botón verde "Commit changes".
+7. Espera de 1 a 3 minutos. Abre https://www.dignitasabogacia.com/ y pulsa
+   Ctrl+F5. Listo.
+
+Si prefieres borrar todo primero (NO es necesario): GitHub web solo permite
+borrar de uno en uno o carpeta por carpeta (abrir la carpeta → botón "..." →
+"Delete directory"). Son 14 operaciones y no aporta nada frente a subir
+encima. Si aun así lo haces, NO borres el archivo CNAME: sin él el sitio deja
+de responder en dignitasabogacia.com. En esta carpeta ya viene incluido.
+
+Cómo comprobar que quedó bien (en cualquier momento):
+- https://www.dignitasabogacia.com/favicon.ico  → debe verse el logo.
+- https://pagespeed.web.dev/  → pega la dirección del sitio, pestaña Móvil:
+  LCP por debajo de 2,5 s.
+- En el celular, ventana de incógnito: el botón verde de WhatsApp se ve
+  completo por encima del aviso de cookies.
