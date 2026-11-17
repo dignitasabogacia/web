@@ -33,7 +33,36 @@
 <link rel="preload" href="/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/cormorant-garamond-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/estilos.css">
-<noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+<noscript><style>.reveal{opacity:1 !important;transform:none !important}/* Reseñas tipo carrusel (rediseño 2026-11-17) */
+#resenas .rv-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap}
+#resenas .rv-eti{display:block;color:#60A5FA;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+#resenas .res-nota{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap}
+#resenas .res-num{font-family:"Cormorant Garamond",serif;font-size:3.6rem;font-weight:600;line-height:1;color:#F5C451}
+#resenas .res-nota h2{font-family:Montserrat,sans-serif;font-size:1.35rem;font-weight:700;color:#fff}
+#resenas .res-controles{display:flex;gap:.6rem}
+#resenas .res-controles button{width:46px;height:46px;border-radius:999px;border:1px solid rgba(201,162,75,.5);background:rgba(11,26,46,.6);color:#F5C451;font-size:1.15rem;cursor:pointer;transition:background-color .25s,border-color .25s,transform .25s}
+#resenas .res-controles button:hover,#resenas .res-controles button:focus-visible{background:rgba(201,162,75,.16);border-color:#C9A24B;transform:translateY(-2px)}
+#resenas .res-g{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1.25rem;padding:2rem 16px 1.5rem;margin:0 -16px;scroll-padding:0 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+#resenas .res-g::-webkit-scrollbar{display:none}
+#resenas .res{position:relative;overflow:hidden;flex:0 0 min(380px,84vw);scroll-snap-align:start;display:flex;flex-direction:column;justify-content:space-between;gap:1.25rem;margin:0;padding:1.9rem 1.8rem 1.6rem;border-radius:1.25rem;border:1px solid rgba(96,165,250,.22);background:linear-gradient(160deg,rgba(26,45,74,.9),rgba(11,26,46,.94));min-height:300px;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .35s}
+#resenas .res::before{content:"\201C";position:absolute;top:-.9rem;right:.8rem;font-family:"Cormorant Garamond",serif;font-size:8rem;line-height:1;color:rgba(201,162,75,.2);pointer-events:none}
+#resenas .res:hover{transform:translateY(-6px);border-color:rgba(201,162,75,.55);box-shadow:0 24px 44px -24px rgba(201,162,75,.45)}
+#resenas .res-est{color:#F5C451;letter-spacing:.2em;font-size:.95rem}
+#resenas .res blockquote{margin:0;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;line-height:1.5;color:#F1F5F9}
+#resenas .res-pie{display:flex;align-items:center;gap:.8rem;padding-top:1.1rem;border-top:1px solid rgba(96,165,250,.18)}
+#resenas .res-av{width:42px;height:42px;border-radius:50%;background:#C9A24B;color:#0B1A2E;display:grid;place-items:center;font-weight:700;font-size:.82rem;letter-spacing:.04em;flex-shrink:0}
+#resenas .res:nth-child(2) .res-av{background:#8FB3D9}
+#resenas .res:nth-child(3) .res-av{background:#3EA6FF}
+#resenas .res:nth-child(4) .res-av{background:#E3CB8F}
+#resenas .res-autor{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+#resenas .res-autor b{color:#fff;font-size:.98rem}
+#resenas .res-autor small{color:#8FB3D9;font-size:.78rem}
+#resenas .res-marca{margin-left:auto;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#8FB3D9;white-space:nowrap}
+#resenas .res-barra{position:relative;height:3px;border-radius:3px;background:rgba(143,179,217,.18);overflow:hidden;margin-top:.4rem}
+#resenas .res-barra i{position:absolute;top:0;left:0;height:100%;width:30%;background:#C9A24B;border-radius:3px;transition:transform .2s}
+@media (min-width:768px){#resenas .res-g{margin:0;padding-left:0;padding-right:0;scroll-padding:0}}
+@media (max-width:767px){#resenas .res-nota h2{font-size:1.1rem}#resenas .res-num{font-size:3rem}}
+@media (prefers-reduced-motion:reduce){#resenas .res-g{scroll-behavior:auto}#resenas .res{transition:none}}</style></noscript>
 <style>
 /* Portada: estilos propios de esta página (no tocan estilos.css) */
 .marca-d{font-family:"Cormorant Garamond",serif;font-weight:500;letter-spacing:.07em;line-height:.95;text-transform:uppercase;font-size:clamp(3.4rem,13vw,7.6rem);color:#fff}
@@ -178,6 +207,8 @@
 .fb-nota{color:rgba(255,255,255,.65);font-size:.82rem;margin-top:.9rem;line-height:1.5}
 .compartir{margin-top:1.75rem;color:rgba(255,255,255,.85)}
 .compartir a{color:#8FB3D9;font-weight:600;text-decoration:underline}
+.res-desliza{display:block;color:#8FB3D9;font-size:.85rem;letter-spacing:.06em;margin-top:.8rem}
+.res-g{display:flex !important;overflow-x:auto;scroll-snap-type:x mandatory;gap:1rem;padding:0 0 1rem;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}.res-g::-webkit-scrollbar{display:none}.res{flex:0 0 84%;scroll-snap-align:start}@media (min-width:768px){.res{flex:0 0 min(440px,46%)}}@media (max-width:767px){.res-g{margin-left:-1rem;margin-right:-1rem;padding:0 1rem 1rem}}.res-controles{display:none;gap:.6rem;justify-content:flex-end;margin-top:.6rem}.res-controles button{width:44px;height:44px;border-radius:999px;border:1px solid rgba(143,179,217,.5);background:transparent;color:#F4EFE6;font-size:1.1rem;cursor:pointer}.res-controles button:hover,.res-controles button:focus-visible{background:rgba(143,179,217,.18)}@media (min-width:768px){.res-controles{display:flex}}
 .hero-nota{font-family:"Cormorant Garamond",serif;font-weight:600;font-size:3.2rem;line-height:1;color:#F5C451;vertical-align:-.14em;margin:0 .2rem}
 .estrellas .e{font-size:1.6rem}
 @media (max-width:640px){.estrellas{display:flex;flex-wrap:wrap;justify-content:center;text-align:center;font-size:1.05rem;gap:.3rem .5rem;width:100%;max-width:22rem;margin-left:auto;margin-right:auto}.estrellas .e{font-size:1.25rem;width:100%;text-align:center}.estrellas>span:last-child{white-space:nowrap}.hero-nota{font-size:2.5rem}}
@@ -191,7 +222,36 @@
   .prueba:hover{border-top-color:#C9A24B}
   .th:hover,.th:focus-visible{border-color:#8FB3D9;background:rgba(15,34,64,.95)}
 }
-</style>
+/* Reseñas tipo carrusel (rediseño 2026-11-17) */
+#resenas .rv-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap}
+#resenas .rv-eti{display:block;color:#60A5FA;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
+#resenas .res-nota{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap}
+#resenas .res-num{font-family:"Cormorant Garamond",serif;font-size:3.6rem;font-weight:600;line-height:1;color:#F5C451}
+#resenas .res-nota h2{font-family:Montserrat,sans-serif;font-size:1.35rem;font-weight:700;color:#fff}
+#resenas .res-controles{display:flex;gap:.6rem}
+#resenas .res-controles button{width:46px;height:46px;border-radius:999px;border:1px solid rgba(201,162,75,.5);background:rgba(11,26,46,.6);color:#F5C451;font-size:1.15rem;cursor:pointer;transition:background-color .25s,border-color .25s,transform .25s}
+#resenas .res-controles button:hover,#resenas .res-controles button:focus-visible{background:rgba(201,162,75,.16);border-color:#C9A24B;transform:translateY(-2px)}
+#resenas .res-g{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:1.25rem;padding:2rem 16px 1.5rem;margin:0 -16px;scroll-padding:0 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;scroll-behavior:smooth}
+#resenas .res-g::-webkit-scrollbar{display:none}
+#resenas .res{position:relative;overflow:hidden;flex:0 0 min(380px,84vw);scroll-snap-align:start;display:flex;flex-direction:column;justify-content:space-between;gap:1.25rem;margin:0;padding:1.9rem 1.8rem 1.6rem;border-radius:1.25rem;border:1px solid rgba(96,165,250,.22);background:linear-gradient(160deg,rgba(26,45,74,.9),rgba(11,26,46,.94));min-height:300px;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .35s}
+#resenas .res::before{content:"\201C";position:absolute;top:-.9rem;right:.8rem;font-family:"Cormorant Garamond",serif;font-size:8rem;line-height:1;color:rgba(201,162,75,.2);pointer-events:none}
+#resenas .res:hover{transform:translateY(-6px);border-color:rgba(201,162,75,.55);box-shadow:0 24px 44px -24px rgba(201,162,75,.45)}
+#resenas .res-est{color:#F5C451;letter-spacing:.2em;font-size:.95rem}
+#resenas .res blockquote{margin:0;font-family:"Cormorant Garamond",serif;font-style:italic;font-size:1.3rem;line-height:1.5;color:#F1F5F9}
+#resenas .res-pie{display:flex;align-items:center;gap:.8rem;padding-top:1.1rem;border-top:1px solid rgba(96,165,250,.18)}
+#resenas .res-av{width:42px;height:42px;border-radius:50%;background:#C9A24B;color:#0B1A2E;display:grid;place-items:center;font-weight:700;font-size:.82rem;letter-spacing:.04em;flex-shrink:0}
+#resenas .res:nth-child(2) .res-av{background:#8FB3D9}
+#resenas .res:nth-child(3) .res-av{background:#3EA6FF}
+#resenas .res:nth-child(4) .res-av{background:#E3CB8F}
+#resenas .res-autor{display:flex;flex-direction:column;line-height:1.25;min-width:0}
+#resenas .res-autor b{color:#fff;font-size:.98rem}
+#resenas .res-autor small{color:#8FB3D9;font-size:.78rem}
+#resenas .res-marca{margin-left:auto;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:#8FB3D9;white-space:nowrap}
+#resenas .res-barra{position:relative;height:3px;border-radius:3px;background:rgba(143,179,217,.18);overflow:hidden;margin-top:.4rem}
+#resenas .res-barra i{position:absolute;top:0;left:0;height:100%;width:30%;background:#C9A24B;border-radius:3px;transition:transform .2s}
+@media (min-width:768px){#resenas .res-g{margin:0;padding-left:0;padding-right:0;scroll-padding:0}}
+@media (max-width:767px){#resenas .res-nota h2{font-size:1.1rem}#resenas .res-num{font-size:3rem}}
+@media (prefers-reduced-motion:reduce){#resenas .res-g{scroll-behavior:auto}#resenas .res{transition:none}}</style>
 
 <script type="application/ld+json">
 {
@@ -320,16 +380,28 @@
   <section id="resenas" class="seccion-foco relative py-16 md:py-20 bg-navy-400" data-foco>
     <div class="linea-foco"></div>
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="reveal max-w-3xl">
-        <span class="text-blue-400 text-base font-semibold tracking-[.25em] uppercase">Opiniones en Google</span>
-        <div class="res-nota mt-3"><span class="res-num">5,0</span><h2 class="font-montserrat text-2xl md:text-3xl font-bold text-white">de calificación en Google</h2></div>
+      <div class="rv-cab reveal">
+        <div>
+          <span class="rv-eti">Opiniones en Google</span>
+          <div class="res-nota mt-3"><span class="res-num">5,0</span><h2>de calificación en Google</h2></div>
+        </div>
+        <div class="res-controles">
+          <button type="button" class="res-prev" aria-label="Opiniones anteriores">&larr;</button>
+          <button type="button" class="res-next" aria-label="Más opiniones">&rarr;</button>
+        </div>
       </div>
       <div class="res-g">
-        <figure class="res reveal"><blockquote>«Me ayudaron a solucionar un problema laboral de manera muy eficaz.»</blockquote><figcaption>L. V. · Reseña en Google</figcaption></figure>
-        <figure class="res reveal reveal-d1"><blockquote>«…de mucha ayuda para nosotros como servidores públicos…»</blockquote><figcaption>F. M. · Reseña en Google</figcaption></figure>
-        <figure class="res reveal"><blockquote>«Me brindaron una atención clara y personalizada, resolviendo mis dudas y acompañándome durante todo el proceso.»</blockquote><figcaption>C. G. J. · Reseña en Google</figcaption></figure>
-        <figure class="res reveal reveal-d1"><blockquote>«…un servicio eficiente, responsable y con un trato muy cercano.»</blockquote><figcaption>D. M. P. M. · Reseña en Google</figcaption></figure>
+        <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«Me ayudaron a solucionar un problema laboral de manera muy eficaz. Además de ser unos profesionales increíbles, son personas muy amables, humanas y empáticas…»</blockquote><figcaption class="res-pie"><span class="res-av">LV</span><span class="res-autor"><b>L. V.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
+        <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«Destaco especialmente su compromiso, claridad para explicar cada situación y la confianza que transmite durante todo el proceso.»</blockquote><figcaption class="res-pie"><span class="res-av">DM</span><span class="res-autor"><b>D. M. P. M.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
+        <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«Magníficos abogados, amables y dan acompañamiento en todo momento.»</blockquote><figcaption class="res-pie"><span class="res-av">AS</span><span class="res-autor"><b>A. S.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
+        <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«Abogados profesionales, con atención especializada y personalizada.»</blockquote><figcaption class="res-pie"><span class="res-av">RM</span><span class="res-autor"><b>R. M. C.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
+        <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«Son abogados muy profesionales, atentos y comprometidos con sus representados. Me brindaron una atención clara y personalizada…»</blockquote><figcaption class="res-pie"><span class="res-av">CG</span><span class="res-autor"><b>C. G. J.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
+        <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«Abogados altamente confiables y efectivos 100% recomendables.»</blockquote><figcaption class="res-pie"><span class="res-av">LE</span><span class="res-autor"><b>L. E. R. O.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
+        <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«Es muy buena y de mucha ayuda para nosotros como servidores públicos siendo de mucha ayuda para resolver nuestras necesidades.»</blockquote><figcaption class="res-pie"><span class="res-av">FM</span><span class="res-autor"><b>F. M.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
+        <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«El Lic. Emmanuel me ayudó a atravesar con mucha empatía un proceso de despido injustificado, muy recomendados.»</blockquote><figcaption class="res-pie"><span class="res-av">MH</span><span class="res-autor"><b>M. H.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
+        <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«El abogado es muy profesional y ético. Mis dudas fueron aclaradas con sencillez y claridad.»</blockquote><figcaption class="res-pie"><span class="res-av">JG</span><span class="res-autor"><b>J. G.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
       </div>
+      <div class="res-barra" aria-hidden="true"><i></i></div>
       <p class="reveal mt-7"><a href="https://maps.google.com/?cid=13586545796364799919" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">Leer las reseñas en Google <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
     </div>
   </section>
@@ -662,6 +734,17 @@
   if (consentido) vigilarFacebook();
   var bAceptarFb = document.getElementById('cookieAceptar');
   if (bAceptarFb) bAceptarFb.addEventListener('click', vigilarFacebook);
+  /* Carrusel de reseñas: deslizar, o las flechas en computadora */
+  var rgCar=document.querySelector(".res-g");
+  if (rgCar){
+    var moverCar=function(d){ var c=rgCar.querySelector(".res"); var w=c? c.getBoundingClientRect().width+16 : 300; rgCar.scrollBy({left:d*w, behavior:"smooth"}); };
+    var bPrev=document.querySelector(".res-prev"), bNext=document.querySelector(".res-next");
+    if (bPrev) bPrev.addEventListener("click", function(){ moverCar(-1); });
+    if (bNext) bNext.addEventListener("click", function(){ moverCar(1); });
+    var barraCar=document.querySelector(".res-barra i");
+    var pintarBarra=function(){ if(!barraCar) return; var max=rgCar.scrollWidth-rgCar.clientWidth; var vis=rgCar.clientWidth/rgCar.scrollWidth; var pos= max>0 ? rgCar.scrollLeft/max : 0; barraCar.style.width=(vis*100)+"%"; barraCar.style.transform="translateX("+(pos*(100/vis-100)/100*100)+"%)"; };
+    rgCar.addEventListener("scroll", pintarBarra, {passive:true}); window.addEventListener("resize", pintarBarra); pintarBarra();
+  }
   /* Contadores */
   var nums = document.querySelectorAll('[data-cuenta]');
   if (!reduce && 'IntersectionObserver' in window) {
