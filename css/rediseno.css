@@ -91,25 +91,29 @@ body:not(.rd-corre) #inicio h1.rd-marca{animation:trazo 1.1s cubic-bezier(.22,1,
 .rd-res .res-barra{display:none}
 
 /* ---------- Equipo ---------- */
-.rd-eq{background:var(--rd-az1);padding:100px 0}
+.rd-eq{background:var(--rd-az1);padding:90px 0 56px}
 .rd-eq-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:34px;margin-top:50px}
-.rd-eqc{display:grid;grid-template-columns:1fr;gap:18px;border-top:2px solid var(--rd-acento);padding-top:22px;align-items:start}
+.rd-eqc{display:grid;grid-template-columns:1fr;gap:18px;border-top:2px solid var(--rd-acento);padding-top:22px;align-items:stretch}
 .rd-eqc>*{min-width:0}
-@media(min-width:560px){.rd-eqc{grid-template-columns:170px 1fr}}
-.rd-eqc-foto{display:block;width:170px;max-width:100%;overflow:hidden;line-height:0;border:1px solid rgba(143,179,217,.6);background:var(--rd-az1)}
-.rd-eqc-foto img{border:0;padding:0;width:100%;max-width:none;height:170px;display:block;object-fit:cover;object-position:50% 18%}
-.rd-eqc-foto:hover img,.rd-eqc-foto:focus-visible img{transform:scale(1.07)}
+@media(min-width:560px){.rd-eqc{grid-template-columns:170px 1fr;gap:22px}}
+/* La foto ocupa la altura del texto y queda centrada en el medio, a un lado del texto */
+.rd-eqc-foto{display:flex;align-items:center;justify-content:center;width:100%;line-height:0}
+@media(min-width:560px){.rd-eqc-foto{width:170px}}
+.rd-eqc-foto img{border:1px solid rgba(143,179,217,.7);padding:0;width:170px;max-width:100%;height:170px;display:block;object-fit:cover;object-position:50% 18%;background:var(--rd-az1)}
+.rd-eqc-foto:hover img,.rd-eqc-foto:focus-visible img{transform:scale(1.06)}
+@media(max-width:559px){.rd-eqc h3,.rd-eqc .rol{text-align:center}}
 .rd-eqc h3{font-family:"Montserrat",sans-serif;font-weight:700;font-size:1.5rem!important;line-height:1.2;color:#fff;margin-top:-.15em}
 .rd-eqc .rol{color:var(--rd-acento);font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-top:.3rem}
 .rd-eqc ul{padding-left:1.2rem;color:var(--rd-texto);font-size:1.1rem;line-height:1.6;margin-top:.9rem}
 .rd-eqc li{margin-bottom:.6rem}
-.rd-pruebas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:26px;margin-top:56px}
-.rd-prueba{border-top:2px solid rgba(96,165,250,.6);padding-top:14px}
-.rd-prueba b{display:block;font-weight:700;font-size:1.4rem;color:#fff;line-height:1.2}
-.rd-prueba span{display:block;color:var(--rd-texto);font-size:1.05rem;line-height:1.55;margin-top:.4rem}
+.rd-pruebas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:20px;margin-top:48px}
+.rd-prueba{border:1px solid rgba(96,165,250,.5);border-top:3px solid var(--rd-acento);border-radius:1rem;padding:26px 22px;text-align:center;background:rgba(0,1,78,.35);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.rd-prueba b{display:block;font-weight:700;font-size:1.4rem;color:#fff;line-height:1.25}
+.rd-prueba span{display:block;color:var(--rd-texto);font-size:1.05rem;line-height:1.6;margin-top:.7rem}
+.rd-eq .rd-wrap>p:last-child{text-align:center;margin-top:2rem}
 
 /* ---------- Situaciones ---------- */
-.rd-sit{background:linear-gradient(180deg,#00012E 0,#00014E 160px,#00014E calc(100% - 160px),#091525 100%);padding:100px 0}
+.rd-sit{background:linear-gradient(180deg,#00012E 0,#00014E 160px,#00014E calc(100% - 160px),#091525 100%);padding:56px 0 100px}
 .rd-cap{display:grid;grid-template-columns:1fr;gap:16px;margin-top:50px}
 @media(min-width:760px){.rd-cap{grid-template-columns:repeat(2,1fr)}.rd-cap>div:last-child{grid-column:1/-1}}
 @media(min-width:1120px){.rd-cap{grid-template-columns:repeat(6,1fr)}.rd-cap>div{grid-column:span 2}.rd-cap>div:nth-child(4),.rd-cap>div:nth-child(5){grid-column:span 3}}
@@ -167,6 +171,11 @@ body:not(.rd-corre) #inicio h1.rd-marca{animation:trazo 1.1s cubic-bezier(.22,1,
 .rd-chips a,.rd-res .res-controles button{position:relative;overflow:hidden;border-radius:1rem}
 .rd-chips a::after,.rd-res .res-controles button::after{content:"";position:absolute;top:0;left:-30%;width:30%;height:100%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent);transform:skewX(-20deg) translateX(-250%);animation:destello 6s ease-in-out infinite}
 .rd-chips a:nth-child(2n)::after{animation-delay:.6s}.rd-chips a:nth-child(3n)::after{animation-delay:1.2s}
+
+/* ---------- Pie de la portada: menos espacio al final y WhatsApp en verde, como Facebook (azul) e Instagram (rojo) ---------- */
+@media (min-width:768px){footer.py-16{padding-bottom:5.5rem}}
+footer a[aria-label="WhatsApp"]{background:rgba(34,197,94,.18);border-color:rgba(34,197,94,.6);color:#4ADE80}
+footer a[aria-label="WhatsApp"]:hover{background:#16A34A;border-color:#16A34A;color:#fff}
 
 /* ---------- Pantallas angostas: texto grande y cómodo ---------- */
 @media(max-width:640px){
