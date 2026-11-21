@@ -24,9 +24,9 @@ body{background:var(--rd-negro)}
 .bg-navy-600\/60{background:rgba(5,8,58,.72)!important}
 .hero-bg{background:radial-gradient(120% 90% at 85% 0%,#1B2AA0 0%,#0A0F5C 35%,#05083A 65%,#000008 100%)!important;animation:none!important}
 .text-blue-400,.text-action-400,.text-action-300{color:var(--rd-dorado)!important}
-.cta-action,.cta-empresa,.tema-empresa .cta-action{background:var(--rd-dorado)!important;background-image:none!important;color:var(--rd-negro)!important;border-radius:2px!important}
+.cta-action,.cta-empresa,.tema-empresa .cta-action{background:var(--rd-dorado)!important;background-image:none!important;color:var(--rd-negro)!important;border-radius:1rem!important}
 .cta-action:hover,.cta-action:focus-visible,.cta-empresa:hover,.cta-empresa:focus-visible,.tema-empresa .cta-action:hover{background:var(--rd-dorado-h)!important;color:var(--rd-negro)!important}
-.cta-outline{border:1px solid var(--rd-dorado)!important;color:var(--rd-dorado)!important;border-radius:2px!important}
+.cta-outline{border:1px solid var(--rd-dorado)!important;color:var(--rd-dorado)!important;border-radius:1rem!important}
 .cta-outline:hover{background:var(--rd-dorado)!important;color:var(--rd-negro)!important}
 .service-card{background:rgba(5,8,58,.72)!important;border:1px solid rgba(242,196,138,.38)!important;border-radius:2px!important;backdrop-filter:none!important}
 .service-card:hover{border-color:var(--rd-dorado)!important;box-shadow:0 18px 44px -18px rgba(242,196,138,.35)!important}
@@ -76,21 +76,25 @@ body:not(.rd-corre) .rd-intro{display:none}
 @keyframes rd-sale{to{opacity:0;visibility:hidden}}
 
 /* ---------- Portada ---------- */
-.rd-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:var(--rd-hondo)}
+.rd-hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-start;overflow:hidden;background:var(--rd-hondo)}
+/* Las reglas antiguas de #inicio (relleno de 5 a 9 rem, alturas) se anulan para que el texto no quede bajo el encabezado */
+#inicio.rd-hero{min-height:100svh!important;align-items:stretch!important}
+#inicio.rd-hero>.rd-wrap{padding-top:clamp(7.5rem,16svh,10rem)!important;padding-bottom:2rem!important}
 .rd-hero .rd-foto{transform:scale(1.09);animation:rd-zoom 2.8s cubic-bezier(.2,.6,.2,1) both,rd-deriva 24s ease-in-out 2.8s infinite alternate}
 @keyframes rd-zoom{from{transform:scale(1.09)}to{transform:scale(1)}}
-.rd-hero .rd-velo{background:linear-gradient(180deg,rgba(5,8,58,.72),rgba(5,8,58,.5) 40%,rgba(0,0,8,.96))}
+.rd-hero .rd-velo{background:linear-gradient(90deg,rgba(0,0,8,.9) 0%,rgba(5,8,58,.78) 42%,rgba(5,8,58,.45) 100%),linear-gradient(180deg,rgba(0,0,8,.55) 0%,rgba(0,0,8,0) 30%,rgba(0,0,8,.9) 100%)}
 .rd-hero .rd-wrap{width:100%;padding-top:130px;padding-bottom:34px}
 .rd-hero-col{display:flex;flex-direction:column;align-items:flex-start}
 .rd-hero-col .rd-sub{order:0}.rd-hero-col .rd-marca{order:1}.rd-hero-col .rd-lema{order:2}.rd-hero-col .rd-estrellas{order:3}.rd-hero-col .rd-titulares{order:4}.rd-hero-col .rd-chips-t{order:5}.rd-hero-col .rd-chips{order:6;width:100%}
 .rd-sub{color:var(--rd-dorado);letter-spacing:.22em;text-transform:uppercase;font-size:13px;font-weight:600;text-shadow:0 1px 12px rgba(0,0,8,.75)}
-#inicio h1.rd-marca{font-size:clamp(54px,12.5vw,160px)!important;line-height:1!important;padding-bottom:.12em;margin-top:10px;color:#fff;display:block!important;text-align:left;clip-path:inset(-8% 100% -35% 0);opacity:1!important}
-.rd-marca span{display:block}
-.rd-marca span+span{font-weight:400;color:var(--rd-dorado);font-size:.46em;letter-spacing:.3em;margin-top:8px;text-shadow:0 2px 14px rgba(0,0,8,.7)}
+/* Nombre de la firma: tipografía original (DÍGNITAS en Cormorant Garamond mayúsculas; ABOGACÍA en Montserrat con el espaciado de la marca). Solo cambia el tamaño, para que quepa en la primera pantalla. */
+#inicio h1.rd-marca{font-size:1rem!important;line-height:1!important;padding-bottom:.12em;margin-top:10px;display:flex!important;flex-direction:column;align-items:flex-start;text-align:left;clip-path:inset(-10% 100% -35% 0);opacity:1!important}
+.rd-marca .marca-d{display:block;font-size:clamp(2.2rem,min(11.5vw,14.5svh),7.6rem);color:#F4EFE6;text-shadow:0 2px 22px rgba(0,0,8,.85)}
+.rd-marca .marca-a{display:block;font-size:clamp(.95rem,min(3.9vw,4.8svh),2.2rem);color:var(--rd-dorado);margin-top:.6rem;padding-left:0;text-shadow:0 2px 16px rgba(0,0,8,.85)}
 body.rd-corre #inicio h1.rd-marca{animation:trazo 1.3s cubic-bezier(.22,1,.36,1) 2s forwards!important}
 body:not(.rd-corre) #inicio h1.rd-marca{animation:trazo 1.1s cubic-bezier(.22,1,.36,1) .2s forwards!important}
-@keyframes trazo{to{clip-path:inset(-8% -4% -35% 0)}}
-.rd-lema{font-size:clamp(18px,2vw,24px);max-width:660px;margin-top:18px;color:var(--rd-suave);text-shadow:0 1px 12px rgba(0,0,8,.75)}
+@keyframes trazo{to{clip-path:inset(-10% -4% -35% 0)}}
+.rd-hero .lema{font-size:clamp(1.15rem,min(2.6vw,3.4svh),1.9rem);max-width:780px;margin-top:1rem;color:#F4EFE6;text-shadow:0 1px 14px rgba(0,0,8,.9)}
 .rd-estrellas{display:inline-block;margin-top:14px;text-decoration:none;font-size:15px;color:#fff;text-shadow:0 1px 12px rgba(0,0,8,.75)}
 .rd-estrellas .e{color:var(--rd-dorado);letter-spacing:2px;margin-right:8px}
 .rd-titulares{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:20px}
@@ -188,6 +192,35 @@ body:not(.rd-corre) #inicio h1.rd-marca{animation:trazo 1.1s cubic-bezier(.22,1,
 
 /* ---------- Aparición al desplazarse: se apoya en .reveal de dignitas.js ---------- */
 .rd-sec .reveal{transition:opacity .9s ease,transform .9s ease}
+
+/* ---------- Movimiento al pasar el cursor o tocar: todo lo pulsable se eleva ---------- */
+.rd-chips a,.rd-titular,.rd-estrellas,.rd-boton,.rd-prueba,.rd-emp-it,.rd-eqc,.rd-eqc-foto img,.rd-res .res,.rd-cap>div,.rd-flecha,.rd-res .res-controles button,.rd-pub .cta-outline,.rd-intro-no{transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,background-color .25s,color .25s,border-color .25s}
+.rd-flecha{display:inline-block}
+.rd-chips a:hover,.rd-chips a:focus-visible,.rd-titular:hover,.rd-titular:focus-visible,.rd-estrellas:hover,.rd-estrellas:focus-visible,.rd-prueba:hover,.rd-emp-it:hover,.rd-eqc:hover,.rd-res .res:hover,.rd-cap>div:hover,.rd-res .res-controles button:hover,.rd-pub .cta-outline:hover{transform:translateY(-6px)}
+.rd-chips a:hover,.rd-titular:hover,.rd-prueba:hover,.rd-eqc:hover,.rd-res .res:hover,.rd-cap>div:hover{box-shadow:0 20px 36px -18px rgba(242,196,138,.5)}
+.rd-emp-it:hover{box-shadow:0 20px 36px -20px rgba(11,16,48,.45)}
+.rd-estrellas:hover{text-shadow:0 0 18px rgba(242,196,138,.8)}
+.rd-flecha:hover,.rd-flecha:focus-visible{transform:translateX(6px);text-shadow:0 0 14px rgba(242,196,138,.55)}
+.rd-emp .rd-flecha:hover{text-shadow:none;color:#4a3410!important}
+.rd-boton:hover,.rd-boton:focus-visible,.cta-action:hover,.cta-empresa:hover,.cta-outline:hover{transform:translateY(-4px)!important;box-shadow:0 16px 30px -12px rgba(242,196,138,.55)!important}
+.rd-emp .rd-boton:hover{box-shadow:0 16px 30px -12px rgba(10,15,92,.6)!important}
+.rd-chips a:active,.rd-titular:active,.rd-boton:active,.rd-prueba:active,.rd-emp-it:active,.rd-eqc:active,.rd-res .res:active,.rd-cap>div:active,.cta-action:active,.cta-outline:active{transform:translateY(-2px) scale(.985)!important}
+/* Retratos del equipo: enlazan a /equipo/ y se acercan al pasar el cursor */
+.rd-eqc{align-items:start}
+.rd-eqc h3{margin-top:-.15em}
+.rd-eqc-foto{display:block;width:170px;max-width:100%;overflow:hidden;line-height:0;border:1px solid rgba(242,196,138,.6);background:var(--rd-hondo)}
+.rd-eqc-foto img{border:0;padding:0;width:100%;max-width:none;height:170px;display:block}
+.rd-eqc-foto:hover img,.rd-eqc-foto:focus-visible img{transform:scale(1.07)}
+@media (prefers-reduced-motion:reduce){.rd-chips a:hover,.rd-titular:hover,.rd-prueba:hover,.rd-emp-it:hover,.rd-eqc:hover,.rd-res .res:hover,.rd-cap>div:hover,.rd-flecha:hover,.rd-boton:hover,.rd-eqc-foto:hover img{transform:none!important}}
+
+/* ---------- Mismo diseño de botón en todo el sitio: esquinas redondeadas, destello que cruza y sombra suave ---------- */
+.rd-boton,.rd-chips a,.cta-outline,#cookieAviso button,.rd-res .res-controles button{position:relative;overflow:hidden;border-radius:1rem}
+.rd-boton::after,.rd-chips a::after,.cta-outline::after,#cookieAviso button::after,.rd-res .res-controles button::after{content:"";position:absolute;top:0;left:-30%;width:30%;height:100%;pointer-events:none;background:linear-gradient(100deg,transparent,rgba(255,255,255,.42),transparent);transform:skewX(-20deg) translateX(-250%);animation:destello 6s ease-in-out infinite}
+.rd-boton,.cta-action,.cta-empresa,.cta-outline{box-shadow:0 8px 26px -12px rgba(242,196,138,.5)}
+.rd-emp .rd-boton{box-shadow:0 8px 26px -12px rgba(10,15,92,.55)}
+.rd-chips a:nth-child(2n)::after,.rd-boton:nth-of-type(2n)::after{animation-delay:.6s}
+.rd-chips a:nth-child(3n)::after{animation-delay:1.2s}
+@media (prefers-reduced-motion:reduce){.rd-boton::after,.rd-chips a::after,.cta-outline::after,#cookieAviso button::after,.rd-res .res-controles button::after{animation:none!important}}
 
 /* ---------- Contacto: mapa que carga al pulsar y vCard ---------- */
 .rd-mapa{margin-top:2.5rem;text-align:center}
