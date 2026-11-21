@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Dígnitas Abogacía;;;;
+FN:Dígnitas Abogacía
+ORG:Dígnitas Abogacía
+TEL;TYPE=WORK,VOICE,CELL:+528130754795
+EMAIL;TYPE=WORK:da@dignitasabogacia.com
+URL:https://www.dignitasabogacia.com/
+ADR;TYPE=WORK:;;Calle Tauro #30\, Col. San Juan de los Lagos;San Cristóbal de las Casas;Chiapas;29296;México
+NOTE:Desde la legalidad\, trabajamos por el respeto de tus derechos.
+X-ABShowAs:COMPANY
+END:VCARD

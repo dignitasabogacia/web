@@ -33,6 +33,8 @@
 <link rel="preload" href="/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/cormorant-garamond-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/estilos.css">
+<link rel="stylesheet" href="/css/rediseno.css">
+<link rel="preload" as="image" href="/portada-fachada-800.jpg" imagesrcset="/portada-fachada-800.jpg 800w, /portada-fachada.jpg 1400w" imagesizes="100vw" fetchpriority="high">
 <noscript><style>.reveal{opacity:1 !important;transform:none !important}/* Reseñas tipo carrusel (rediseño 2026-11-17) */
 #resenas .rv-cab{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap}
 #resenas .rv-eti{display:block;color:#60A5FA;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600}
@@ -284,6 +286,8 @@
 </script>
 </head>
 <body>
+<div class="rd-intro" aria-hidden="true"><img src="/Logo.png" alt="" width="512" height="512"></div>
+<script>try{if(!sessionStorage.getItem("rd-intro")&&!matchMedia("(prefers-reduced-motion: reduce)").matches){sessionStorage.setItem("rd-intro","1");document.body.classList.add("rd-corre")}}catch(e){}</script>
 <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-500 text-white px-4 py-2 rounded font-bold z-[999]">Ir al contenido principal</a>
 
 <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent nav-scrolled">
@@ -350,40 +354,38 @@
 </div>
 
 <main id="main">
-  <section id="inicio" class="hero-bg hero-top relative flex items-start overflow-hidden" style="min-height:0">
-    <div class="deco-ring" style="width:560px;height:560px;right:-180px;top:6%"></div>
-    <div class="deco-ring" style="width:340px;height:340px;left:-120px;bottom:4%"></div>
-    <img src="/Logo.png" alt="" width="512" height="512" aria-hidden="true" style="position:absolute;width:min(88vw,640px);height:auto;right:50%;top:50%;transform:translate(50%,-50%);opacity:.12;pointer-events:none">
-    <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center w-full">
-      <h1 class="flex flex-col items-center"><span class="marca-d block">Dígnitas</span><span class="marca-a block">Abogacía</span></h1>
-      <div class="accent-line"></div>
-      <p class="lema max-w-3xl mx-auto">Desde la legalidad, trabajamos por el respeto de tus derechos.</p>
-      <div class="titulares-hero">
-        <a href="/equipo/" class="th"><img src="/elvira-96.jpg" alt="" width="96" height="96"><span><b>Abogada Elvira Vázquez</b><small>Maestra en Derecho por la UNAM. Fue directora de una Casa de la Cultura Jurídica de la SCJN.</small></span></a>
-        <a href="/equipo/" class="th"><img src="/emmanuel-96.jpg" alt="" width="96" height="96"><span><b>Abogado Emmanuel Quiroz</b><small>Experiencia en el Tribunal Laboral de Puebla y en la PRODECON Nuevo León.</small></span></a>
+  <section id="inicio" class="rd-hero rd-visto">
+    <img class="rd-foto" src="/portada-fachada.jpg" srcset="/portada-fachada-800.jpg 800w, /portada-fachada.jpg 1400w" sizes="100vw" alt="" width="1400" height="1051" fetchpriority="high">
+    <div class="rd-velo"></div>
+    <div class="rd-wrap rd-hero-col">
+      <h1 class="rd-marca"><span>Dígnitas</span><span>Abogacía</span></h1>
+      <p class="rd-lema">Desde la legalidad, trabajamos por el respeto de tus derechos.</p>
+      <div class="rd-titulares">
+        <a href="/equipo/" class="rd-titular"><img src="/elvira-96.jpg" alt="" width="96" height="96"><span><b>Abogada Elvira Vázquez</b><small>Maestra en Derecho por la UNAM. Fue directora de una Casa de la Cultura Jurídica de la SCJN.</small></span></a>
+        <a href="/equipo/" class="rd-titular"><img src="/emmanuel-96.jpg" alt="" width="96" height="96"><span><b>Abogado Emmanuel Quiroz</b><small>Experiencia en el Tribunal Laboral de Puebla y en la PRODECON Nuevo León.</small></span></a>
       </div>
-      <p class="hero-sub">Litigio en todo México.</p>
-      <a href="https://maps.google.com/?cid=13586545796364799919" target="_blank" rel="noopener" class="estrellas"><span class="e" aria-hidden="true">★★★★★</span><span>Calificación <b class="hero-nota">5,0</b> en Google</span></a>
-      
-      <p class="chips-t">¿Qué te está pasando?</p>
-      <nav class="chips-problema" aria-label="Situaciones">
+      <p class="rd-sub">Litigio en todo México.</p>
+      <a href="https://maps.google.com/?cid=13586545796364799919" target="_blank" rel="noopener" class="rd-estrellas"><span class="e" aria-hidden="true">★★★★★</span>Calificación <b>5,0</b> en Google</a>
+      <p class="rd-chips-t">¿Qué te está pasando?</p>
+      <nav class="rd-chips" aria-label="Situaciones">
         <a href="#familia">Divorcio o custodia</a>
         <a href="#trabajo">Despido o finiquito</a>
         <a href="#salud">IMSS o ISSSTE no me atiende</a>
         <a href="#fiscal">Problema con el SAT</a>
         <a href="#actas">Acta administrativa</a>
-        <a href="#empresas" class="chip-empresa">Tengo una empresa</a>
+        <a href="#empresas">Tengo una empresa</a>
       </nav>
     </div>
   </section>
 
-  <section id="resenas" class="seccion-foco relative py-16 md:py-20 bg-navy-400" data-foco>
-    <div class="linea-foco"></div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="rv-cab reveal">
+  <section id="resenas" class="rd-sec rd-res">
+    <img class="rd-foto" src="/fondo-resenas.jpg" alt="" width="1200" height="800" loading="lazy">
+    <div class="rd-velo"></div>
+    <div class="rd-wrap reveal">
+      <div class="rd-res-cab">
         <div>
-          <span class="rv-eti">Opiniones en Google</span>
-          <div class="res-nota mt-3"><span class="res-num">5,0</span><h2>de calificación en Google</h2></div>
+          <span class="rd-eti">Opiniones en Google</span>
+          <div class="rd-res-nota"><span class="rd-res-num">5,0</span><h2>de calificación en Google</h2></div>
         </div>
         <div class="res-controles">
           <button type="button" class="res-prev" aria-label="Opiniones anteriores">&larr;</button>
@@ -400,184 +402,126 @@
         <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«Es muy buena y de mucha ayuda para nosotros como servidores públicos siendo de mucha ayuda para resolver nuestras necesidades.»</blockquote><figcaption class="res-pie"><span class="res-av">FM</span><span class="res-autor"><b>F. M.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
         <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«El Lic. Emmanuel me ayudó a atravesar con mucha empatía un proceso de despido injustificado, muy recomendados.»</blockquote><figcaption class="res-pie"><span class="res-av">MH</span><span class="res-autor"><b>M. H.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
         <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«El abogado es muy profesional y ético. Mis dudas fueron aclaradas con sencillez y claridad.»</blockquote><figcaption class="res-pie"><span class="res-av">JG</span><span class="res-autor"><b>J. G.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
+        <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«Por el momento solo he tenido contacto y asesoría, sobre cartas administrativas…»</blockquote><figcaption class="res-pie"><span class="res-av">FF</span><span class="res-autor"><b>F. F. Q.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
+        <figure class="res"><span class="res-est" aria-label="5 estrellas">★★★★★</span><blockquote>«Son eficientes y profesionales en lo que hacen, los recomiendo.»</blockquote><figcaption class="res-pie"><span class="res-av">CC</span><span class="res-autor"><b>C. C.</b><small>Reseña en Google</small></span><span class="res-marca">Google</span></figcaption></figure>
       </div>
-      <div class="res-barra" aria-hidden="true"><i></i></div>
-      <p class="reveal mt-7"><a href="https://maps.google.com/?cid=13586545796364799919" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">Leer las reseñas en Google <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
+      <p class="mt-7"><a href="https://maps.google.com/?cid=13586545796364799919" target="_blank" rel="noopener" class="rd-flecha">Leer las reseñas en Google</a></p>
     </div>
   </section>
 
-  <section id="equipo-inicio" class="seccion-foco relative py-16 md:py-24 bg-navy-500" data-foco>
-    <div class="linea-foco"></div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="reveal max-w-3xl">
-        <span class="text-blue-400 text-base font-semibold tracking-[.25em] uppercase">Quiénes te atienden</span>
-        <h2 class="font-montserrat text-3xl md:text-4xl font-bold text-white mt-3 mb-4">Conocemos el procedimiento desde los dos lados</h2>
-        <p class="text-white/85 text-lg leading-relaxed">Hemos trabajado dentro de tribunales y autoridades.</p>
-      </div>
-      <div class="eq-g">
-        <article class="eq-c reveal">
-          <div class="eq-cab"><img src="/Elvira.jpeg" alt="Abogada Elvira Vázquez, socia cofundadora de Dígnitas Abogacía" width="892" height="812" loading="lazy" decoding="async"><div><h3>Abogada Elvira Vázquez</h3><p>Socia cofundadora</p></div></div>
-          <ul>
-            <li>Maestra en Derecho por la UNAM y licenciada por la UNACH, ambos grados con mención honorífica.</li>
-            <li>Fue directora de una Casa de la Cultura Jurídica de la SCJN.</li>
-            <li>Reconocimiento al Mérito Pro Bono 2020 de la Fundación AppleSeed México y la Red Pro Bono México.</li>
-          </ul>
+  <section id="equipo-inicio" class="rd-sec rd-eq">
+    <div class="rd-wrap reveal">
+      <span class="rd-eti">Quiénes te atienden</span>
+      <h2 class="rd-titulo">Conocemos el procedimiento desde los dos lados</h2>
+      <p class="rd-bajada">Hemos trabajado dentro de tribunales y autoridades.</p>
+      <div class="rd-eq-g">
+        <article class="rd-eqc">
+          <img src="/Elvira.jpeg" alt="Abogada Elvira Vázquez, socia cofundadora de Dígnitas Abogacía" width="892" height="812" loading="lazy" decoding="async">
+          <div><h3>Abogada Elvira Vázquez</h3><p class="rol">Socia cofundadora</p>
+            <ul>
+              <li>Maestra en Derecho por la UNAM y licenciada por la UNACH, ambos grados con mención honorífica.</li>
+              <li>Fue directora de una Casa de la Cultura Jurídica de la SCJN.</li>
+              <li>Reconocimiento al Mérito Pro Bono 2020 de la Fundación AppleSeed México y la Red Pro Bono México.</li>
+            </ul></div>
         </article>
-        <article class="eq-c reveal reveal-d1">
-          <div class="eq-cab"><img src="/Emmanuel.jpeg" alt="Abogado Emmanuel Quiroz, socio cofundador de Dígnitas Abogacía" width="877" height="831" loading="lazy" decoding="async"><div><h3>Abogado Emmanuel Quiroz</h3><p>Socio cofundador</p></div></div>
-          <ul>
-            <li>Fue titular de la Unidad de Seguimiento en el Tribunal Laboral de Puebla.</li>
-            <li>Fue subdelegado federal de la PRODECON en Nuevo León.</li>
-            <li>Trabajó en PEMEX y está certificado por el CONOCER en solución de conflictos.</li>
-          </ul>
+        <article class="rd-eqc">
+          <img src="/Emmanuel.jpeg" alt="Abogado Emmanuel Quiroz, socio cofundador de Dígnitas Abogacía" width="877" height="831" loading="lazy" decoding="async">
+          <div><h3>Abogado Emmanuel Quiroz</h3><p class="rol">Socio cofundador</p>
+            <ul>
+              <li>Fue titular de la Unidad de Seguimiento en el Tribunal Laboral de Puebla.</li>
+              <li>Fue subdelegado federal de la PRODECON en Nuevo León.</li>
+              <li>Trabajó en PEMEX y está certificado por el CONOCER en solución de conflictos.</li>
+            </ul></div>
         </article>
       </div>
-      <div class="pruebas reveal">
-        <div class="prueba"><b>Más de 15 años</b><span>de experiencia en litigio</span></div>
-        <div class="prueba"><b>Sentencias firmes</b><span>en asuntos laborales, de responsabilidades administrativas y de salud</span></div>
-        <div class="prueba"><b>Suspensiones de plano</b><span>en amparos contra el IMSS y el ISSSTE para medicamentos y atención médica de urgencia</span></div>
-        <div class="prueba"><b>Honorarios por escrito</b><span>antes de iniciar, con pagos flexibles</span></div>
+      <div class="rd-pruebas">
+        <div class="rd-prueba"><b>Más de 15 años</b><span>de experiencia en litigio</span></div>
+        <div class="rd-prueba"><b>Sentencias firmes</b><span>en asuntos laborales, de responsabilidades administrativas y de salud</span></div>
+        <div class="rd-prueba"><b>Suspensiones de plano</b><span>en amparos contra el IMSS y el ISSSTE para medicamentos y atención médica de urgencia</span></div>
+        <div class="rd-prueba"><b>Honorarios por escrito</b><span>antes de iniciar, con pagos flexibles</span></div>
       </div>
-      <p class="reveal mt-7"><a href="/equipo/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">Conoce su trayectoria completa <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
+      <p class="mt-9"><a href="/equipo/" class="rd-flecha">Conoce su trayectoria completa</a></p>
     </div>
   </section>
 
-
-  <section id="personas" class="seccion-foco relative py-16 md:py-24 bg-navy-500" data-foco>
-    <div class="linea-foco"></div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="reveal max-w-3xl">
-        <span class="text-blue-400 text-base font-semibold tracking-[.25em] uppercase">Personas y familias</span>
-        <h2 class="font-montserrat text-3xl md:text-4xl font-bold text-white mt-3 mb-4">Elige tu situación</h2>
-        <p class="text-white/85 text-lg leading-relaxed">Te decimos qué puedes hacer y qué documentos tener a la mano.</p>
+  <section id="personas" class="rd-sec rd-sit">
+    <div class="rd-wrap reveal">
+      <span class="rd-eti">Personas y familias</span>
+      <h2 class="rd-titulo">Elige tu situación</h2>
+      <p class="rd-bajada">Te decimos qué puedes hacer y qué documentos tener a la mano.</p>
+      <div class="rd-cap">
+        <div id="familia"><h3>Familia</h3>
+          <ul>
+            <li><a href="/guias/quiero-divorciarme/">Quiero divorciarme (divorcio incausado)</a></li>
+            <li><a href="/guias/quiero-la-custodia-de-mis-hijos/">Quiero la guarda y custodia de mis hijos</a></li>
+            <li><a href="/guias/no-me-pagan-la-pension/">No me pagan la pensión de mis hijos</a></li>
+            <li><a href="/guias/quiero-convivir-con-mis-hijos/">Quiero convivir con mis hijos</a></li>
+          </ul>
+          <a href="/servicios/familiar/" class="rd-flecha">Conocer el servicio</a></div>
+        <div id="trabajo"><h3>Trabajo</h3>
+          <ul>
+            <li><a href="/guias/despido-no-me-pagan/">Me despidieron y no me pagan finiquito ni liquidación</a></li>
+            <li><a href="/guias/me-hicieron-firmar-mi-renuncia/">Me hicieron firmar mi renuncia</a></li>
+            <li><a href="/guias/acoso-en-el-trabajo/">Sufro acoso u hostigamiento en mi trabajo</a></li>
+            <li><a href="/guias/trabaje-en-pemex-despido-o-enfermedad/">Trabajé en PEMEX y me despidieron o me enfermé</a></li>
+          </ul>
+          <a href="/servicios/laboral/" class="rd-flecha">Conocer el servicio</a></div>
+        <div id="salud"><h3>Salud</h3>
+          <ul>
+            <li><a href="/guias/me-niegan-medicamento/">Me niegan el medicamento, la cirugía o el tratamiento</a></li>
+            <li><a href="/guias/el-imss-retrasa-mi-cirugia-o-tratamiento/">El IMSS o el ISSSTE retrasa mi cirugía</a></li>
+            <li><a href="/guias/compre-medicamentos-que-me-debian-dar/">Tuve que comprar medicamentos que me debían dar</a></li>
+          </ul>
+          <a href="/servicios/salud-y-derechos-humanos/" class="rd-flecha">Conocer el servicio</a></div>
+        <div id="fiscal"><h3>Fiscal</h3>
+          <ul>
+            <li><a href="/guias/requerimiento-del-sat/">Me llegó un requerimiento o una carta del SAT</a></li>
+            <li><a href="/guias/credito-fiscal-embargo/">Me determinaron un crédito fiscal y me van a embargar</a></li>
+            <li><a href="/guias/me-embargaron-la-cuenta-bancaria/">Me embargaron la cuenta bancaria</a></li>
+          </ul>
+          <a href="/servicios/fiscal/" class="rd-flecha">Conocer el servicio</a></div>
+        <div id="actas"><h3>Actas e investigaciones</h3>
+          <ul>
+            <li><a href="/guias/me-levantaron-un-acta-administrativa/">Me levantaron un acta administrativa</a></li>
+            <li><a href="/guias/me-investiga-el-organo-interno-de-control/">Me investiga el órgano interno de control</a></li>
+            <li><a href="/guias/acta-administrativa-personal-medico/">Soy personal médico y me levantaron un acta</a></li>
+          </ul>
+          <a href="/servicios/laboral/" class="rd-flecha">Conocer el servicio</a></div>
       </div>
-      <div class="grid md:grid-cols-2 gap-6 lg:gap-8 mt-10">
-        <div id="familia" class="service-card area-tarjeta tarjeta-brillo foco-card bg-navy-600/60 rounded-2xl p-7 lg:p-8 reveal">
-          <div class="area-cab"><span class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></span><h3 class="area-etiqueta">Familia</h3></div>
-          <div class="lista-guias">
-            <a href="/guias/quiero-divorciarme/"><span>Quiero divorciarme (divorcio incausado)</span><span class="f">→</span></a>
-            <a href="/guias/quiero-la-custodia-de-mis-hijos/"><span>Quiero la guarda y custodia de mis hijos</span><span class="f">→</span></a>
-            <a href="/guias/no-me-pagan-la-pension/"><span>No me pagan la pensión de mis hijos</span><span class="f">→</span></a>
-            <a href="/guias/quiero-convivir-con-mis-hijos/"><span>Quiero convivir con mis hijos</span><span class="f">→</span></a>
-          </div>
-          <a href="/servicios/familiar/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all mt-4">Conocer el servicio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div id="trabajo" class="service-card area-tarjeta tarjeta-brillo foco-card bg-navy-600/60 rounded-2xl p-7 lg:p-8 reveal reveal-d1">
-          <div class="area-cab"><span class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="14"/><line x1="4" y1="7" x2="20" y2="7"/><path d="M4 7L7 14H17L20 7"/></svg></span><h3 class="area-etiqueta">Trabajo</h3></div>
-          <div class="lista-guias">
-            <a href="/guias/despido-no-me-pagan/"><span>Me despidieron y no me pagan finiquito ni liquidación</span><span class="f">→</span></a>
-            <a href="/guias/me-hicieron-firmar-mi-renuncia/"><span>Me hicieron firmar mi renuncia</span><span class="f">→</span></a>
-            <a href="/guias/acoso-en-el-trabajo/"><span>Sufro acoso u hostigamiento en mi trabajo</span><span class="f">→</span></a>
-            <a href="/guias/trabaje-en-pemex-despido-o-enfermedad/"><span>Trabajé en PEMEX y me despidieron o me enfermé</span><span class="f">→</span></a>
-          </div>
-          <a href="/servicios/laboral/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all mt-4">Conocer el servicio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div id="salud" class="service-card area-tarjeta tarjeta-brillo foco-card bg-navy-600/60 rounded-2xl p-7 lg:p-8 reveal">
-          <div class="area-cab"><span class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></span><h3 class="area-etiqueta">Salud</h3></div>
-          <div class="lista-guias">
-            <a href="/guias/me-niegan-medicamento/"><span>Me niegan el medicamento, la cirugía o el tratamiento</span><span class="f">→</span></a>
-            <a href="/guias/el-imss-retrasa-mi-cirugia-o-tratamiento/"><span>El IMSS o el ISSSTE retrasa mi cirugía</span><span class="f">→</span></a>
-            <a href="/guias/compre-medicamentos-que-me-debian-dar/"><span>Tuve que comprar medicamentos que me debían dar</span><span class="f">→</span></a>
-          </div>
-          <a href="/servicios/salud-y-derechos-humanos/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all mt-4">Conocer el servicio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div id="fiscal" class="service-card area-tarjeta tarjeta-brillo foco-card bg-navy-600/60 rounded-2xl p-7 lg:p-8 reveal reveal-d1">
-          <div class="area-cab"><span class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><h3 class="area-etiqueta">Fiscal</h3></div>
-          <div class="lista-guias">
-            <a href="/guias/requerimiento-del-sat/"><span>Me llegó un requerimiento o una carta del SAT</span><span class="f">→</span></a>
-            <a href="/guias/credito-fiscal-embargo/"><span>Me determinaron un crédito fiscal y me van a embargar</span><span class="f">→</span></a>
-            <a href="/guias/me-embargaron-la-cuenta-bancaria/"><span>Me embargaron la cuenta bancaria</span><span class="f">→</span></a>
-          </div>
-          <a href="/servicios/fiscal/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all mt-4">Conocer el servicio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div id="actas" class="service-card area-tarjeta tarjeta-brillo foco-card bg-navy-600/60 rounded-2xl p-7 lg:p-8 reveal tarjeta-extra">
-          <div class="area-cab"><span class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></span><h3 class="area-etiqueta">Actas e investigaciones</h3></div>
-          <div class="lista-guias">
-            <a href="/guias/me-levantaron-un-acta-administrativa/"><span>Me levantaron un acta administrativa</span><span class="f">→</span></a>
-            <a href="/guias/me-investiga-el-organo-interno-de-control/"><span>Me investiga el órgano interno de control</span><span class="f">→</span></a>
-            <a href="/guias/acta-administrativa-personal-medico/"><span>Soy personal médico y me levantaron un acta</span><span class="f">→</span></a>
-          </div>
-          <a href="/servicios/laboral/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all mt-4">Conocer el servicio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-      </div>
-      <p class="reveal mt-10 text-center"><a href="/guias/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">Ver todas las guías <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></p>
+      <p class="mt-10"><a href="/guias/" class="rd-flecha">Ver todas las guías</a></p>
     </div>
   </section>
 
-  <section id="empresas" class="seccion-foco relative py-16 md:py-24 bg-navy-400" data-foco>
-    <div class="linea-foco"></div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="reveal max-w-3xl">
-        <span class="text-base font-semibold tracking-[.25em] uppercase" style="color:#C9A24B">Tengo una empresa</span>
-        <h2 class="font-montserrat text-3xl md:text-4xl font-bold text-white mt-3 mb-4">Prevenga demandas, multas e inspecciones</h2>
-        <p class="text-white/85 text-lg leading-relaxed">Atendemos a su empresa de forma presencial en San Cristóbal de las Casas, con cita previa en Puebla o a distancia.</p>
-      </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-        <div class="service-card tema-empresa tarjeta-brillo foco-card bg-navy-600/60 rounded-2xl p-7 lg:p-8 reveal">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-            <h3 class="font-montserrat text-xl font-bold text-white pt-1">Registro de jornada 2027</h3>
-          </div>
-          <p class="text-white/90 leading-relaxed mb-5">Desde el 1º de enero de 2027, la jornada baja a 46 horas y su empresa deberá registrarla electrónicamente.</p>
-          <a href="/guias/registro-de-jornada-2027/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">Leer la guía <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div class="service-card tema-empresa tarjeta-brillo foco-card bg-navy-600/60 rounded-2xl p-7 lg:p-8 reveal">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M9 14l2 2 4-4"/></svg></div>
-            <h3 class="font-montserrat text-xl font-bold text-white pt-1">Diagnóstico empresarial</h3>
-          </div>
-          <p class="text-white/90 leading-relaxed mb-5">Informe escrito con hallazgos, nivel de riesgo y orden para atenderlos.</p>
-          <a href="/empresas/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">Ver el diagnóstico <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div class="service-card tema-empresa tarjeta-brillo foco-card bg-navy-600/60 rounded-2xl p-7 lg:p-8 reveal">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></div>
-            <h3 class="font-montserrat text-xl font-bold text-white pt-1">Cumplimiento y normas oficiales</h3>
-          </div>
-          <p class="text-white/90 leading-relaxed mb-5">NOM-035, protocolos, contratos, reglamento interior de trabajo e inspecciones.</p>
-          <a href="/empresas/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">Ver lo que atendemos <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div class="service-card tema-empresa tarjeta-brillo foco-card bg-navy-600/60 rounded-2xl p-7 lg:p-8 reveal">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="3" x2="12" y2="21"/><path d="M5 7h14M5 7l-3 7a3 3 0 0 0 6 0zM19 7l-3 7a3 3 0 0 0 6 0z"/></svg></div>
-            <h3 class="font-montserrat text-xl font-bold text-white pt-1">Conciliación y defensa laboral</h3>
-          </div>
-          <p class="text-white/90 leading-relaxed mb-5">Conciliación prejudicial y defensa de su empresa ante los tribunales laborales.</p>
-          <a href="/empresas/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">Ver lo que atendemos <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div class="service-card tema-empresa tarjeta-brillo foco-card bg-navy-600/60 rounded-2xl p-7 lg:p-8 reveal">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-            <h3 class="font-montserrat text-xl font-bold text-white pt-1">Defensa fiscal</h3>
-          </div>
-          <p class="text-white/90 leading-relaxed mb-5">Requerimientos del SAT, créditos fiscales y embargos de cuenta bancaria.</p>
-          <a href="/servicios/fiscal/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">Conocer el servicio <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-        <div class="service-card tema-empresa tarjeta-brillo foco-card bg-navy-600/60 rounded-2xl p-7 lg:p-8 reveal">
-          <div class="flex items-start gap-4 mb-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-navy-50/15 rounded-xl flex items-center justify-center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5.5 2 10l10 4.5L22 10z"/><path d="M6 11.8V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.2"/><path d="M22 10v5"/></svg></div>
-            <h3 class="font-montserrat text-xl font-bold text-white pt-1">Capacitación y certificación</h3>
-          </div>
-          <p class="text-white/90 leading-relaxed mb-5">Talleres para su equipo y preparación para certificarse en estándares del CONOCER.</p>
-          <a href="/capacitacion/" class="inline-flex items-center gap-2 text-action-400 font-semibold hover:gap-3 transition-all">Ver capacitaciones <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-      </div>
-      <p class="indep reveal">Compromiso de independencia: no representamos a una empresa y a sus personas trabajadoras en el mismo asunto ni en asuntos relacionados.</p>
-      <div class="reveal mt-10 text-center">
-        <a href="https://wa.me/528130754795?text=Hola%2C%20quiero%20solicitar%20asesor%C3%ADa%20empresarial." target="_blank" rel="noopener" data-contacto="inicio-empresas" class="cta-empresa font-bold text-lg px-8 py-4 rounded-lg inline-flex items-center gap-3" style="text-transform:uppercase;letter-spacing:.06em"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Solicitar asesoría empresarial</a>
+  <section id="empresas" class="rd-sec rd-emp">
+    <div class="rd-emp-cab rd-visto">
+      <img class="rd-foto" src="/fondo-empresas.jpg" alt="" width="1200" height="800" loading="lazy">
+      <div class="rd-velo"></div>
+      <div class="rd-wrap reveal">
+        <span class="rd-eti">Tengo una empresa</span>
+        <h2 class="rd-titulo">Prevenga demandas, multas e inspecciones</h2>
+        <p class="rd-bajada" style="color:#fff">Atendemos a su empresa de forma presencial en San Cristóbal de las Casas, con cita previa en Puebla o a distancia.</p>
       </div>
     </div>
+    <div class="rd-emp-cuerpo"><div class="rd-wrap reveal">
+      <div class="rd-emp-g">
+        <div class="rd-emp-it"><h3>Registro de jornada 2027</h3><p>Desde el 1º de enero de 2027, la jornada baja a 46 horas y su empresa deberá registrarla electrónicamente.</p><a href="/guias/registro-de-jornada-2027/" class="rd-flecha">Leer la guía</a></div>
+        <div class="rd-emp-it"><h3>Diagnóstico empresarial</h3><p>Informe escrito con hallazgos, nivel de riesgo y orden para atenderlos.</p><a href="/empresas/" class="rd-flecha">Ver el diagnóstico</a></div>
+        <div class="rd-emp-it"><h3>Cumplimiento y normas oficiales</h3><p>NOM-035, protocolos, contratos, reglamento interior de trabajo e inspecciones.</p><a href="/empresas/" class="rd-flecha">Ver lo que atendemos</a></div>
+        <div class="rd-emp-it"><h3>Conciliación y defensa laboral</h3><p>Conciliación prejudicial y defensa de su empresa ante los tribunales laborales.</p><a href="/empresas/" class="rd-flecha">Ver lo que atendemos</a></div>
+        <div class="rd-emp-it"><h3>Defensa fiscal</h3><p>Requerimientos del SAT, créditos fiscales y embargos de cuenta bancaria.</p><a href="/servicios/fiscal/" class="rd-flecha">Conocer el servicio</a></div>
+        <div class="rd-emp-it"><h3>Capacitación y certificación</h3><p>Talleres para su equipo y preparación para certificarse en estándares del CONOCER.</p><a href="/capacitacion/" class="rd-flecha">Ver capacitaciones</a></div>
+      </div>
+      <p class="rd-indep">Compromiso de independencia: no representamos a una empresa y a sus personas trabajadoras en el mismo asunto ni en asuntos relacionados.</p>
+      <p style="margin-top:26px"><a href="https://wa.me/528130754795?text=Hola%2C%20quiero%20solicitar%20asesor%C3%ADa%20empresarial." target="_blank" rel="noopener" data-contacto="inicio-empresas" class="rd-boton" style="text-transform:uppercase">Solicitar asesoría empresarial</a></p>
+    </div></div>
   </section>
 
-  <section id="publicaciones" class="seccion-foco relative py-16 md:py-20 bg-navy-500" data-foco>
-    <div class="linea-foco"></div>
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="reveal max-w-3xl">
-        <span class="text-blue-400 text-base font-semibold tracking-[.25em] uppercase">En Facebook</span>
-        <h2 class="font-montserrat text-3xl md:text-4xl font-bold text-white mt-3 mb-4">Lo que publicamos</h2>
-        <p class="text-white/85 text-lg leading-relaxed">Orientación sobre tus derechos, avisos y actividades de la firma.</p>
-      </div>
-      <div class="fb-caja reveal">
+  <section id="publicaciones" class="rd-sec rd-pub">
+    <div class="rd-wrap reveal">
+      <span class="rd-eti">En Facebook</span>
+      <h2 class="rd-titulo" style="font-size:clamp(32px,4.6vw,56px)">Lo que publicamos</h2>
+      <p class="rd-bajada">Orientación sobre tus derechos, avisos y actividades de la firma.</p>
+      <div class="fb-caja">
         <div id="fbMarco" class="fb-marco" hidden></div>
         <button type="button" id="fbCargar" class="cta-outline inline-flex items-center justify-center gap-2 font-semibold px-8 py-4 rounded-lg">Ver publicaciones recientes</button>
         <p class="fb-nota">Al mostrarlas, Facebook puede usar sus <i>cookies</i>. <a href="https://www.facebook.com/DignitasAbogacia" target="_blank" rel="noopener" class="underline">Ir a nuestra página de Facebook</a></p>
@@ -585,12 +529,13 @@
     </div>
   </section>
 
-  <section id="contacto-inicio" class="hero-bg relative py-20 md:py-28 overflow-hidden">
-    <div class="deco-ring" style="width:420px;height:420px;left:-140px;top:-60px"></div>
-    <div class="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center reveal">
-      <h2 class="font-montserrat text-3xl md:text-5xl font-bold text-white mb-4">Cuéntanos tu caso</h2>
-      <p class="text-white/85 text-lg mb-8">Antes de contratar te damos por escrito qué incluye el servicio y cuánto cuesta.</p>
-      <a href="https://wa.me/528130754795?text=Hola%2C%20quiero%20contar%20mi%20caso." target="_blank" rel="noopener" data-contacto="inicio-cierre" class="cta-action font-bold text-lg md:text-xl px-10 py-5 rounded-lg inline-flex items-center gap-3"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Cuéntanos tu caso por WhatsApp</a>
+  <section id="contacto-inicio" class="rd-sec rd-cont rd-visto">
+    <img class="rd-foto" src="/fondo-contacto.jpg" alt="" width="1200" height="800" loading="lazy">
+    <div class="rd-velo"></div>
+    <div class="rd-wrap reveal">
+      <h2>Cuéntanos tu caso</h2>
+      <p class="rd-bajada">Antes de contratar te damos por escrito qué incluye el servicio y cuánto cuesta.</p>
+      <a href="https://wa.me/528130754795?text=Hola%2C%20quiero%20contar%20mi%20caso." target="_blank" rel="noopener" data-contacto="inicio-cierre" class="rd-boton" style="font-size:17px;padding:20px 38px">Cuéntanos tu caso por WhatsApp</a>
       <p class="compartir">¿Conoces a alguien que lo necesite? <a href="https://api.whatsapp.com/send?text=Te%20comparto%20a%20D%C3%ADgnitas%20Abogac%C3%ADa%20(San%20Crist%C3%B3bal%20de%20las%20Casas%20y%20Puebla)%3A%20https%3A%2F%2Fwww.dignitasabogacia.com%2F" target="_blank" rel="noopener">Compártele esta página por WhatsApp</a></p>
     </div>
   </section>
