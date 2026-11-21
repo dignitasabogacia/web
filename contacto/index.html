@@ -33,7 +33,6 @@
 <link rel="preload" href="/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/cormorant-garamond-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/css/estilos.css">
-<link rel="stylesheet" href="/css/rediseno.css">
 <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
 
 <script type="application/ld+json">
@@ -205,11 +204,11 @@
           <a href="https://wa.me/528130754795?text=Hola%2C%20me%20gustar%C3%ADa%20agendar%20una%20cita%20en%20Puebla." target="_blank" rel="noopener" data-contacto="contacto-puebla" class="cta-action inline-flex items-center justify-center font-bold px-6 py-3 rounded-lg">Agendar cita en Puebla</a>
         </div>
       </div>
-      <div class="rd-mapa reveal" id="mapa">
-        <div id="mapaMarco" class="rd-mapa-marco" hidden></div>
+      <div class="reveal" id="mapa" style="margin-top:2.5rem;text-align:center">
+        <div id="mapaMarco" hidden style="height:420px;border:1px solid rgba(143,179,217,.4);overflow:hidden"></div>
         <button type="button" id="mapaCargar" class="cta-outline inline-flex items-center justify-center gap-2 font-semibold px-8 py-4 rounded-lg">Ver el mapa</button>
-        <p class="rd-mapa-nota">Al mostrarlo, Google puede usar sus <i>cookies</i>.</p>
-        <p class="rd-mapa-vcard"><a href="/dignitas.vcf" download="dignitas.vcf" class="rd-flecha">Descargar vCard</a></p>
+        <p style="margin-top:10px;font-size:.9rem;color:rgba(255,255,255,.75)">Al mostrarlo, Google puede usar sus <i>cookies</i>.</p>
+        <p style="margin-top:18px"><a href="/dignitas.vcf" download="dignitas.vcf" class="text-action-400 font-semibold hover:gap-3 transition-all">Descargar vCard →</a></p>
       </div>
     </div>
   </section>
@@ -306,7 +305,7 @@
   b.addEventListener('click',function(){
     var f=document.createElement('iframe');
     f.title='Mapa de Dígnitas Abogacía en San Cristóbal de las Casas';
-    f.src='https://maps.google.com/maps?cid=13586545796364799919&hl=es&output=embed';
+    f.src='https://maps.google.com/maps?cid=13586545796364799919&hl=es&output=embed'; f.style.cssText='width:100%;height:100%;border:0;display:block';
     f.loading='lazy'; f.setAttribute('allowfullscreen',''); f.setAttribute('referrerpolicy','no-referrer-when-downgrade');
     m.hidden=false; m.appendChild(f); b.hidden=true;
   });
