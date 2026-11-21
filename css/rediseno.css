@@ -95,12 +95,12 @@ body:not(.rd-corre) #inicio h1.rd-marca{animation:trazo 1.1s cubic-bezier(.22,1,
 .rd-eq-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:34px;margin-top:50px}
 .rd-eqc{display:grid;grid-template-columns:1fr;gap:18px;border-top:2px solid var(--rd-acento);padding-top:22px;align-items:stretch}
 .rd-eqc>*{min-width:0}
-@media(min-width:560px){.rd-eqc{grid-template-columns:170px 1fr;gap:22px}}
-/* La foto ocupa la altura del texto y queda centrada en el medio, a un lado del texto */
+@media(min-width:560px){.rd-eqc{grid-template-columns:190px 1fr;gap:24px}}
+/* La foto ocupa la altura del texto y queda centrada en el medio; lleva recuadro con marco, paspartú y resplandor para que resalte */
 .rd-eqc-foto{display:flex;align-items:center;justify-content:center;width:100%;line-height:0}
-@media(min-width:560px){.rd-eqc-foto{width:170px}}
-.rd-eqc-foto img{border:1px solid rgba(143,179,217,.7);padding:0;width:170px;max-width:100%;height:170px;display:block;object-fit:cover;object-position:50% 18%;background:var(--rd-az1)}
-.rd-eqc-foto:hover img,.rd-eqc-foto:focus-visible img{transform:scale(1.06)}
+@media(min-width:560px){.rd-eqc-foto{width:190px}}
+.rd-eqc-foto img{box-sizing:border-box;border:3px solid var(--rd-acento);border-radius:.9rem;padding:8px;width:190px;max-width:100%;height:190px;display:block;object-fit:cover;object-position:50% 18%;background:#00014E;box-shadow:0 0 0 1px rgba(96,165,250,.35),0 16px 34px -12px rgba(96,165,250,.55);transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s,border-color .25s}
+.rd-eqc-foto:hover img,.rd-eqc-foto:focus-visible img{transform:translateY(-4px) scale(1.03);border-color:#93C5FD;box-shadow:0 0 0 1px rgba(147,197,253,.5),0 22px 40px -12px rgba(96,165,250,.7)}
 @media(max-width:559px){.rd-eqc h3,.rd-eqc .rol{text-align:center}}
 .rd-eqc h3{font-family:"Montserrat",sans-serif;font-weight:700;font-size:1.5rem!important;line-height:1.2;color:#fff;margin-top:-.15em}
 .rd-eqc .rol{color:var(--rd-acento);font-size:.9rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-top:.3rem}
